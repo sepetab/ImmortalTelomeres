@@ -297,7 +297,7 @@ footer{
 }
 .footer-title {
     font-weight: 700;
-    color:	#FFD580;
+    color:	#F8F8F8;
 }
 
 .footer-title,
@@ -311,7 +311,7 @@ footer{
 }
 
 .footer-mail:hover{
-    color:	#FFD580;
+    color:	#F8F8F8;
 }
 
 
@@ -321,8 +321,7 @@ table {
     border:5px solid #EBEBEB;
     table-layout: fixed;
     width: 90%;
-    margin: 0 auto;
-    margin-top:5%;
+    margin: 5% auto;
 
   }
   td,
