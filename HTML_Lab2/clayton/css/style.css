@@ -18,15 +18,19 @@ body {
       font-size:36px;
       margin:0;
       height: 50px; 
+      /* inline display is important for alignment issues with href-tab links */
       display: inline;
+      /* placed here to designate position respective to href-tab links */
       float: left; 
   }
   
+  /* Different colours instead of blk to capture superiority/attention from users (eye-catching) */
   h2 {
       font-size:24px;    
       color:#ef5839;
   }
   
+  /* Created different from heading, for more emphasis parameters, specific to the header */
   .title{
       letter-spacing: 3px; 
       text-transform: uppercase; 
@@ -34,13 +38,13 @@ body {
   }
 
 /* Make hyperlinks distinct */
-
+  /* Typical shown hyperlinks has orange, to differentiate between normal paragraph text */
   a {
       text-decoration: none;
       font-weight: bold;  
       color:#ef5839;
   }
-
+  /* Made so its set itself apart from the rest of paragraph text */
   .a-bold{
       text-decoration-line: underline; 
       font-weight: bold;
@@ -50,26 +54,14 @@ body {
     width:100%;
     display:block;
   }
+  /* Additional parameters for adjusting sizing of logo, next to name */
   .imagelogo{
     float: left;
     width: 80px;
     height: 80px;
     margin-right: 30px;
-
   }
-
-  .column {
-      float: left; 
-      width: 50%;
-      padding: 5px;
-  }
-
-  .row::after{
-      content: ""; 
-      clear: both;
-      display: table; 
-  }
-
+  /* Make the main image the centre piece of the website */
   .article-main-image {
     max-height:580px;
     object-fit:cover;
@@ -80,19 +72,19 @@ body {
   p + ul { 
       margin-top: -55px;
   }
-
+  /* Formatting for ICD and HL7, so it looks presentable and cleaner with formatting, instead of lots of white space */
   .description {
       font-size: 18.5px; 
       line-height: 1cm;
       text-align: justify;
       white-space: preline;
   }
-
+  /* Different formatting for in text for simplified and easier to read */
   .table-description {
       line-height: 0.6cm;
       text-align: justify;
   }
-
+  /* Emphasis placed on the quotes so easier readability */
   q {
       font-style: italic;
       font-size: 20px;
@@ -106,6 +98,7 @@ body {
   
   /* Buttons */
   
+  /* Creating the hyperlinks (base) seen in the header, additional location parameters done to configure location */
   .btn-a {
       /* margin-right:15px; */
       font-size: 16px; 
@@ -115,14 +108,15 @@ body {
       text-transform: uppercase; 
       letter-spacing: 3px;
   }
-  
+  /* Additional parameters for unordered list of hyperlinks, as a means of displaying. Important for display:inline to allow inline aligning with header title */
+  /* Flex-direction signifies the direction on how each hyperlink should be placed in  */
   .btn-ul{
       list-style-type: none; 
       padding: 0;
       display: inline; 
       flex-direction: row; 
   }
-  
+  /* Additional parameters for text within unordered list */
   .btn-li{
       margin:10px;
       margin-left: 32px;
@@ -130,6 +124,7 @@ body {
       height: 30px; 
       line-height: 50px; 
   }
+  /* Allow change of colour when cursor above and cursor shape change */
   .btn-a:hover, 
   .btn-a:focus{
       color:#ef5839;
@@ -145,15 +140,16 @@ body {
       background:white;
       color:#2e354f;
   } 
-
+  /* Easier direactions for the website, just in case */
   .current-page {
     border-bottom:1px solid #ef5839;
   }
+  /* Easier accessibility for the website, just in case */
   .current-page:hover{
     color:#ef5839;
     cursor:pointer;
   }
-
+  /* Mainly for the header hyperlinks, since something was playing up */
   .link-right{
       text-align:right; 
   }
@@ -165,7 +161,6 @@ body {
       color:white;
       padding-top: 25px; 
       padding-bottom:40px; 
-      /* margin-bottom: 20px;  */
       vertical-align: middle; 
       text-align: left;
   }
@@ -182,12 +177,14 @@ body {
       width: 80%;
       margin:0 auto;
       flex-direction: column;
+      /* justify-content:space-between = Distribute items evenly within container, such that first item is smooth with start and last item is smooth with last */
       justify-content: space-between;
   }
 
   .container-header{
       width: 80%;   
       margin: 0 auto; 
+      /* Allows all associated items to be placed toward the bottom line of the container */
       align-items: baseline;
       flex-direction: row; 
       vertical-align: middle; 
@@ -197,13 +194,13 @@ body {
       margin-bottom:0;
   }
   
-  /* Links */
-  
+  /* Links - hyperlinks*/
+  /* standard viewing */
   a{
    text-decoration:none;
    color:#ef5839;   
   }
-  
+  /* when cursor is above it, what it should look like */
   a:hover, 
   a:focus {
       text-decoration:none;
@@ -211,7 +208,7 @@ body {
   }
 
   /* footer */
-
+  /* Adjusted to suit own eye */
   footer {
     background:#2e354f;
     color: white;
@@ -285,19 +282,6 @@ body {
   .content-table tbody tr{
       border-bottom: thin solid #2e354f;
   }
-
-  /* Changes to odd cells, ignoring even */
-  /* .content-table tbody tr:nth-of-type(odd){ */
-      /* Making them alternating between white and light-grey */
-      /* background-color: #f3f3f3;  */
-  /* } */
-
-  /* Make rowspan/colspan grey */
-  /* .content-table tbody tr:nth-child(2),
-  /* .content-table tbody tr:nth-child(6), */
-  /* .content-table tr:nth-child(10) {
-      background-color: #f3f3f3;
-  } */ 
 
   /* Adjusting colour of bottom line of table */
   .content-table tbody tr:last-of-type{
