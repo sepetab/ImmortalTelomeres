@@ -1,0 +1,280 @@
+/* Typography */
+
+body {
+    margin:0;
+    font-family: 'lato','sans-serif';  
+    font-size:18px;
+    color:#2e354f;
+    line-height: 1;
+  }
+  
+  h1,
+  h2,
+  strong {
+      font-weight:900;    
+  }
+  
+  h1 {
+      font-size:36px;
+      margin:0;
+      height: 50px; 
+      display: inline;
+      float: left; 
+  }
+  
+  h2 {
+      font-size:24px;    
+      color:#ef5839;
+  }
+  
+  .title{
+      letter-spacing: 3px; 
+      text-transform: uppercase; 
+      font-size: 50px;
+  }
+/* Make hyperlinks distinct */
+
+  a {
+      text-decoration: none;
+      font-weight: bold;  
+      color:#ef5839;
+  }
+
+  .a-bold{
+      text-decoration-line: underline; 
+      font-weight: bold;
+  }
+/* Image parameters for sizing */
+  img{
+    width:100%;
+    display:block;
+  }
+  .imagelogo{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin-right: 30px;
+
+  }
+
+  .article-main-image {
+    max-height:580px;
+    object-fit:cover;
+    object-position:middle;
+  }
+
+  /* Additional formatting of paragraphs and unordered listing */
+  p + ul { 
+      margin-top: -55px;
+  }
+
+  .description {
+      font-size: 18.5px; 
+      line-height: 1cm;
+      text-align: left;
+  }
+
+  span {
+      font-style: italic; 
+  }
+
+  /* Buttons */
+  
+  .btn-a {
+      /* margin-right:15px; */
+      font-size: 16px; 
+      padding:4px;
+      font-weight: 700;
+      color: white; 
+      text-transform: uppercase; 
+      letter-spacing: 3px;
+  }
+  
+  .btn-ul{
+      list-style-type: none; 
+      padding: 0;
+      display: inline; 
+      flex-direction: row; 
+  }
+  
+  .btn-li{
+      margin:10px;
+      margin-left: 32px;
+      display: inline; 
+      height: 30px; 
+      line-height: 50px; 
+  }
+  .btn-a:hover, 
+  .btn-a:focus{
+      color:#ef5839;
+      cursor: pointer; 
+  }
+  
+  .btn-orange {
+      background:#ef5839;
+      color:white;
+  }
+  
+  .btn-white {
+      background:white;
+      color:#2e354f;
+  } 
+
+  .current-page {
+    border-bottom:1px solid #ef5839;
+  }
+  .current-page:hover{
+    color:#ef5839;
+    cursor:pointer;
+  }
+
+  .link-right{
+      text-align:right; 
+  }
+  
+  /* Layout */
+  
+  header{
+      background:#2e354f;
+      color:white;
+      padding-top: 25px; 
+      padding-bottom:40px; 
+      /* margin-bottom: 20px;  */
+      vertical-align: middle; 
+      text-align: left;
+  }
+  
+  section {
+      padding: 45px 0px;
+  }
+  
+  .sec-two {
+      background:#2e354f;
+      color:white;
+  }
+  .container {
+      width: 80%;
+      margin:0 auto;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+
+  .container-header{
+      width: 80%;   
+      margin: 0 auto; 
+      align-items: baseline;
+      flex-direction: row; 
+      vertical-align: middle; 
+  }
+  
+  .final-elem{
+      margin-bottom:0;
+  }
+  
+  /* Links */
+  
+  a{
+   text-decoration:none;
+   color:#ef5839;   
+  }
+  
+  a:hover, 
+  a:focus {
+      text-decoration:none;
+      font-weight:900;
+  }
+
+  /* footer */
+
+  footer {
+    background:#2e354f;
+    color: white;
+    padding:1em;
+    text-align:left;
+    
+  }
+   .footer-title {
+    font-weight: 700;
+  }
+  /* Table  details */
+
+  /* Changes to table itself */
+  .content-table{
+        /* Reduce space between cells - tightening between cells        */
+        border-collapse: collapse; 
+        /* Reduced margins on top and bottom between content before and after table */
+        margin: 25px 0; 
+        /* Reduced to ensure for easier readability */
+        font-size: 15px; 
+        /* Ensure table remains big, even between devices - can adjust width depending on the screen, assumed opened in pc/laptop*/
+        min-width: 1200px; 
+        /* Top left/right corner to be rounded */
+        border-radius: 5px 5px 0 0; 
+        overflow: hidden; 
+        /* Shadow */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+  }
+  /* Changes to header rows */
+  .content-table thead tr {
+      /* Adds background box around text */
+      background-color: #ef5839;
+      color: white;
+      /* Standard alignment in browsers are normally centered */
+      text-align: left; 
+      /* Prevents "strong" to be used */
+      font-weight: bold;
+  }
+
+  /* Changes to table header and table data cells, respectively */
+  .content-table th, 
+  .content-table td{
+      /* Spacing above and below text within cell */
+      padding: 12px 15px;
+      border-right: thin solid #2e354f;
+      border-left: thin solid #2e354f;
+      border-bottom: thin solid #2e354f;
+
+  }
+  /* Remove outside border lines in header and rows */
+  .content-table td:first-child {
+      border-left: none; 
+  }
+  .content-table td:last-child {
+      border-right: none; 
+  }
+  .content-table th:first-child {
+      border-left: none;
+  }
+  .content-table th:last-child {
+      border-right: none;
+  }
+
+
+  /* Changes to table body - rows */
+  .content-table tbody tr{
+      border-bottom: thin solid #2e354f;
+  }
+
+  /* Changes to odd cells, ignoring even */
+  /* .content-table tbody tr:nth-of-type(odd){ */
+      /* Making them alternating between white and light-grey */
+      /* background-color: #f3f3f3;  */
+  /* } */
+
+  /* Make rowspan/colspan grey */
+  /* .content-table tbody tr:nth-child(2),
+  /* .content-table tbody tr:nth-child(6), */
+  /* .content-table tr:nth-child(10) {
+      background-color: #f3f3f3;
+  } */ 
+
+  /* Adjusting colour of bottom line of table */
+  .content-table tbody tr:last-of-type{
+      border-bottom: 2px solid #ef5839
+  }
+
+  /* Show distinct sessions required for attendance */
+  .content-table tbody tr.required-row { 
+      font-weight: bold; 
+      color: #ef5839;
+  }

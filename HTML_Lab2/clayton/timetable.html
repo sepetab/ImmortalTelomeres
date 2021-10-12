@@ -1,0 +1,113 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Workshop Timetable</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+        <link href="./css/style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <div class="container"> <!--Container is set up, to allow widths to remain -->
+                    <h1>HealthHacker</h1>
+                    <img src="images/telomeres.png" class="imagelogo"/>
+                
+                <nav> 
+                    <ul class="btn-ul">
+                        <li class="btn-li"><a class="btn-a" href ='index.html'>Home</a></li>
+                        <li class="btn-li"><a class="btn-a current-page" href="#">Workshop Timetable</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="sec-one">
+            <div class="container"> <!-- Used to restrict width of text within a "container" so text is more uniform -->
+                <h1> Workshop Timetable </h1>
+                <br>
+                <p> Our next workshop will be held on <strong>30th October 2021</strong>. 
+                <br>Please find below a copy of the Workshop timetable listing the workshops, timings and more information related to the workshop contents:
+                </p>
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Workshop Name</th>
+                            <th>Speaker</th>
+                            <th>Topic</th>
+                            <th>Information</th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background-color: hsl(0, 6%, 85%);">
+                            <td>16:50 - 17:00</td>
+                            <th colspan="4">Introduction</th>
+                        </tr>
+                        <tr>
+                            <td>17:00 - 17:30</td>
+                            <th rowspan = "3">Classification systems for medical data</th>
+                            <td>TBA</td>
+                            <td>SNOMED</td>
+                            <td>SNOMED is a sysmetically organized digital collection compling medical terms used to provide reference codes to certain medical events or specific features, terms, synonyms and definitions of all words found and used in clinical documentation and reporting.</td>
+                        </tr>
+                        <tr class = "required-row">
+                            <td>17:30 - 18:30</td>
+                            <td>TBA</td>
+                            <td>ICD-10-AM</td>
+                            <td>ICD-10-AM is a tabular list of diseases using a classification system of codes, symptoms or abnormal findings to characterise the cause of mortality. Accompanying this list is an index, for easier medical terminology findings. 
+                            <br> For more information regarding this workshop, please read <a class = "a-bold" href ="ICD.html">here</a>.
+                            </td>
+                            <!-- Link html to here -->
+                        </tr>
+                        <tr>
+                            <td>18:30 - 19:00</td>
+                            <td>TBA</td>
+                            <td>DICOM</td>
+                            <td>DICOM, or Digital Imaging and Communications in Medicine is the international standard for communication and management involving medical imaging information and related data. It can transfer medical images from the patient testing to a storage archive, for it to be opened and read by the doctor. </td>
+                        </tr>
+                        <tr style="background-color: hsl(0, 6%, 85%);">
+                            <td>19:00 - 20:00</td>
+                            <th colspan = "4">Dinner Break</th>
+                        </tr>
+                        <tr> 
+                            <td>20:00 - 20:30</td>
+                            <th rowspan = "3">Messaging Standards</th>
+                            <td>TBA</td>
+                            <td>FHIR</td>
+                            <td>FHIR, or Fast Healthcare Interoperability Resources is a standard used to describe the exchange of different data formats and elements between different computer systems regardless of the storage method within the system.</td>
+                        </tr>
+                        <tr class = "required-row">
+                            <td>20:30 - 21:00</td>
+                            <td>TBA</td>
+                            <td>HL7</td>
+                            <td>HL7 is an international standard aimed at helathcare providers in transferring clinical and administrative data between software applications. This creates a smoother process in data transfer between old and new device system, through its use of interpretation engines to interpret incoming data or send out data. 
+                            <br> For more information regarding this workshop, please read <a class= "a-bold" href ="HL7.html">here</a>.
+                            <!-- Link here     -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>21:00-21:30</td>
+                            <td>TBA</td>
+                            <td>Continua Alliance</td>
+                            <td>Continua Alliance is a non-for-profit organization aimed at developing devices required for personal lifestyles in maintaining health and wellbing. Their motto  is aligned to dramatically improve health management, clinical outcomes and quality of life by expediting the deployment of personal medical devices for usage at a reduced development cost and a decreased time to market.</td>
+                        </tr>
+                        <tr style="background-color: hsl(0, 6%, 85%);">
+                            <td>21:30-22:00</td>
+                            <th colspan = "4">Concluding Remarks and Supper</th>
+                        </tr>
+                        <!-- and so on... -->
+                    </tbody>
+                </table>                
+            </div>
+        </section>
+    
+        <footer>
+            <div class = "container">
+            <p class="footer-title">Immortal Telomneres</p>
+            <p>Sir. John Arthur King</p>
+            <p>+61 410 157 962 </p>
+            <a href="mailto:ImmortalTelemores@gmail.com">Email</a>
+            </div>
+        </footer>
+    </body>
+</html>
