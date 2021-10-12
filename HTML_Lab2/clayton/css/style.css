@@ -32,6 +32,7 @@ body {
       text-transform: uppercase; 
       font-size: 50px;
   }
+
 /* Make hyperlinks distinct */
 
   a {
@@ -57,6 +58,18 @@ body {
 
   }
 
+  .column {
+      float: left; 
+      width: 50%;
+      padding: 5px;
+  }
+
+  .row::after{
+      content: ""; 
+      clear: both;
+      display: table; 
+  }
+
   .article-main-image {
     max-height:580px;
     object-fit:cover;
@@ -71,13 +84,26 @@ body {
   .description {
       font-size: 18.5px; 
       line-height: 1cm;
-      text-align: left;
+      text-align: justify;
+      white-space: preline;
   }
 
-  span {
+  .table-description {
+      line-height: 0.6cm;
+      text-align: justify;
+  }
+
+  q {
+      font-style: italic;
+      font-size: 20px;
+      font-weight: bold; 
+      text-align: center;
+      
+  }
+  .italics {
       font-style: italic; 
   }
-
+  
   /* Buttons */
   
   .btn-a {
@@ -189,7 +215,8 @@ body {
   footer {
     background:#2e354f;
     color: white;
-    padding:1em;
+    padding-top:25px;
+    padding-bottom:35px; 
     text-align:left;
     
   }
@@ -233,7 +260,11 @@ body {
       border-right: thin solid #2e354f;
       border-left: thin solid #2e354f;
       border-bottom: thin solid #2e354f;
+      white-space:nowrap;
 
+  }
+  .content-table td:last-child {
+      white-space:pre-wrap;
   }
   /* Remove outside border lines in header and rows */
   .content-table td:first-child {
