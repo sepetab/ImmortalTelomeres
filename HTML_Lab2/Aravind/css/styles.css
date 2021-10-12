@@ -66,11 +66,12 @@ a:hover {
 
 .container-main {
     border-bottom:none;
+    border-top:#707070 1px solid;
 }
 
 .container-info {
-    display: block;
-    width:90%;
+    flex-direction: column;
+    
     min-height: 0;
 }
 
@@ -184,9 +185,8 @@ nav {
 
 .article-main {
     padding-bottom: 2em;
-    max-width:70%;
+    max-width:95%;
     margin:0 auto;
-    border-bottom:#707070 1px solid;
 }
 .article-main-image {
     max-height:480px;
