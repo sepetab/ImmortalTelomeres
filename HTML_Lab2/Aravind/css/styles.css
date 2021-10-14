@@ -36,12 +36,6 @@ img{
     display:block;
 }
 
-.image-full {
-    max-height:300px;
-    object-fit: cover;
-    margin-bottom:2em;
-}
-
 a{
     text-decoration:none;
     color:#1792D2; 
@@ -51,6 +45,9 @@ a:hover {
     color:#143774;
 }
 
+.underline{
+    text-decoration: underline;
+}
 
 
 /* Layout */
@@ -71,7 +68,6 @@ a:hover {
 
 .container-info {
     flex-direction: column;
-    
     min-height: 0;
 }
 
@@ -82,18 +78,6 @@ a:hover {
     align-items: center;
     width:80%;
     margin:0 auto;
-
-    
-}
-
-
-.container-content {
-    display:flex;
-    flex-direction: column;
-}
-
-.def-line{
-    text-decoration: underline;
 }
 
 /* Header */
@@ -109,10 +93,6 @@ a:hover {
     padding:1rem;
     max-width:100px;
     display: table-cell;
-}
-
-.title-heading {
-    margin-bottom:0;
 }
 
 .subtitle {
@@ -175,40 +155,21 @@ nav {
 /* Article */
 
 
-.article-main,
-.article-recent{
+.article-main{
     margin-bottom:2em;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.article-main {
     padding-bottom: 2em;
     max-width:95%;
     margin:0 auto;
 }
-.article-main-image {
-    max-height:480px;
-    object-fit:cover;
-    object-position:bottom;
-}
 
 
-.article-info-section{
-    order:-1;
-}
 .article-subtitle {
     margin:0;
 }
-.article-info-main {
-    order: -1;
-}
 
-.article-info {
-    margin:2em 0;
-    font-size:0.8rem;
-}
 
 
 /* SideBar */
@@ -234,15 +195,10 @@ nav {
     max-width:25%;
 }
 
-.sidebar-image,
 .sidebar-image-ab {
     max-height:400px;
     margin:0;
     object-fit:cover;
-}
-.sidebar-image{
-    order: -1;
-    margin:0;
 }
 
 
@@ -314,7 +270,7 @@ footer{
     color:	#F8F8F8;
 }
 
-
+/* Table */
 
 table {
     border-collapse: collapse;
@@ -333,9 +289,7 @@ table {
   }
 
 
- .underline{
-     text-decoration: underline;
- }
+
 
 
 
