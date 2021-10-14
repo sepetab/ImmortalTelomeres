@@ -1,14 +1,16 @@
 <!DOCTYPE>
 <html>
     <head>
-        <title>Bioinformatics Workshop</title>
+        <!-- Title of webpage -->
+        <title>Bioinformatics Workshop</title> 
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
         <link href="./css/style.css" rel="stylesheet"/>
     </head> 
     <body>
         <header>
-            <div class="container container-header"> <!--Container is set up, to allow widths to remain -->
+            <!--Container for the main content, but container-header in regards to additional parameters -->
+            <div class="container container-header"> 
                 <div class="title">
                     <img src="images/gearbrain.png" class="imagelogo"/>  
                     <h1 class='title'>HealthHacker</h1> 
@@ -22,21 +24,25 @@
             </div> 
         </header>
         
+        <!-- Normally not neccessary to split between sections, if only one section  -->
         <section class="sec-one">
             <div class="container"> <!-- Used to restrict width of text within a "container" so text is more uniform -->
 
                 <h2>You are invited!</h2>
+                <!-- styling of paragraph via created class, gives it more oomph  -->
                 <p class = 'table-description' style="padding-bottom:25px">
-                HealthHacker invites you to submit an abstract to be showcased in our upcoming workshops. All abstracts will be reviewed, and if accepted will be given an opportunity to present at the Conference in front of guests and your peers. All presented abstracts will be published in the conference proceedings and be available on our HealthHacer website. We thank you for your service.</p>
+                HealthHacker invites you to submit an abstract to be showcased in our upcoming workshops. All abstracts will be reviewed, and if accepted will be given an opportunity to present at the Conference in front of guests and your peers. All presented abstracts will be published in the conference proceedings and be available on our HealthHacker website. We thank you for your service.</p>
                 <h2>Venue Information</h2>
                 <figure>
                     <img src="images/clancy.jpg" alt="Front of Sir John Clancy Auditorium" class = "article-main-image "/>
+                    <!-- internal text to show bibliography of where the picture was sourced  -->
                     <figcaption> <cite> <a href="https://www.ttw.com.au/projects/unsw-gate-9/">Picture source</a>
                 </figure>
                 <!-- Information regarding the location and accessibility to the location -->
                 <p class = 'table-description' style="padding-bottom:50px"> <strong> Sir John Clancy Auditorium</strong>
                 <br> 9 High Street, Kensington, NSW, 2052
                 <br> 
+                <!-- Easier readability, if transportation routes to location was done via list -->
                 <br> Accessibility to this locaiton include: <ul>    
                         <li>Parking along <strong>Arthur</strong> and <strong>Blenheim</strong> streets </li>
                         <li>Parking is available on UNSW Campus at <strong>UNSW Barker St Carpark</strong> and <strong>Parking lot off Botany St entrance</strong> </li>
@@ -49,12 +55,13 @@
 
             </div>
         </section>
-
+        <!-- Footer is consistent for all pages available in this web-browser-->
         <footer>
             <div class = "container">
             <p class="footer-title">CONTACT US</p>
             <p><strong>HACKERHEALTH</strong></p>
             <p>+61 410 157 962 </p>
+            <!-- Creates a link for the email, so user can click and message right away -->
             <a href="mailto:enquiries@hackerhealth.com">enquiries@hackerhealth.com</a>
             </div>
         </footer>
