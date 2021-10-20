@@ -60,14 +60,58 @@
                 </div>
             </div>        
         </div>
-
+        <div class="container-form">
+            <h2 id="form-header" class="article-subtitle">Registration Form</h2>    
+            <form id="email-collector" onsubmit="return validateForm()" method="GET" action="registration.html" target="_blank"> 
+                <div class = "input-area">
+                    <input aria-label="first name" onchange="validateFirstName()" type="text" name="firstName" placeholder="first name" />
+                    <p id="firstNameMessage" name="messages" class="hidden">NA</p>
+                </div>
+                <div class = "input-area">
+                    <input aria-label="last name" type="text" name="lastName" onchange="validateLastName()" placeholder="last name" />
+                    <p id="lastNameMessage" name="messages" class="hidden">NA</p>
+                </div>
+                <div class = "input-area">
+                    <input aria-label="email" type="text" onchange="validateEmail()" name="email" placeholder="email" />
+                    <p id="emailMessage" name="messages" class="hidden">NA</p>
+                </div>
+                <div class = "input-area">
+                    <input aria-label="password" onchange="validatePassword()" type="password" name="password" placeholder="password" />
+                    <p id="passwordMessage" name="messages" class="hidden">NA</p>
+                </div>
+                <p id="passwordHelp" class="help vanish">Password must be minimum 8 characters, at least one uppercase letter, one lowercase letter and one number</p>
+                <div class = "input-area">
+                    <input aria-label="password2" onchange="validatePassword2()" type="password" name="password2" placeholder="Type password again" />
+                    <p id="password2Message" name="messages" class="hidden">NA</p>
+                </div>
+                <div class = "input-area">
+                    <input aria-label="DOB" onchange="validateDOB()" type="text" name="DOB" placeholder="Date of Birth: DD/MM/YYYY" />
+                    <p id="DOBMessage" name="messages" class="hidden">NA</p>
+                </div>
+                <p id="DOBHelp" class="help vanish">Invalid date. Make sure format is DD/MM/YYYY within valid period</p>
+                <div class = "input-area" id="genderDiv">
+                    <input type="text" autocomplete="off" onchange="validateGender()" onclick="validateDropDown()" id="genderInput" name="city" list="gender" placeholder="Select/Type Gender" >
+                    <datalist id="gender">
+                        <option value="Male">
+                        <option value="Female">
+                        <option value="Other">
+                    </datalist>
+                    <p id="genderMessage" name="messages" class="hidden">NA</p>
+                </div>
+                <div class = "input-area-checkbox">
+                    <label for="Marketing">Opt for marketing material from HealthHacker workshops</label><br>
+                    <input type="checkbox" name="Marketing">                    
+                </div>
+                <button class="btn btn-email-collector" type="submit">Register</button>
+            </form>
+        </div>
 
         <footer>
             <div class="footer-container">
                 <div>
                     <img src="img/logo.png" class="logo" alt="a deco"/>
                 </div>
-                <div>
+                <div class="middle-footer">
                     <p class="footer-title">HEALTHHACKER WORKSHOP</p>
                     <p class="footer-copyright">&copy; 2021 ImmortalTelomeres</p>
                 </div>
@@ -79,5 +123,6 @@
             </div>
         </footer>
     </body>
+    <script src="js/index.js"></script>
 </html>
 

@@ -64,6 +64,7 @@ a:hover {
 .container-main {
     border-bottom:none;
     border-top:#707070 1px solid;
+    border-bottom:#707070 1px solid;
 }
 
 .container-info {
@@ -240,17 +241,26 @@ footer{
     background:#143774;
 }
 
+.middle-footer{
+    margin-left:4.2em;
+}
+
 .footer-container {
     
     color: rgba(255,255,255, .65);
     padding:1em;
+    padding-left:2em;
     text-align:center;
     display:flex;
     justify-content: space-between;
     align-items: center;
-    width:80%;
+    width:95%;
     margin:0 auto;
+    /* border:1px solid red; */
+
 }
+
+
 .footer-title {
     font-weight: 700;
     color:	#F8F8F8;
@@ -289,8 +299,143 @@ table {
   }
 
 
+  /* FORM */
+
+.container-form{
+    width:95%;
+    margin: 2em auto;
+    text-align: center;
+    /* border:1px solid brown; */
+}
+
+form{
+    margin:2em auto;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width:65%;
+}
+input,
+.btn {
+    display:inline-block;
+    margin:0 auto;
+    max-width:450px;
+    width:100%;
+    text-align: center;
+    font-family: inherit;
+    font-size:0.9rem;
+    border-radius:5px;
+}
+
+.btn-email-collector {
+    text-transform: uppercase;
+    /* margin-top:1.4em; */
+    border:0;
+    padding:1em 1.5em;
+    background:linear-gradient(to left, #1792D2, #143774);
+    transform: scale(1);
+    transition: color 0.5s;
+    transition: transform 0.5s;
+    color:#F8F8F8;
+}
+.btn-email-collector:hover,
+.btn-email-collector:focus {
+    color: white;
+    transform:scale(1.01);
+    cursor:pointer;
+}
+
+input {
+    transform: scale(1);
+    transition: transform 0.5s;
+}
+
+input:hover,
+input:focus {
+    transform:scale(1.01)
+}
+
+input {
+    margin-bottom:2em;
+    padding: 0.7rem;
+    border-radius: 5px;
+    border: 1px solid #404040;
+}
 
 
+.input-area{
+    display: flex;
+    justify-content: flex-start;   /* adjustment */
+    position: relative;            /* new */
+    margin-bottom:3em;
+    /* border:1px solid black; */
+}
+
+
+
+.input-area input {
+    position: absolute;             /* new */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    
+}
+
+.input-area p{
+    margin:0;
+    margin-left: auto; 
+    font-weight:bold;
+    font-size: 0.8rem;
+    color:red;
+    /* border:1px solid black; */
+    padding: 0.3rem;
+}
+
+
+.input-area-checkbox{
+    margin:0 auto;
+    display: flex;
+    flex-direction: row;
+    min-width:400px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:2em;
+    font-size:0.8rem;
+    /* border:3px solid red; */
+
+}
+
+input[type='checkbox'] { 
+    margin:auto auto;
+    max-width: 25%;
+
+}
+
+label{
+    /* border:3px solid red; */
+    width: 1000%;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.vanish {
+    display:none;
+}
+
+.help {
+    margin:0 auto;
+    margin-bottom:3em;
+    font-weight:bold;
+    font-size: 0.8rem;
+    color:red;
+    /* padding: 0.3rem; */
+}
 
 
 
