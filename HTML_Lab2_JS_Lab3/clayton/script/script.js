@@ -8,8 +8,8 @@ const password = document.getElementById('password');
 const rePassword = document.getElementById('password2');
 
 form.addEventListener('submit', (e) => {
+	alert('Link test working, delete this line')
 	e.preventDefault();
-	
 	checkInputs();
 });
 
