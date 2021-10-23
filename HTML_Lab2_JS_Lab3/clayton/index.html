@@ -55,7 +55,57 @@
 
             </div>
         </section>
-        
+        <section> 
+        <div class="valContainer">
+            <div class="valHeader">
+                <h2>Account Registration</h2>
+            </div>
+            <form id="form" class="form">
+                <div class="form-control">
+                    <label for="fName">First Name</label>
+                    <input type="text" placeholder="First Name" id="fName" />
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="lName">Last Name</label>
+                    <input type="text" placeholder="Last Name" id="lName" />
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="dob">Date of Birth</label>
+                    <input type="text" placeholder="dd-mm-yyyy" id="dob" />
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="gender">Gender</label>
+                    <select for="gender" center name ="gender"> 
+                        <!-- Allows option to be selected, but not to be in pool of selections -->
+                        <option hidden disabled selected value>(Select Option)</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="I prefer not to say">Other</option>
+                    </select>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="email">Email Address</label>
+                    <input type="email" placeholder="john@example.com" id="email" />
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="username">Password</label>
+                    <input type="password" placeholder="Password" id="password"/>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="username">Confirm Password</label>
+                    <input type="password" placeholder="Re-type Password" id="password2"/>
+                    <small>Error message</small>
+                </div>
+                <button>Submit</button>
+            </form>
+        </div>
+        </section>
         <!-- Footer is consistent for all pages available in this web-browser-->
         <footer>
             <div class = "container">
