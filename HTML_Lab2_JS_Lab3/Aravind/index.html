@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+    <!-- Header-->
     <head>
+        <!-- Link font and css -->
         <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/styles.css">
     </head>
@@ -20,6 +22,8 @@
               </nav>
           </div>
       </header>
+
+      <!-- Container - general information about workshop-->
       <div class="container container-info">
         <article class="article-main">
             <h2 class="article-subtitle">Healthhacker Workshop - Health messaging and coding of disease classification</h2>
@@ -30,6 +34,7 @@
         </article>
     </div>
 
+    <!-- Flexbox Container - Venue information and call for abstracts-->
       <div class="container container-main">
             <div class="sidebar-div">
                 <h2 class="sidebar-title">Venue</h2>
@@ -60,6 +65,8 @@
                 </div>
             </div>        
         </div>
+
+        <!--Container - Registration form-->
         <div class="container-form">
             <h2 id="form-header" class="article-subtitle">Registration Form</h2>    
             <form id="email-collector" onsubmit="return validateForm()" method="GET" action="registration.html" target="_blank"> 
@@ -90,7 +97,7 @@
                 </div>
                 <p id="DOBHelp" class="help vanish">Invalid date. Make sure format is DD/MM/YYYY within valid period</p>
                 <div class = "input-area" id="genderDiv">
-                    <input type="text" autocomplete="off" onchange="validateGender()" onclick="validateDropDown()" id="genderInput" name="city" list="gender" placeholder="Select/Type Gender" >
+                    <input type="text" autocomplete="off" onchange="validateGender()" onclick="refreshDropDown()" id="genderInput" name="city" list="gender" placeholder="Select/Type Gender" >
                     <datalist id="gender">
                         <option value="Male">
                         <option value="Female">
@@ -106,6 +113,8 @@
             </form>
         </div>
 
+
+        <!-- Container - Footer-->
         <footer>
             <div class="footer-container">
                 <div>
@@ -123,6 +132,8 @@
             </div>
         </footer>
     </body>
+
+    <!-- Link js -->
     <script src="js/index.js"></script>
 </html>
 

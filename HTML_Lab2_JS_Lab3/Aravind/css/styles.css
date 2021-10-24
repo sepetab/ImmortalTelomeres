@@ -126,7 +126,6 @@ nav {
     flex-direction:row;
     justify-content: space-between;
     margin-right:3em;
-    /* border:1px solid black; */
 }
 
 .nav-li {
@@ -179,7 +178,6 @@ nav {
 
 .sidebar-div,
 .sidebar-recent-post {
-    /* margin:1em 0; */
     display:flex;
     flex-direction: column;
     margin:1.2rem;
@@ -235,7 +233,9 @@ nav {
 }
 
 
+
 /* footer */
+
 
 footer{
     background:#143774;
@@ -256,7 +256,6 @@ footer{
     align-items: center;
     width:95%;
     margin:0 auto;
-    /* border:1px solid red; */
 
 }
 
@@ -280,7 +279,11 @@ footer{
     color:	#F8F8F8;
 }
 
+
+
 /* Table */
+
+
 
 table {
     border-collapse: collapse;
@@ -299,13 +302,15 @@ table {
   }
 
 
+
   /* FORM */
+
+
 
 .container-form{
     width:95%;
     margin: 2em auto;
     text-align: center;
-    /* border:1px solid brown; */
 }
 
 form{
@@ -329,7 +334,6 @@ input,
 
 .btn-email-collector {
     text-transform: uppercase;
-    /* margin-top:1.4em; */
     border:0;
     padding:1em 1.5em;
     background:linear-gradient(to left, #1792D2, #143774);
@@ -365,16 +369,15 @@ input {
 
 .input-area{
     display: flex;
-    justify-content: flex-start;   /* adjustment */
-    position: relative;            /* new */
+    justify-content: flex-start;  
+    position: relative;
     margin-bottom:3em;
-    /* border:1px solid black; */
 }
 
 
 
 .input-area input {
-    position: absolute;             /* new */
+    position: absolute;           
     left: 50%;
     transform: translateX(-50%);
     
@@ -387,7 +390,6 @@ input {
     font-weight:bold;
     font-size: 0.8rem;
     color:red;
-    /* border:1px solid black; */
     padding: 0.3rem;
 }
 
@@ -401,7 +403,6 @@ input {
     align-items: center;
     margin-bottom:2em;
     font-size:0.8rem;
-    /* border:3px solid red; */
 
 }
 
@@ -412,9 +413,22 @@ input[type='checkbox'] {
 }
 
 label{
-    /* border:3px solid red; */
     width: 1000%;
 }
+
+.help {
+    margin:0 auto;
+    margin-bottom:3em;
+    font-weight:bold;
+    font-size: 0.8rem;
+    color:red;
+}
+
+
+
+/* Styling classes */
+
+
 
 .hidden{
     visibility: hidden;
@@ -428,14 +442,6 @@ label{
     display:none;
 }
 
-.help {
-    margin:0 auto;
-    margin-bottom:3em;
-    font-weight:bold;
-    font-size: 0.8rem;
-    color:red;
-    /* padding: 0.3rem; */
-}
 
 
 
