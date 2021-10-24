@@ -291,8 +291,14 @@ footer {
 }
 
 /* Verification-page/registeration-form */
+
+:root {
+  --error-color: #dc3545;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+}
 .valContainer {
-  display: inline-block;
+  display: flex;
   align-items: center;
   justify-content: center;
   background-color: white;
@@ -300,14 +306,16 @@ footer {
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  min-width: 50%;
-  margin-left: 420;
+  max-width: 50%;
+  margin-left: 400px;
+  flex-direction: column;
 }
 
 .valHeader {
   border-bottom: 1px solid #ef5839;
   background-color: #2e354f;
   padding: 20px 50px;
+  min-width: 100%;
 }
 
 .valHeader h2 {
@@ -315,43 +323,51 @@ footer {
 }
 
 .form {
-  padding: 30px 40px;
+  padding: 10px 20px;
+  justify-content: center;
+  width: 65%;
+  display: center;
 }
 
-.form-control {
+.form-field {
   margin-bottom: 10px;
   padding-bottom: 20px;
   position: relative;
 }
 
-.form-control label {
+.form-field label {
   display: inline-block;
   margin-bottom: 5px;
 }
 
-.form-control input {
+.form-field input {
   border: 2px solid #777;
   border-radius: 4px;
   display: block;
   font-size: 14px;
   padding: 10px;
   width: 100%;
+  margin-bottom: 5px;
 }
 
-.form-control input:focus {
-  outline: 0;
+.form-field input:focus {
+  outline: none;
   border-color: #2e354f;
 }
 
-.form-control.success input {
-  border-color: #77df79;
+.form-field.success input {
+  border-color: var(--success-color);
 }
 
-.form-control.error input {
-  border-color: #d26466;
+.form-field.error input {
+  border-color: var(--error-color);
 }
 
-.form-control small {
+.form-field small {
+  color: var(--error-color);
+}
+
+/* .form-field small {
   color: red;
   position: absolute;
   bottom: 0;
@@ -359,9 +375,9 @@ footer {
   visibility: hidden;
 }
 
-.form-control.error small {
+.form-field.error small {
   visibility: visibile;
-}
+} */
 
 .form button {
   background-color: #2e354f;
@@ -373,4 +389,36 @@ footer {
   padding: 10px;
   margin-top: 20px;
   width: 100%;
+}
+
+.form button:hover {
+  background: #ef5839;
+  border: 2px solid #ef5839;
+  color: white;
+  cursor: pointer;
+}
+
+.form button:focus {
+  transform: scale(0.95);
+}
+
+/* Image on congrats */
+.cImage {
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  object-position: middle;
+}
+.valContainer2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 50%;
+  margin-left: 350px;
+  padding: 50px;
+  flex-direction: column;
 }
