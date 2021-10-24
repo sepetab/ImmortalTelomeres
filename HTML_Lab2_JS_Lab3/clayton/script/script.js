@@ -104,37 +104,6 @@ const checkDate = () => {
 	return valid; 
 }
 
-	// // call each individual functon to determine if form is valid. 
-	// let isfNameValid = checkfName(),
-	// 	islNameValid = checklName(),
-	// 	isEmailValid = checkEmail(), 
-	// 	isPasswordValid = checkPassword(),
-	// 	isRePasswordValid = checkConfirmPassword(); 
-	// 	isDateValid = checkDate(); 
-	
-	// let isFormValid = isfNameValid && 
-	// 	islNameValid && 
-	// 	isEmailValid && 
-	// 	isPasswordValid &&
-	// 	isRePasswordValid &&
-	// 	isDateValid; 
-
-// prevent submit button from submitting and refreshing the page
-// form.addEventListener('submit', (e) => {
-// 	 validationForm(); 
-
-// 	 if (!validationForm()){
-// 		 e.preventDefault;
-// 	 }
-// 	// prevent form from submittin
-
-	
-// 	// // submit to server if the form is valid
-// 	// if (isFormValid !== true) {
-// 	// 		e.preventDefault();
-// 	// 	}
-// });
-
 // reusable utility functions // 
 // function returns true if the inptu argument is empty
 const isRequired = value => value === '' ? false : true;
@@ -191,5 +160,5 @@ const showSuccess = (input) => {
 
 function validationForm() {
 // call each individual functon to determine if form is valid. 
-	return checkfName() && checklName() && checkEmail() && checkPassword() && checkConfirmPassword() && checkDate()
+	return checkfName() && checklName() && checkDate() && checkEmail() && checkPassword() && checkConfirmPassword() 
 }
