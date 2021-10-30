@@ -24,8 +24,29 @@
 
       <!-- Confirmation main container -->
     <div class="container" style=" background-image: url('./img/regis_back.jpg'); width:100%;min-height: calc(100vh - 300px); ">
-        <article class="article-main" style="border:none; margin-bottom:6em;">
-            <h2 class="article-subtitle" style="text-align: center; margin:auto auto; font-weight: bold;">Workshop registration confirmed!</h2>
+        <article class="article-main" style="border:none; margin:6em auto;">
+            
+            <?php 
+            
+            // echo '<h2 class="article-subtitle" style="text-align: center; margin:auto auto; font-weight: bold;">Workshop registration confirmed!</h2>';
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $conn = odbc_connect('z5208102L', '', '', SQL_CUR_USE_ODBC);
+                if(!$conn){
+                    exit("Connection Failed:". $conn);
+                } else {
+                    echo "Connection Successful!";
+                }
+
+                $sqlQuery = "SELECT * FROM Registration;";
+                $registered = odbc_exec($conn,$sqlQuery);
+                while(odbc_fetch_row($registered)){
+                    echo odbc_result($registered,”GivenName”);
+                    echo " ";
+                    echo odbc_result($registered,”FamilyName”);
+                }
+            }
+            
+            ?>
         </article>
     </div>
 

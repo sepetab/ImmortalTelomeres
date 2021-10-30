@@ -111,7 +111,7 @@ function refreshDropDown() {
             <option value="Female">
             <option value="Other">
         </datalist>
-        <p id="genderMessage" class="hidden">NA</p>`
+        <p id="genderMessage" name="messages" class="hidden">NA</p>`
     }
 }
 
@@ -150,6 +150,6 @@ function validateForm() {
     let firstName = document.getElementsByName("firstName")[0].value
     document.getElementById("email-collector").classList.add("vanish")
     document.getElementById("form-header").innerHTML = `
-    Thank you for registering, ${firstName}!`
+    Thank you, ${firstName}! Your registration is underway`
     return true
 }
