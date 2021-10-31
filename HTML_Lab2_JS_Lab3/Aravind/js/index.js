@@ -3,11 +3,13 @@ function toggleVisibility(toggleCondition,objectToToggle,notEmpty){
     if(toggleCondition){
         objectToToggle.classList.remove("hidden")
         objectToToggle.classList.add("visible")
-        objectToToggle.innerHTML = "✅"   
+        objectToToggle.style.color = "green"
+        objectToToggle.innerHTML = "valid"   
     }else if(notEmpty){
         objectToToggle.classList.remove("hidden")
         objectToToggle.classList.add("visible")
-        objectToToggle.innerHTML = "❌"
+        objectToToggle.style.color = "red"
+        objectToToggle.innerHTML = "invalid"
     }else{
         objectToToggle.classList.remove("visible")
         objectToToggle.classList.add("hidden")
@@ -52,7 +54,7 @@ function validatePassword() {
     toggleVisibility(regex.test(password.value),passwordMessage,password.value)
 
     // Below condition to toggle help message
-    if(passwordMessage.innerHTML == "❌"){
+    if(passwordMessage.innerHTML == "invalid"){
         document.getElementById("passwordHelp").classList.remove("vanish")
     }else{
         document.getElementById("passwordHelp").classList.add("vanish")
@@ -90,7 +92,7 @@ function validateDOB(){
     toggleVisibility(validity,DOBMessage,DOB.value)
 
     // Below condition to toggle help message
-    if(DOBMessage.innerHTML == "❌"){
+    if(DOBMessage.innerHTML == "invalid"){
         document.getElementById("DOBHelp").classList.remove("vanish")
     }else{
         document.getElementById("DOBHelp").classList.add("vanish")
@@ -129,11 +131,11 @@ function validateForm() {
 
     // Loops to check if all fields contain tick
     for (let message of messages){
-        if (message.innerHTML == "✅"){
+        if (message.innerHTML == "valid"){
             continue
         
         // If invalid input, user alerted 
-        }else if (message.innerHTML == "❌"){
+        }else if (message.innerHTML == "invalid"){
             let regex = /([A-Za-z]+)\d?Message/
             const match = message.id.match(regex)
             alert(`Your reponse in the ${match[1]} field is invalid`)
@@ -150,6 +152,6 @@ function validateForm() {
     let firstName = document.getElementsByName("firstName")[0].value
     document.getElementById("email-collector").classList.add("vanish")
     document.getElementById("form-header").innerHTML = `
-    Thank you, ${firstName}! Your registration is underway`
+    Thank you, ${firstName}! Your registration form is completed.`
     return true
 }

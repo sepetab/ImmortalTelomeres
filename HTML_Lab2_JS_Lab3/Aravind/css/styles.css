@@ -442,6 +442,8 @@ label{
     display:none;
 }
 
-
+.removeTransform {
+    text-transform: none;
+}
 
 
