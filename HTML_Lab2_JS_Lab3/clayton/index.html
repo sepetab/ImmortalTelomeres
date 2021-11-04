@@ -61,25 +61,25 @@
             <div class="valHeader">
                 <h2>Account Registration</h2>
             </div>
-            <form id="sign-up" class="form" action="congrats.html" method = "GET" onsubmit="return validationForm()">
+            <form id="sign-up" class="form" action="registration.php" method = "post" onsubmit="return validationForm()">
                 <div class="form-field">
                     <label for="firstName">First Name</label>
-                    <input type="text" placeholder="First Name" id="firstName" autocomplete="off"/>
+                    <input type="text" placeholder="First Name" id="firstName" name = "firstName" autocomplete="off"/>
                     <small></small>
                 </div>
                 <div class="form-field">
                     <label for="lastName">Last Name</label>
-                    <input type="text" placeholder="Last Name" id="lastName" autocomplete="off"/>
+                    <input type="text" placeholder="Last Name" id="lastName" name = "lastName" autocomplete="off"/>
                     <small></small>
                 </div>
                 <div class="form-field">
                     <label for="dateOfBirth">Date of Birth (dd/mm/yyyy)</label>
-                    <input type="text" placeholder="dd/mm/yyyy" id="dateOfBirth" autocomplete="off"/>
+                    <input type="text" placeholder="dd/mm/yyyy" id="dateOfBirth" name = "dateOfBirth" autocomplete="off"/>
                     <small></small>
                 </div>
                 <div class="form-field">
                     <label for="gender">Gender</label>
-                    <select for="gender" center name ="gender" id="gender" class="required" autocomplete="off"> 
+                    <select for="gender" center name ="gender" name="gender" id="gender" class="required" autocomplete="off"> 
                         <!-- Allows option to be selected, but not to be in pool of selections -->
                         <option hidden disabled selected value>(Select Option)</option>
                         <option value="Male">Male</option>
@@ -90,17 +90,17 @@
                 </div>
                 <div class="form-field">
                     <label for="email">Email Address</label>
-                    <input type="email" placeholder="john@example.com" id="email" autocomplete="off"/>
+                    <input type="email" placeholder="john@example.com" id="email" name="email" autocomplete="off"/>
                     <small></small>
                 </div>
                 <div class="form-field">
                     <label for="password">Password</label>
-                    <input type="password" placeholder="Password" id="password" autocomplete="off"/>
+                    <input type="password" placeholder="Password" id="password" name="pass" autocomplete="off"/>
                     <small></small>
                 </div>
                 <div class="form-field">
                     <label for="confirm-password">Confirm Password</label>
-                    <input type="password" placeholder="Re-type Password" id="confirm-password" autocomplete="off"/>
+                    <input type="password" placeholder="Re-type Password" id="confirm-password" name="confirmPassword" autocomplete="off"/>
                     <small></small>
                 </div>
                 <button type="submit">Submit</button>
