@@ -1,0 +1,424 @@
+/* Typography */
+
+body {
+  margin: 0;
+  font-family: "lato", "sans-serif";
+  font-size: 18px;
+  color: #2e354f;
+  line-height: 1;
+}
+
+h1,
+h2,
+strong {
+  font-weight: 900;
+}
+
+h1 {
+  font-size: 36px;
+  margin: 0;
+  height: 50px;
+  /* inline display is important for alignment issues with href-tab links */
+  display: inline;
+  /* placed here to designate position respective to href-tab links */
+  float: left;
+}
+
+/* Different colours instead of blk to capture superiority/attention from users (eye-catching) */
+h2 {
+  font-size: 24px;
+  color: #ef5839;
+}
+
+/* Created different from heading, for more emphasis parameters, specific to the header */
+.title {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 50px;
+}
+
+/* Make hyperlinks distinct */
+/* Typical shown hyperlinks has orange, to differentiate between normal paragraph text */
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #ef5839;
+}
+/* Made so its set itself apart from the rest of paragraph text */
+.a-bold {
+  text-decoration-line: underline;
+  font-weight: bold;
+}
+/* Image parameters for sizing */
+img {
+  width: 100%;
+  display: block;
+}
+/* Additional parameters for adjusting sizing of logo, next to name */
+.imagelogo {
+  float: left;
+  width: 80px;
+  height: 80px;
+  margin-right: 30px;
+}
+/* Make the main image the centre piece of the website */
+.article-main-image {
+  max-height: 580px;
+  object-fit: cover;
+  object-position: middle;
+}
+
+/* Additional formatting of paragraphs and unordered listing */
+p + ul {
+  margin-top: -55px;
+}
+/* Formatting for ICD and HL7, so it looks presentable and cleaner with formatting, instead of lots of white space */
+.description {
+  font-size: 18.5px;
+  line-height: 1cm;
+  text-align: justify;
+  white-space: preline;
+}
+/* Different formatting for in text for simplified and easier to read */
+.table-description {
+  line-height: 0.6cm;
+  text-align: justify;
+}
+/* Emphasis placed on the quotes so easier readability */
+q {
+  font-style: italic;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.italics {
+  font-style: italic;
+}
+
+/* Buttons */
+
+/* Creating the hyperlinks (base) seen in the header, additional location parameters done to configure location */
+.btn-a {
+  /* margin-right:15px; */
+  font-size: 16px;
+  padding: 4px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+/* Additional parameters for unordered list of hyperlinks, as a means of displaying. Important for display:inline to allow inline aligning with header title */
+/* Flex-direction signifies the direction on how each hyperlink should be placed in  */
+.btn-ul {
+  list-style-type: none;
+  padding: 0;
+  display: inline;
+  flex-direction: row;
+}
+/* Additional parameters for text within unordered list */
+.btn-li {
+  margin: 10px;
+  margin-left: 32px;
+  display: inline;
+  height: 30px;
+  line-height: 50px;
+}
+/* Allow change of colour when cursor above and cursor shape change */
+.btn-a:hover,
+.btn-a:focus {
+  color: #ef5839;
+  cursor: pointer;
+}
+
+.btn-orange {
+  background: #ef5839;
+  color: white;
+}
+
+.btn-white {
+  background: white;
+  color: #2e354f;
+}
+/* Easier direactions for the website, just in case */
+.current-page {
+  border-bottom: 1px solid #ef5839;
+}
+/* Easier accessibility for the website, just in case */
+.current-page:hover {
+  color: #ef5839;
+  cursor: pointer;
+}
+/* Mainly for the header hyperlinks, since something was playing up */
+.link-right {
+  text-align: right;
+}
+
+/* Layout */
+
+header {
+  background: #2e354f;
+  color: white;
+  padding-top: 25px;
+  padding-bottom: 40px;
+  vertical-align: middle;
+  text-align: left;
+}
+
+section {
+  padding: 45px 0px;
+}
+
+.sec-two {
+  background: #2e354f;
+  color: white;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+  flex-direction: column;
+  /* justify-content:space-between = Distribute items evenly within container, such that first item is smooth with start and last item is smooth with last */
+  justify-content: space-between;
+}
+
+.container-header {
+  width: 80%;
+  margin: 0 auto;
+  /* Allows all associated items to be placed toward the bottom line of the container */
+  align-items: baseline;
+  flex-direction: row;
+  vertical-align: middle;
+}
+
+.final-elem {
+  margin-bottom: 0;
+}
+
+/* Links - hyperlinks*/
+/* standard viewing */
+a {
+  text-decoration: none;
+  color: #ef5839;
+}
+/* when cursor is above it, what it should look like */
+a:hover,
+a:focus {
+  text-decoration: none;
+  font-weight: 900;
+}
+
+/* footer */
+/* Adjusted to suit own eye */
+footer {
+  background: #2e354f;
+  color: white;
+  padding-top: 25px;
+  padding-bottom: 35px;
+  text-align: left;
+}
+.footer-title {
+  font-weight: 700;
+}
+/* Table  details */
+
+/* Changes to table itself */
+.content-table {
+  /* Reduce space between cells - tightening between cells        */
+  border-collapse: collapse;
+  /* Reduced margins on top and bottom between content before and after table */
+  margin: 25px 0;
+  /* Reduced to ensure for easier readability */
+  font-size: 15px;
+  /* Ensure table remains big, even between devices - can adjust width depending on the screen, assumed opened in pc/laptop*/
+  min-width: 1200px;
+  /* Top left/right corner to be rounded */
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  /* Shadow */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+/* Changes to header rows */
+.content-table thead tr {
+  /* Adds background box around text */
+  background-color: #ef5839;
+  color: white;
+  /* Standard alignment in browsers are normally centered */
+  text-align: left;
+  /* Prevents "strong" to be used */
+  font-weight: bold;
+}
+
+/* Changes to table header and table data cells, respectively */
+.content-table th,
+.content-table td {
+  /* Spacing above and below text within cell */
+  padding: 12px 15px;
+  border-right: thin solid #2e354f;
+  border-left: thin solid #2e354f;
+  border-bottom: thin solid #2e354f;
+  white-space: nowrap;
+}
+.content-table td:last-child {
+  white-space: pre-wrap;
+}
+/* Remove outside border lines in header and rows */
+.content-table td:first-child {
+  border-left: none;
+}
+.content-table td:last-child {
+  border-right: none;
+}
+.content-table th:first-child {
+  border-left: none;
+}
+.content-table th:last-child {
+  border-right: none;
+}
+
+/* Changes to table body - rows */
+.content-table tbody tr {
+  border-bottom: thin solid #2e354f;
+}
+
+/* Adjusting colour of bottom line of table */
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #ef5839;
+}
+
+/* Show distinct sessions required for attendance */
+.content-table tbody tr.required-row {
+  font-weight: bold;
+  color: #ef5839;
+}
+
+/* Verification-page/registeration-form */
+
+:root {
+  --error-color: #dc3545;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+}
+.valContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  max-width: 50%;
+  margin-left: 400px;
+  flex-direction: column;
+}
+
+.valHeader {
+  border-bottom: 1px solid #ef5839;
+  background-color: #2e354f;
+  padding: 20px 50px;
+  min-width: 100%;
+}
+
+.valHeader h2 {
+  margin: 0;
+}
+
+.form {
+  padding: 10px 20px;
+  justify-content: center;
+  width: 65%;
+  display: center;
+}
+
+.form-field {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.form-field label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.form-field input {
+  border: 2px solid #777;
+  border-radius: 4px;
+  display: block;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.form-field input:focus {
+  outline: none;
+  border-color: #2e354f;
+}
+
+.form-field.success input {
+  border-color: var(--success-color);
+}
+
+.form-field.error input {
+  border-color: var(--error-color);
+}
+
+.form-field small {
+  color: var(--error-color);
+}
+
+/* .form-field small {
+  color: red;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.form-field.error small {
+  visibility: visibile;
+} */
+
+.form button {
+  background-color: #2e354f;
+  border: 2px solid #2e354f;
+  border-radius: 5px;
+  color: #ef5839;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.form button:hover {
+  background: #ef5839;
+  border: 2px solid #ef5839;
+  color: white;
+  cursor: pointer;
+}
+
+.form button:focus {
+  transform: scale(0.95);
+}
+
+/* Image on congrats */
+.cImage {
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  object-position: middle;
+}
+.valContainer2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 50%;
+  margin-left: 350px;
+  padding: 50px;
+  flex-direction: column;
+}

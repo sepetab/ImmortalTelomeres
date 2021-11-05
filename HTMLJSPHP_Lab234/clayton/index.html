@@ -1,0 +1,125 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <!-- Title of webpage -->
+        <title>Bioinformatics Workshop</title> 
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+        <link href="./css/style.css" rel="stylesheet"/>
+        <script defer src="script/script.js"></script>
+    </head> 
+    <body>
+        <header>
+            <!--Container for the main content, but container-header in regards to additional parameters -->
+            <div class="container container-header"> 
+                <div class="title">
+                    <img src="images/gearbrain.png" class="imagelogo"/>  
+                    <h1 class='title'>HealthHacker</h1> 
+                </div>
+                <nav class="link-right"> 
+                    <ul class="btn-ul">
+                        <li class="btn-li"><a class="btn-a current-page" href ='#'>Home</a></li>
+                        <li class="btn-li"><a class="btn-a" href="timetable.html">Workshop Timetable</a></li>
+                    </ul>
+                </nav>
+            </div> 
+        </header>
+        
+        <!-- Normally not neccessary to split between sections, if only one section  -->
+        <section class="sec-one">
+            <div class="container"> <!-- Used to restrict width of text within a "container" so text is more uniform -->
+
+                <h2>You are invited!</h2>
+                <!-- styling of paragraph via created class, gives it more oomph  -->
+                <p class = 'table-description' style="padding-bottom:25px">
+                HealthHacker invites you to submit an abstract to be showcased in our upcoming workshops. All abstracts will be reviewed, and if accepted will be given an opportunity to present at the Conference in front of guests and your peers. All presented abstracts will be published in the conference proceedings and be available on our HealthHacker website. We thank you for your service.</p>
+                <h2>Venue Information</h2>
+                <figure>
+                    <img src="images/clancy.jpg" alt="Front of Sir John Clancy Auditorium" class = "article-main-image "/>
+                    <!-- internal text to show bibliography of where the picture was sourced  -->
+                    <figcaption> <cite> <a href="https://www.ttw.com.au/projects/unsw-gate-9/">Picture source</a>
+                </figure>
+                <!-- Information regarding the location and accessibility to the location -->
+                <p class = 'table-description' style="padding-bottom:50px"> <strong> Sir John Clancy Auditorium</strong>
+                <br> 9 High Street, Kensington, NSW, 2052
+                <br> 
+                <!-- Easier readability, if transportation routes to location was done via list -->
+                <br> Accessibility to this locaiton include: <ul>    
+                        <li>Parking along <strong>Arthur</strong> and <strong>Blenheim</strong> streets </li>
+                        <li>Parking is available on UNSW Campus at <strong>UNSW Barker St Carpark</strong> and <strong>Parking lot off Botany St entrance</strong> </li>
+                        <li>Light-rail from <strong>Central Station</strong> to <strong>UNSW High Street</strong></li>
+                        <li>Bus routes: <strong>370</strong> </li>
+                    </ul>
+                </p>
+                <p class = 'table-description'>The next available workshop will be held on 30th October. For more information and timings regarding this workshop, please follow <a style = "font-weight:bold" href ="timetable.html">here</a></p>
+                <!-- (link at 'here' to the workshop timetable)-->
+
+            </div>
+        </section>
+        <section> 
+        <div class="valContainer">
+            <div class="valHeader">
+                <h2>Account Registration</h2>
+            </div>
+            <form id="sign-up" class="form" action="registration.php" method = "post" onsubmit="return validationForm()">
+                <div class="form-field">
+                    <label for="firstName">First Name</label>
+                    <input type="text" placeholder="First Name" id="firstName" name = "firstName" autocomplete="off"/>
+                    <small></small>
+                </div>
+                <div class="form-field">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" placeholder="Last Name" id="lastName" name = "lastName" autocomplete="off"/>
+                    <small></small>
+                </div>
+                <div class="form-field">
+                    <label for="dateOfBirth">Date of Birth (dd/mm/yyyy)</label>
+                    <input type="text" placeholder="dd/mm/yyyy" id="dateOfBirth" name = "dateOfBirth" autocomplete="off"/>
+                    <small></small>
+                </div>
+                <div class="form-field">
+                    <label for="gender">Gender</label>
+                    <select for="gender" center name ="gender" name="gender" id="gender" class="required" autocomplete="off"> 
+                        <!-- Allows option to be selected, but not to be in pool of selections -->
+                        <option hidden disabled selected value>(Select Option)</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="I prefer not to say">I prefer not to say</option>
+                    </select>
+                    <small></small>
+                </div>
+                <div class="form-field">
+                    <label for="email">Email Address</label>
+                    <input type="email" placeholder="john@example.com" id="email" name="email" autocomplete="off"/>
+                    <small></small>
+                </div>
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Password" id="password" name="pass" autocomplete="off"/>
+                    <small></small>
+                </div>
+                <div class="form-field">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" placeholder="Re-type Password" id="confirm-password" name="confirmPassword" autocomplete="off"/>
+                    <small></small>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        </section>
+        <!-- Footer is consistent for all pages available in this web-browser-->
+        <footer>
+            <div class = "container">
+            <p class="footer-title">CONTACT US</p>
+            <p><strong>HACKERHEALTH</strong></p>
+            <p>+61 410 157 962 </p>
+            <!-- Creates a link for the email, so user can click and message right away -->
+            <a href="mailto:enquiries@hackerhealth.com">enquiries@hackerhealth.com</a>
+            </div>
+        </footer>
+    </body>
+    <script src="script/script.js"></script>
+</html>
+
+
+
