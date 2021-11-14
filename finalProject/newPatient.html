@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Patient Registration Form</title>
+    </head>
+    <body>
+        <div class='form-container'> 
+            <h1>New Patient Registration Form</h1>
+            <!-- Remove 'novalidate' later, overrules current validation cmds -->
+            <form id="newPatientForm" novalidate> 
+                <div class = "inputField">
+                    <label for="firstName">First Name</label>
+                    <input type="text" placeholder="Enter your first name" name="First Name" id="firstName" onfocusout="validateFirstName()"/>
+                    <span class="errorTxt"></span>
+                </div>
+                <div class = "inputField">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" placeholder="Enter your last name" name="Last Name" id="lastName" onfocusout="validateLastName()"/>
+                    <span class="errorTxt"></span>
+                </div>
+                <div class = "inputField">
+                    <label for="DOB">Date of Birth</label>
+                    <input type="text" placeholder="DD" name="dateDay" id="dateDay" onfocusout="validateDateDay()">
+                    <input type="text" placeholder="MM" name="dateMonth" id="dateMonth" onfocusout="validateDateMonth()">
+                    <input type="text" placeholder="YYYY" name="dateYear" id="dateYear" onfocusout="validateDateYear()">
+                    <span class="errorTxt"></span>
+                </div>
+                <div class = "inputField">
+                    <label for="contactNo">Contact Number</label>
+                    <input type="text" placeholder= "Enter your contact number" name="contactNo" id="contactNo" onfocusout="validateContactNo()">
+                    <span class="errorTxt"></span>
+                </div>
+                <div class = "inputField">
+                    <label for="email">Email</label> 
+                    <input type="email" placeholder="Enter in your email address" name="email" id="email" onfocusout="validateEmail()">
+                    <span class="errorTxt"></span>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </body>
+    <script src="script/script.js"></script>
+</html>
