@@ -1,11 +1,7 @@
 //Input fields
 const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
-const dateDay = document.getElementById('dateDay');
-const dateMonth = document.getElementById('dateMonth');
-const dateYear = document.getElementById('dateYear');
-const contactNo = document.getElementById('contactNo');
-const email = document.getElementById('email');
+const roomNumber = document.getElementById('roomNumber'); 
 //form
 const form = document.getElementById('newPatientForm')
 //validation colours
@@ -25,11 +21,11 @@ function validateLastName(){
     return true; 
 }
 
-function validateDateDay(){
-    if(checkIfEmpty(dateDay)) return;
-    
+function validateRoomNumber(){
+    if(checkIfEmpty(roomNumber)) return;
+    if(!checkIfOnlyNumbers(roomNumber)) return;
+    return true;
 }
-
 
 //Utility functions 
 function checkIfEmpty(field){
@@ -68,3 +64,49 @@ function checkIfOnlyLetters(field){
         return false; 
     }
 }
+function checkIfOnlyNumbers(field){
+    if(/^[0-9]+$/.test(field.value)){
+        setValid(field);
+        return true;
+    } else {
+        setInvalid(field, `${field.name} must contain only numbers`); 
+        return false; 
+    }
+}
+function checkDayValid(field){
+    if (/^(0?[1-9]|1\d|2\d|3[01])$/.test(field.value)){
+        setValid(field);
+        return true;
+    } else {
+        setInvalid(field, `${field.name} must contain number between 01 to 31`);
+    }
+}
+
+// Image preview
+const patientPicture = document.getElementById("patientPicture"); 
+const previewContainer = document.getElementById("imagePreview"); 
+const previewImage = previewContainer.querySelector(".imagePreviewSample"); 
+const previewDefaultText = previewContainer.querySelector(".imagePreviewText");
+
+patientPicture.addEventListener("change", function() {
+    const file = this.files[0]; 
+    // If file is selected
+    if (file) {
+        // read as data url
+        const reader = new FileReader(); 
+
+        previewDefaultText.style.display = "none"; 
+        previewImage.style.display = "block";
+
+        reader.addEventListener("load", function() {
+            previewImage.setAttribute("src", this.result); 
+        });
+
+        reader.readAsDataURL(file);
+    } else {
+        // if file is not selected (not working)
+        previewDefaultText.style.display = null; 
+        previewImage.style.display = null; 
+        previewImage.setAttribute("src", ""); 
+    }
+});

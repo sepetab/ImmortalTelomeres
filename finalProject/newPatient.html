@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>New Patient Registration Form</title>
+        <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
         <div class='form-container'> 
@@ -18,22 +19,18 @@
                     <input type="text" placeholder="Enter your last name" name="Last Name" id="lastName" onfocusout="validateLastName()"/>
                     <span class="errorTxt"></span>
                 </div>
-                <div class = "inputField">
-                    <label for="DOB">Date of Birth</label>
-                    <input type="text" placeholder="DD" name="dateDay" id="dateDay" onfocusout="validateDateDay()">
-                    <input type="text" placeholder="MM" name="dateMonth" id="dateMonth" onfocusout="validateDateMonth()">
-                    <input type="text" placeholder="YYYY" name="dateYear" id="dateYear" onfocusout="validateDateYear()">
+                <div class = "inputField"> 
+                    <label for="roomNumber">Room Number</label>
+                    <input type="text" placeholder="Enter assigned patient number" name="Room Number" id="roomNumber" onfocusout="validateRoomNumber()"/> 
                     <span class="errorTxt"></span>
                 </div>
-                <div class = "inputField">
-                    <label for="contactNo">Contact Number</label>
-                    <input type="text" placeholder= "Enter your contact number" name="contactNo" id="contactNo" onfocusout="validateContactNo()">
-                    <span class="errorTxt"></span>
-                </div>
-                <div class = "inputField">
-                    <label for="email">Email</label> 
-                    <input type="email" placeholder="Enter in your email address" name="email" id="email" onfocusout="validateEmail()">
-                    <span class="errorTxt"></span>
+                <div>
+                    <label for="patientProfile">Patient Photo</label>
+                    <input type="file" name="Patient Picture" id="patientPicture">
+                    <div class="imagePreview" id="imagePreview">
+                        <img src="" alt="Image Preview" class="imagePreviewSample"> 
+                        <span class="imagePreviewText">Image Preview</span>
+                    </div>
                 </div>
                 <button type="submit">Submit</button>
             </form>
