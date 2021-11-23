@@ -60,6 +60,7 @@ button {
 .submit:active {
   transform: scale(0.95);
 }
+
 /* General formatting */
 body {
   margin: 0;
@@ -90,6 +91,10 @@ label {
   margin: 25px auto 0;
 }
 
+img {
+  margin: auto;
+  display: block;
+}
 /* Header and Footer */
 header {
   text-align: center;
@@ -207,17 +212,6 @@ nav {
 }
 
 /* Patient Form */
-.sidebar-div {
-  border: 5px solid #ebebeb;
-  width: auto;
-  padding: 1.5em;
-  margin-bottom: 2em;
-  display: flex;
-  flex-direction: column;
-  margin: 1.2rem;
-  align-items: center;
-  justify-content: center;
-}
 
 .imagePreview {
   width: 300px;

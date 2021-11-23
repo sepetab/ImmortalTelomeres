@@ -9,7 +9,7 @@
     <!-- normal sign in page  -->
     <div class="formContainer">
         <h1>Practioner Login</h1>
-        <form id="pracLogin" novalidate>
+        <form id="pracLogin" novalidate onsubmit="return validateForm()">
             <div class="inputField">
                 <label for ="email">Email Addresss</label>
                 <input type="email" name="Email" id="email" onfocusout="validateEmail()"/>

@@ -10,6 +10,18 @@ const form = document.getElementById('newPatientForm')
 const green = '#4CAF50';
 const red = '#F44336'; 
 
+// form.addEventListener('submit', function(event){
+//     //prevent default behaviour
+//     event.preventDefault();
+// //     if(
+//         validateFirstName() && 
+//         validateLastName() && 
+//         validateRoomNumber() && 
+//         validatePassword() && 
+//         validateEmail()
+// //     )
+// // });
+
 //validation functions
 function validateFirstName(){ 
     if(checkIfEmpty(firstName)) return; 
@@ -119,7 +131,7 @@ function containsCharacters(field, code) {
         return matchWithRegEx(
           regEx,
           field,
-          'Must contain at least one uppercase, one lowercase letter and one number'
+          'Must contain at least one uppercase \n one lowercase letter and one number'
         );
       case 2:
         // uppercase, lowercase, number and special char
@@ -127,7 +139,7 @@ function containsCharacters(field, code) {
         return matchWithRegEx(
           regEx,
           field,
-          'Must contain at least one uppercase, one lowercase letter, one number and one special character'
+          'Must contain at least one uppercase,  one lowercase letter, one number and one special character'
         );
       case 3:
         // Email pattern
@@ -175,3 +187,9 @@ patientPicture.addEventListener("change", function() {
         previewImage.setAttribute("src", ""); 
     }
 });
+
+// Handle form validation
+function validateForm() {
+    return validateFirstName() && validateLastName() && validateRoomNumber() && validatePassword() && validateEmail();
+}
+
