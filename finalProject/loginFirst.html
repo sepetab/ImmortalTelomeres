@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Practioner Login</title>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <!-- normal sign in page  -->
+    <div class="formContainer">
+        <h1>Practioner Login</h1>
+        <form id="pracLogin" novalidate>
+            <div class="inputField">
+                <label for ="email">Email Addresss</label>
+                <input type="email" name="Email" id="email" onfocusout="validateEmail()"/>
+                <span class="errorTxt"></span>
+            </div>
+            <div>
+                <label for ="password">Password</label>
+                <input type="password" name="Password" id="password" onfocusout="validatePassword()"/>
+                <span class="errorTxt"></span>
+            </div>
+            <button class="submit" type="button">Sign In</button>
+        </form>
+    </div>
+</body>
+<script src="script/script.js"></script>
+</html>

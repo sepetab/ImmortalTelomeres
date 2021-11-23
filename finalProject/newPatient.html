@@ -2,15 +2,31 @@
 <html>
     <head>
         <title>New Patient Registration Form</title>
+        <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet"> 
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <div class='form-container'> 
+        <header>
+            <div class="container-header">
+              <a HREF="newPatient.html"><div class="logo-container">
+                  <!-- <img src="img/logo.png" class="logo" alt="HealthHacker logo"/> -->
+                  <p class="subtitle">HealthHacker Workshop</p>
+                </div></a>
+                <nav>
+                    <ul class="nav-ul">
+                        <li class="nav-li"><a class="nav-a current-page" href="#">Home</a></li>
+                        <li class="nav-li"><a class="nav-a" href="">Schedule</a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class='formContainer'> 
             <h1>New Patient Registration Form</h1>
             <!-- Remove 'novalidate' later, overrules current validation cmds -->
             <form id="newPatientForm" novalidate> 
                 <div class = "inputField">
-                    <label for="firstName">First Name</label>
+                    <label for="firstName">First Name</label> 
                     <input type="text" placeholder="Enter your first name" name="First Name" id="firstName" onfocusout="validateFirstName()"/>
                     <span class="errorTxt"></span>
                 </div>
@@ -35,6 +51,23 @@
                 <button type="submit">Submit</button>
             </form>
         </div>
+
+        <footer>
+            <div class="footer-container">
+                <div>
+                    <img src="" class="logo" alt="a deco"/>
+                </div>
+                <div class="middle-footer">
+                    <p class="footer-title">HEALTHHACKER WORKSHOP</p>
+                    <p class="footer-copyright">&copy; 2021 ImmortalTelomeres</p>
+                </div>
+                <div>
+                    <p class="footer-title">CONTACT US</p>
+                    <p class="footer-copyright">+61 432842728</p>
+                    <p class="footer-copyright"><A class="footer-mail" HREF="mailto:enquires@hackerhealth.com">enquires@hackerhealth.com</a></p>
+                </div>
+            </div>
+        </footer>
     </body>
     <script src="script/script.js"></script>
 </html>

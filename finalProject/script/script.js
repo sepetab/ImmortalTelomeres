@@ -1,7 +1,9 @@
 //Input fields
 const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
-const roomNumber = document.getElementById('roomNumber'); 
+const roomNumber = document.getElementById('roomNumber');
+const password = document.getElementById('password');
+const email = document.getElementById('email');
 //form
 const form = document.getElementById('newPatientForm')
 //validation colours
@@ -24,6 +26,23 @@ function validateLastName(){
 function validateRoomNumber(){
     if(checkIfEmpty(roomNumber)) return;
     if(!checkIfOnlyNumbers(roomNumber)) return;
+    return true;
+}
+
+function validatePassword() {
+    // Empty check
+    if (checkIfEmpty(password)) return;
+    // Must of in certain length
+    if (!meetLength(password, 6, 100)) return;
+    // check password against our character set
+    // 1- A a 1
+    // 2- A a 1 @
+    if (!containsCharacters(password, 1)) return;
+    return true;
+}
+function validateEmail() {
+    if (checkIfEmpty(email)) return;
+    if (!containsCharacters(email, 3)) return;
     return true;
 }
 
@@ -73,14 +92,60 @@ function checkIfOnlyNumbers(field){
         return false; 
     }
 }
-function checkDayValid(field){
-    if (/^(0?[1-9]|1\d|2\d|3[01])$/.test(field.value)){
-        setValid(field);
-        return true;
+function meetLength(field, minLength, maxLength) {
+    if (field.value.length >= minLength && field.value.length < maxLength) {
+      setValid(field);
+      return true;
+    } else if (field.value.length < minLength) {
+      setInvalid(
+        field,
+        `${field.name} must be at least ${minLength} characters long`
+      );
+      return false;
     } else {
-        setInvalid(field, `${field.name} must contain number between 01 to 31`);
+      setInvalid(
+        field,
+        `${field.name} must be shorter than ${maxLength} characters`
+      );
+      return false;
     }
 }
+function containsCharacters(field, code) {
+    let regEx;
+    switch (code) {
+      case 1:
+        // uppercase, lowercase and number
+        regEx = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/;
+        return matchWithRegEx(
+          regEx,
+          field,
+          'Must contain at least one uppercase, one lowercase letter and one number'
+        );
+      case 2:
+        // uppercase, lowercase, number and special char
+        regEx = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/;
+        return matchWithRegEx(
+          regEx,
+          field,
+          'Must contain at least one uppercase, one lowercase letter, one number and one special character'
+        );
+      case 3:
+        // Email pattern
+        regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return matchWithRegEx(regEx, field, 'Must be a valid email address');
+      default:
+        return false;
+    }
+  }
+  function matchWithRegEx(regEx, field, message) {
+    if (field.value.match(regEx)) {
+      setValid(field);
+      return true;
+    } else {
+      setInvalid(field, message);
+      return false;
+    }
+  }
 
 // Image preview
 const patientPicture = document.getElementById("patientPicture"); 
