@@ -1,5 +1,5 @@
 //Input fields
-
+const username = document.getElementById('username');
 const password = document.getElementById('password');
 const email = document.getElementById('email');
 //form
@@ -22,12 +22,12 @@ function validatePassword() {
     return true;
 }
 
-
-function validateEmail() {
-    if (checkIfEmpty(email)) {return false};
-    if (!containsCharacters(email, 3)) {return false};
-    return true;
+function validateUsername() {
+  if (checkIfEmpty(username)) {return false}; 
+  if (!containsCharacters(username, 1)) {return false};
+  return true; 
 }
+
 
 //Utility functions 
 function checkIfEmpty(field){
@@ -134,12 +134,9 @@ function containsCharacters(field, code) {
 
 // Handle form validation -aravind edit plZ
 function validateForm(){
-    return validatePassword() && validateEmail();
+  return validateUsername() && validatePassword();
 }
-
 
 function validateDebug() {
-  console.log(validatePassword() && validateEmail());
+  console.log(validatePassword() && validateUsername());
 }
-
-
