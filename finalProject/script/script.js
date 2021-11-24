@@ -188,8 +188,7 @@ patientPicture.addEventListener("change", function() {
     }
 });
 
-// Handle form validation
+// Handle form validation -aravind edit plZ
 function validateForm() {
     return validateFirstName() && validateLastName() && validateRoomNumber() && validatePassword() && validateEmail();
 }
-

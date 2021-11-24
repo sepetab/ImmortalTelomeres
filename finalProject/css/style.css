@@ -95,6 +95,10 @@ img {
   margin: auto;
   display: block;
 }
+
+span {
+  font-weight: bold;
+}
 /* Header and Footer */
 header {
   text-align: center;
