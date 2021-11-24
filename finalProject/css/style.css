@@ -115,8 +115,9 @@ header {
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  width: 80%;
+  width: 98%;
   margin: 0 auto;
+  max-height: 120px;
 }
 footer {
   background: #143774;
@@ -182,7 +183,7 @@ footer {
 /* Navigation tabs */
 nav {
   width: 40%;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 .nav-ul {
@@ -192,6 +193,9 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   margin-right: 3em;
+  position: absolute;
+  top: 0px;
+  white-space: nowrap;
 }
 
 nav ul li {
@@ -210,7 +214,9 @@ nav ul li ul {
   display: none;
   position: absolute;
   background: #ebebeb;
-  padding: 10px;
+  padding-right: 20px;
+  padding-left: 10px;
+  text-align: left;
   border-radius: 0px 0px 4px 4px;
 }
 
@@ -231,9 +237,9 @@ nav ul li ul a:hover {
   background-color: none;
   color: #1792d2;
 }
-/* Continue from here onwards: https://youtu.be/rgUp302f_lY?t=948 */
+
 .nav-li {
-  margin: 3.5em;
+  margin: 2em;
 }
 
 .nav-a {
