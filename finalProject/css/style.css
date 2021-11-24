@@ -91,13 +91,16 @@ label {
   margin: 25px auto 0;
 }
 
-img {
-  margin: auto;
-  display: block;
-}
-
 span {
   font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: #1792d2;
+}
+a:hover {
+  color: #143774;
 }
 /* Header and Footer */
 header {
@@ -171,14 +174,14 @@ footer {
   color: #1792d2;
   text-transform: uppercase;
   margin-top: 0;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 2px;
 }
 
 /* Navigation tabs */
 nav {
-  width: 30%;
+  width: 40%;
   max-width: 600px;
 }
 
@@ -191,8 +194,46 @@ nav {
   margin-right: 3em;
 }
 
+nav ul li {
+  float: left;
+  list-style: none;
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  padding: 24px 14px;
+  text-decoration: none;
+}
+
+nav ul li ul {
+  display: none;
+  position: absolute;
+  background: #ebebeb;
+  padding: 10px;
+  border-radius: 0px 0px 4px 4px;
+}
+
+nav ul li:hover ul {
+  display: block;
+}
+
+nav ul li ul li {
+  width: 180px;
+  border-radius: 4px;
+}
+
+nav ul li ul a {
+  padding: 20px 14px;
+}
+
+nav ul li ul a:hover {
+  background-color: none;
+  color: #1792d2;
+}
+/* Continue from here onwards: https://youtu.be/rgUp302f_lY?t=948 */
 .nav-li {
-  margin: 0.6em;
+  margin: 3.5em;
 }
 
 .nav-a {
