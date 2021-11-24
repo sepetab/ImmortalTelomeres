@@ -18,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         while ($row = odbc_fetch_array($exists)) {    
             if($row['Password'] == $password){
                 $_SESSION['loggedin'] = true;
-                include 'mainPage.php';
+                header('Location: http://engpwws005/z5208102$/ImmortalTelomeres/finalProject/mainPage.php');
+                exit;
             }else{
                 include 'loginFirst.html';     
                 echo "<h3 style=\"text-align:center;\">Invalid Credentials</h3>";

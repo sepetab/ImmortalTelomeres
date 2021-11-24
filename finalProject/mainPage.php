@@ -1,6 +1,5 @@
 <?php 
-session_start();
-print($_SESSION['loggedin'])
+@session_start();
 ?>
 
 <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
@@ -126,22 +125,14 @@ print($_SESSION['loggedin'])
                 </div>
 
                 <div>
-                    <button onclick="logout()">Log Out</button>
-
-                    <script>
-                        function logout(){
-                            <?php session_unset() ?>
-                            window.location.href = 'loginFirst.html';  
-                        }
-
-                    </script>
+                    <button><a href="logout.php" >Logout</a></button>
                 </div>
             </footer>
         </body>
     </html>
 <?php else: ?>
     <html>
-        <h1>Unauthorized Entry</h1>
+        <h1>Unauthorized access, login required. Click <a href="loginFirst.html">here</a> to login.</h1>
     </html>
 <?php endif; ?>
 
