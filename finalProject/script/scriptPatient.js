@@ -2,6 +2,7 @@
 const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
 const roomNumber = document.getElementById('roomNumber');
+const patientID = document.getElementById('patientID');
 //validation colours
 const green = '#4CAF50';
 const red = '#F44336'; 
@@ -22,6 +23,12 @@ function validateLastName(){
 function validateRoomNumber(){
     if(checkIfEmpty(roomNumber)) {return false};
     if(!checkIfOnlyNumbers(roomNumber)) {return false};
+    return true;
+}
+
+function validatePatientID(){
+    if(checkIfEmpty(patientID)) {return false};
+    if(!checkIfOnlyNumbers(patientID)) {return false};
     return true;
 }
 //Utility functions 
@@ -104,7 +111,7 @@ function validateNewPatient() {
   return validateFirstName() && validateLastName() && validateRoomNumber();
 }
 function validateEditPatient() {
-  return validateFirstName() && validateLastName() && validateRoomNumber();
+  return validatePatientID() && validateFirstName() && validateLastName() && validateRoomNumber();
 }
 
 function validateDebug(){

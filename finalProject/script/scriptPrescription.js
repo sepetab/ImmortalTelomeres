@@ -1,25 +1,53 @@
-$("#finishDate").change(function () {
-    var startDate = document.getElementById("startDate").value;
-    var finishDate = document.getElementById("finishDate").value;
- 
-    if ((Date.parse(finishDate) <= Date.parse(startDate))) {
-        alert("End date should be greater than Start date");
-        document.getElementById("finishDate").value = "";
+//Input fields
+const prescriptionID = document.getElementById('prescriptionID');
+//validation colours
+const green = '#4CAF50';
+const red = '#F44336'; 
+
+//validation functions
+function validatePrescriptionID(){
+    if(checkIfEmpty(prescriptionID)) {return false};
+    if(!checkIfOnlyNumbers(prescriptionID)) {return false};
+    return true;
+}
+// Utility functions
+function checkIfEmpty(field){
+    if(isEmpty(field.value.trim())){
+        //set field invalid 
+        setInvalid(field, `${field.name} must not be empty`);
+        return true;
+    } else {
+        //set field valid (not-empty)
+        setValid(field); 
+        return false; 
     }
-});
+}
 
-// function validateEndDate() {
-//     var startDate = document.getElementById("startDate").value;
-//     var finishDate = document.getElementById("finishDate").value;   
+function isEmpty(value){
+    if (value === '') return true; 
+    return false; 
+}
 
-//     if (startDate=='' && finishDate==''){
-//         $(startDate).datetimepicker({
-//             useCurrent: false,
-//             format: 'DD/MM/YYYY'
-//         }).on('dp.change',validateEndDate(e){
-//             $(".day").click(function()){
-//                 $("a")
-//             }
-//         })
-//     }
-// }
+function setInvalid(field,message){
+    field.className = 'invalid';
+    field.nextElementSibling.innerHTML = message;
+    field.nextElementSibling.style.color = red; 
+}
+function setValid(field,message){
+    field.className = 'valid';
+    field.nextElementSibling.innerHTML = '';
+    field.nextElementSibling.style.color = green; 
+}
+function checkIfOnlyNumbers(field){
+    if(/^[0-9]+$/.test(field.value)){
+        setValid(field);
+        return true;
+    } else {
+        setInvalid(field, `${field.name} must contain only numbers`); 
+        return false; 
+    }
+}
+// Handling form submit
+function validateEditPrescription() {
+    return validatePrescriptionID();
+}
