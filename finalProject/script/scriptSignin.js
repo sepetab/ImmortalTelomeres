@@ -24,7 +24,7 @@ function validatePassword() {
 
 function validateUsername() {
   if (checkIfEmpty(username)) {return false}; 
-  if (!containsCharacters(username, 4)) {return false};
+  if (!containsCharacters(username, 5)) {return false};
   return true; 
 }
 
@@ -75,6 +75,7 @@ function checkIfOnlyNumbers(field){
         return false; 
     }
 }
+
 function meetLength(field, minLength, maxLength) {
     if (field.value.length >= minLength && field.value.length < maxLength) {
       setValid(field);
@@ -123,6 +124,14 @@ function containsCharacters(field, code) {
           regEx, 
           field,
           'Must contain at least one letter and one number'
+        );
+      case 5:
+        // only contain letters
+        regEx = /(?=.*[a-z])/; 
+        return matchWithRegEx(
+          regEx, 
+          field,
+          'Must contain only contain letters'
         );
       default:
         return false;
