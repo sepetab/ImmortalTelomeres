@@ -39,7 +39,7 @@
     <body> 
       <header>
       	       <!--Title of workshop along with logo at top of webpage-->
-              <H1>Prescription ID Form</H1>
+              <H1>Prescription Form</H1>
               <p>
               <img src="img/blender_heart_logo.png" class="Center" style="width:20%"/>
               </p>
@@ -64,6 +64,10 @@
                 <option value="dietary">Dietary</option>
               </select><br>
 
+            <!-- PATIENT ID-->
+            <label for="patient_id">Patient ID</label>
+            <input type="text" name = "pid" placeholder = "Patient ID" id ="pid"><br>
+            
             <!--START DATE OF PRESCRIPTION-->
             <label>Start Date</label> 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -91,9 +95,44 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="date" id="end_date" name="end_date"
               value="17-11-2021"
-              min="17-11-2021" max="17/11/2022"><br>
+              min="17-11-2021" max="17/11/2022"><br><br>
 
-         
+              <label>Complete this section only if you have selected medication as prescription type</label><br>
+
+              <!-- Medication ID-->
+            <label for="medication_id">Medication ID</label>
+            <input type="text" name = "medid" placeholder = "Medication ID" id ="medid"><br>
+
+              <!-- Medication Name-->
+            <label for="medication_name">Medication Name</label>
+            <input type="text" name = "medname" placeholder = "Medication Name" id ="medname"><br>
+            
+            <!-- Dosage---->
+            <label for="dosage">Dosage</label>
+            <input type="text" name = "dosage" placeholder = "Dosage" id ="dosage"><br>
+
+            <!-- Route of Administration---->
+            <label for="Route of Administration">Route of Administration</label>
+            <input type="text" name = "roa" placeholder = "Route of Administration" id ="roa"><br><br>
+
+            <label>Complete this section only if you have selected Dietary as prescription type</label><br>
+            
+            <!-- Diet Regime ID-->
+            <label for="drid">Diet Regime ID</label>
+            <input type="text" name = "drid" placeholder = "Diet Regime ID" id ="drid"><br>
+
+            <!-- Food---->
+            <label for="food">Food</label>
+            <input type="text" name = "food" placeholder = "Food" id ="food"><br>
+
+            <!-- Exercise---->
+            <label for="exercise">Exercise</label>
+            <input type="text" name = "exercise" placeholder = "Exercise" id ="exercise"><br>
+
+            <!-- Beauty--->
+            <label for="beauty">Beauty</label>
+            <input type="text" name = "beauty" placeholder = "Beauty" id ="beauty"><br>
+
             <input type="submit" value = "Submit" id ="submit" onclick="check_submission()">
           </form>
                   
