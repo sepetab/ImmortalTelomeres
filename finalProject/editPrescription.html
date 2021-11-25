@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Edit Patient Registration Form</title>
+        <title>Edit Prescription Form</title>
         <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet"> 
         <link href="css/style.css" rel="stylesheet">
     </head>
@@ -20,7 +20,7 @@
                                 <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
                                 <li><a class = "nav-a" href="editPatient.html">Edit Patient</a></li>
                                 <li><a class = "nav-a" href="newPrescription.html">New Prescription</a></li>
-                                <li><a class = "nav-a" href="editPrescription.html">Edit Prescription</a></li>
+                                <li><a class = "nav-a" href="#">Edit Prescription</a></li>
                             </ul>
                         </li>
                         <li class="nav-li"><a class="nav-a" href="">Logout</a></li>
@@ -29,37 +29,47 @@
             </div>
         </header>
         <div class='formContainer'> 
-            <h1>Edit Patient Registration Form</h1>
-            <form id="newPatientForm" onsubmit="return validateEditPatient()"> 
+            <h1>New Prescription Form</h1>
+            <form id="prescriptionForm" onsubmit="return validateEditPrescription()">
                 <div class = "inputField">
-                    <label for="patientID">Patient ID</label> 
-                    <input type="text" placeholder="Enter Patient ID" name="Patient ID" id="patientID" onfocusout="validatePatientID()"/>
+                    <label for="prescriiptionID">Prescription ID</label> 
+                    <input type="text" placeholder="Enter Prescription ID" name="Prescription ID" id="prescriptionID" onfocusout="validatePrescriptionID()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class = "inputField">
-                    <label for="firstName">First Name</label> 
-                    <input type="text" placeholder="Enter your first name" name="First Name" id="firstName" onfocusout="validateFirstName()"/>
+                    <label for="prescriptionType">Type of Prescription:</label> 
+                    <select id= "prescriptionOption" name="Prescription Options" class="required" autocomplete="off">
+                        <option hidden disabled selected value>(Select Option)</option>
+                        <option value="med">Medication</option>
+                        <option value="diet">Dietary</option>
+                    </select>
                     <span class="errorTxt"></span>
+                </div>
+                <div> 
+                    <label for="startDate">Start Date:</label> 
+                    <input type="date" id="startDate"/>
+                    <label for="finishDate">Finish Date:</label>
+                    <input type="date" id="finishDate"/>
                 </div>
                 <div class = "inputField">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" placeholder="Enter your last name" name="Last Name" id="lastName" onfocusout="validateLastName()"/>
-                    <span class="errorTxt"></span>
-                </div>
-                <div class = "inputField"> 
-                    <label for="roomNumber">Room Number</label>
-                    <input type="text" placeholder="Enter assigned patient number" name="Room Number" id="roomNumber" onfocusout="validateRoomNumber()"/> 
-                    <span class="errorTxt"></span>
+                    <label class="optionBox">Morning
+                        <input type="checkbox">
+                        <span class="checkmark"></span>   
+                    </label>
+                    <label class="optionBox">Afternoon
+                        <input type="checkbox">
+                        <span class="checkmark"></span>     
+                    </label>
+                    <label class="optionBox">Evening
+                        <input type="checkbox">
+                        <span class="checkmark"></span>     
+                    </label>
                 </div>
                 <div>
-                    <label for="patientProfile">Patient Photo</label>
-                    <input type="file" name="Patient Picture" id="patientPicture" accept="image/*">
-                    <div class="imagePreview" id="imagePreview">
-                        <img src="" alt="Image Preview" class="imagePreviewSample"> 
-                        <span class="imagePreviewText">Image Preview</span>
-                    </div>
+                    <label>Additional Information:</label>
+                    <textarea rows="5" cols="40" name="description" form="prescriptionForm">Include Patient Name and ID, with any additional medication requirements!</textarea>
                 </div>
-                <button class="submit" type="submit">Submit</button>
+                <button class="submit" type="submit" onclick= "validateDebug()">Submit</button>
             </form>
         </div>
 
@@ -80,5 +90,5 @@
             </div>
         </footer>
     </body>
-    <script src="script/scriptPatient.js"></script>
+    <script src="script/scriptPrescription.js"></script>
 </html>
