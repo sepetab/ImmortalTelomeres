@@ -24,7 +24,7 @@ function validatePassword() {
 
 function validateUsername() {
   if (checkIfEmpty(username)) {return false}; 
-  if (!containsCharacters(username, 1)) {return false};
+  if (!containsCharacters(username, 4)) {return false};
   return true; 
 }
 
@@ -102,7 +102,7 @@ function containsCharacters(field, code) {
         return matchWithRegEx(
           regEx,
           field,
-          'Must contain at least one uppercase \n one lowercase letter and one number'
+          'Must contain at least one uppercase, one lowercase letter and one number'
         );
       case 2:
         // uppercase, lowercase, number and special char
@@ -116,6 +116,14 @@ function containsCharacters(field, code) {
         // Email pattern
         regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return matchWithRegEx(regEx, field, 'Must be a valid email address');
+      case 4:
+        //any letter and number
+        regEx = /(?=.*\d)(?=.*[a-z])/; 
+        return matchWithRegEx(
+          regEx, 
+          field,
+          'Must contain at least one letter and one number'
+        );
       default:
         return false;
     }
