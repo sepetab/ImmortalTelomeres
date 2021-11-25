@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Prescription Form</title>
+        <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet"> 
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="container-header">
+              <a HREF="newPatient.html"><div class="logo-container">
+                  <img src="img/logo2.png" class="logo" alt="Hearth with stethoscope"/>
+                  <p class="subtitle">HealthHacker</p>
+                </div></a>
+                <nav>
+                    <ul class="nav-ul">
+                        <li class="nav-li"><a class="nav-a" href="#">Patient Forms</a>
+                            <ul>
+                                <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
+                                <li><a class = "nav-a" href="editPatient.html">Edit Patient</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-li"><a class="nav-a" href="#">Prescription Forms</a>
+                            <ul>
+                                <li><a class = "nav-a" href="#">New Prescription</a></li>
+                                <li><a class = "nav-a" href="">Edit Prescription</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-li"><a class="nav-a" href="">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class='formContainer'> 
+            <h1>New Prescription Form</h1>
+            <form id="prescriptionForm" onsubmit="return"> 
+                <div class = "inputField">
+                    <label for="prescriptionType">Type of Prescription:</label> 
+                    <select id= "prescriptionOption" name="Prescription Options" class="required" autocomplete="off">
+                        <option hidden disabled selected value>(Select Option)</option>
+                        <option value="med">Medication</option>
+                        <option value="diet">Dietary</option>
+                    </select>
+                    <span class="errorTxt"></span>
+                </div>
+                <div> 
+                    <label for="startDate">Start Date:</label> 
+                    <input type="date" id="startDate"/>
+                    <label for="finishDate">Finish Date:</label>
+                    <input type="date" id="finishDate"/>
+                </div>
+                <div class = "inputField">
+                    <label class="optionBox">Morning
+                        <input type="checkbox">
+                        <span class="checkmark"></span>   
+                    </label>
+                    <label class="optionBox">Afternoon
+                        <input type="checkbox">
+                        <span class="checkmark"></span>     
+                    </label>
+                    <label class="optionBox">Evening
+                        <input type="checkbox">
+                        <span class="checkmark"></span>     
+                    </label>
+                </div>
+                <div>
+                    <label>Additional Information:</label>
+                    <textarea rows="5" cols="40" name="description" form="prescriptionForm">Include Patient Name and ID, with any additional medication requirements!</textarea>
+                </div>
+                <button class="submit" type="submit" onclick= "validateDebug()">Submit</button>
+            </form>
+        </div>
+
+        <footer>
+            <div class="footer-container">
+                <div>
+                    <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
+                </div>
+                <div class="middle-footer">
+                    <p class="footer-title">HEALTHHACKER WORKSHOP</p>
+                    <p class="footer-copyright">&copy; 2021 ImmortalTelomeres</p>
+                </div>
+                <div>
+                    <p class="footer-title">CONTACT US</p>
+                    <p class="footer-copyright">+61 432842728</p>
+                    <p class="footer-copyright"><A class="footer-mail" HREF="mailto:enquires@hackerhealth.com">enquires@hackerhealth.com</a></p>
+                </div>
+            </div>
+        </footer>
+    </body>
+    <script src="script/scriptPrescription.js"></script>
+</html>

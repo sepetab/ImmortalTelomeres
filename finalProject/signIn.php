@@ -2,9 +2,12 @@
 session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // connect to database
-    $conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
+    $conn = odbc_connect('z5206712', '', '', SQL_CUR_USE_ODBC);
     if(!$conn){exit("Connection Failed:". $conn);}
-
+    // print("Execution failed:\n");
+    // print("   State: ".odbc_error($conn)."\n");
+    // print("   Error: ".odbc_errormsg($conn)."\n");
+    // exit; 
     // Collect form details
     $email = $_POST['Email'];
     $password = $_POST['Password'];
@@ -18,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         while ($row = odbc_fetch_array($exists)) {    
             if($row['Password'] == $password){
                 $_SESSION['loggedin'] = true;
-                header('Location: http://engpwws005/z5208102$/ImmortalTelomeres/finalProject/mainPage.php');
+                header('Location: http://engpwws005/z5206712$/ImmortalTelomeres/finalProject/mainPage.php');
                 exit;
             }else{
                 include 'loginFirst.html';     
