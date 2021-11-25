@@ -14,7 +14,12 @@
                 </div></a>
                 <nav>
                     <ul class="nav-ul">
-                        <li class="nav-li"><a class="nav-a" href="#">Patients</a>
+                        <li class="nav-li"><a class="nav-a" href="#">Information</a>
+                            <ul>
+                                <li><a class = "nav-a" href="">Patient List</a></li>
+                                <li><a class = "nav-a" href="">Diet Regime</a></li>
+                                <li><a class = "nav-a" href="">Medication Regime</a></li>
+                            </ul>
                         <li class="nav-li"><a class="nav-a" href="#">Forms</a>
                             <ul>
                                 <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
@@ -30,7 +35,7 @@
         </header>
         <div class='formContainer'> 
             <h1>New Prescription Form</h1>
-            <form id="prescriptionForm" onsubmit="return"> 
+            <form id="prescriptionForm" onsubmit="return validateNewPrescription()"> 
                 <div class = "inputField">
                     <label for="prescriptionType">Type of Prescription:</label> 
                     <select id= "prescriptionOption" name="Prescription Options" class="required" autocomplete="off">
@@ -41,10 +46,12 @@
                     <span class="errorTxt"></span>
                 </div>
                 <div> 
-                    <label for="startDate">Start Date:</label> 
-                    <input type="date" id="startDate"/>
-                    <label for="finishDate">Finish Date:</label>
-                    <input type="date" id="finishDate"/>
+                    <label for="startDate">Start Date</label> 
+                    <input type="date" name="" max="" id="startDate" onfocusout="validatePrescriptionDate"/>
+                    <span class="errorTxt"></span>
+                    <label for="finishDate">Finish Date</label>
+                    <input type="date" name="" max="" id="finishDate" onfocusout="validatePrescriptionDate"/>
+                    <span class="errorTxt"></span>
                 </div>
                 <div class = "inputField">
                     <label class="optionBox">Morning
@@ -62,7 +69,7 @@
                 </div>
                 <div>
                     <label>Additional Information:</label>
-                    <textarea rows="5" cols="40" name="description" form="prescriptionForm">Include Patient Name and ID, with any additional medication requirements!</textarea>
+                    <textarea rows="5" cols="40" name="description" form="prescriptionForm" placeholder="Include Patient Name and ID, with any additional medication requirements!"></textarea>
                 </div>
                 <button class="submit" type="submit" onclick= "validateDebug()">Submit</button>
             </form>
@@ -74,7 +81,7 @@
                     <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
                 </div>
                 <div class="middle-footer">
-                    <p class="footer-title">HEALTHHACKER WORKSHOP</p>
+                    <p class="footer-title">HEALTHHACKER</p>
                     <p class="footer-copyright">&copy; 2021 ImmortalTelomeres</p>
                 </div>
                 <div>
