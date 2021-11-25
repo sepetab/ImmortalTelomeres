@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>New Patient Registration Form</title>
+        <title>Edit Patient Registration Form</title>
         <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet"> 
         <link href="css/style.css" rel="stylesheet">
     </head>
@@ -16,8 +16,8 @@
                     <ul class="nav-ul">
                         <li class="nav-li"><a class="nav-a" href="#">Patient Forms</a>
                             <ul>
-                                <li><a class = "nav-a" href="#">New Patient</a></li>
-                                <li><a class = "nav-a" href="editPatient.html">Edit Patient</a></li>
+                                <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
+                                <li><a class = "nav-a" href="#">Edit Patient</a></li>
                             </ul>
                         </li>
                         <li class="nav-li"><a class="nav-a" href="#">Prescription Forms</a>
@@ -32,8 +32,8 @@
             </div>
         </header>
         <div class='formContainer'> 
-            <h1>New Patient Registration Form</h1>
-            <form id="newPatientForm" onsubmit="return validateNewPatient()" method="post" action="loginFirst.html"> 
+            <h1>Edit Patient Registration Form</h1>
+            <form id="newPatientForm" onsubmit="return validateEditPatient()"> 
                 <div class = "inputField">
                     <label for="firstName">First Name</label> 
                     <input type="text" placeholder="Enter your first name" name="First Name" id="firstName" onfocusout="validateFirstName()"/>
@@ -57,7 +57,7 @@
                         <span class="imagePreviewText">Image Preview</span>
                     </div>
                 </div>
-                <button class="submit" type="submit" onclick= "validateDebug()">Submit</button>
+                <button class="submit" type="submit">Submit</button>
             </form>
         </div>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>New Patient Registration Form</title>
+        <title>Practioner Directory</title>
         <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet"> 
         <link href="css/style.css" rel="stylesheet">
     </head>
@@ -16,7 +16,7 @@
                     <ul class="nav-ul">
                         <li class="nav-li"><a class="nav-a" href="#">Patient Forms</a>
                             <ul>
-                                <li><a class = "nav-a" href="#">New Patient</a></li>
+                                <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
                                 <li><a class = "nav-a" href="editPatient.html">Edit Patient</a></li>
                             </ul>
                         </li>
@@ -31,36 +31,51 @@
                 </nav>
             </div>
         </header>
-        <div class='formContainer'> 
-            <h1>New Patient Registration Form</h1>
-            <form id="newPatientForm" onsubmit="return validateNewPatient()" method="post" action="loginFirst.html"> 
-                <div class = "inputField">
-                    <label for="firstName">First Name</label> 
-                    <input type="text" placeholder="Enter your first name" name="First Name" id="firstName" onfocusout="validateFirstName()"/>
-                    <span class="errorTxt"></span>
-                </div>
-                <div class = "inputField">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" placeholder="Enter your last name" name="Last Name" id="lastName" onfocusout="validateLastName()"/>
-                    <span class="errorTxt"></span>
-                </div>
-                <div class = "inputField"> 
-                    <label for="roomNumber">Room Number</label>
-                    <input type="text" placeholder="Enter assigned patient number" name="Room Number" id="roomNumber" onfocusout="validateRoomNumber()"/> 
-                    <span class="errorTxt"></span>
-                </div>
-                <div>
-                    <label for="patientProfile">Patient Photo</label>
-                    <input type="file" name="Patient Picture" id="patientPicture" accept="image/*">
-                    <div class="imagePreview" id="imagePreview">
-                        <img src="" alt="Image Preview" class="imagePreviewSample"> 
-                        <span class="imagePreviewText">Image Preview</span>
-                    </div>
-                </div>
-                <button class="submit" type="submit" onclick= "validateDebug()">Submit</button>
-            </form>
+        <div class="container">
+            <div>
+                <table class="table table-sortable">
+                    <col style="width:7%">
+                    <col style="width:10%">
+                    <col style="width:15%">
+                    <col style="width:6%">
+                    <col style="width:8%">
+                    <col style="width:10%">
+                    <col style="width:50%">
+                    <thead>
+                        <tr>
+                            <th>Patient ID</th>
+                            <th>Patient Name</th>
+                            <th>Medication/Dietary</th>
+                            <th>Given</th>
+                            <th>Accepted</th>
+                            <th>Dispensing practioner</th>
+                            <th>Notes for medication status</th>
+                        </tr>
+                    </thead>
+                    <!-- Exemplar data -->
+                    <tbody> 
+                        <tr>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>13</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                        </tr>
+                    </tbody>
+                </table>                
+            </div>
         </div>
-
         <footer>
             <div class="footer-container">
                 <div>
@@ -77,6 +92,6 @@
                 </div>
             </div>
         </footer>
+        <script src="script/scriptTableSort.js"></script>
     </body>
-    <script src="script/scriptPatient.js"></script>
 </html>
