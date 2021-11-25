@@ -14,7 +14,7 @@
                 </div></a>
                 <nav>
                     <ul class="nav-ul">
-                        <li class="nav-li"><a class="nav-a" href="#">Patients</a>
+                        <li class="nav-li"><a class="nav-a" href="patients.php">Patients</a>
                         <li class="nav-li"><a class="nav-a" href="#">Forms</a>
                             <ul>
                                 <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
@@ -30,36 +30,37 @@
         </header>
         <div class='formContainer'> 
             <h1>Edit Patient Registration Form</h1>
-            <form id="newPatientForm" onsubmit="return validateEditPatient()"> 
+            <form id="editPatientForm" onsubmit="return validateEditPatient()" method="post" action="patients.php" enctype="multipart/form-data"> 
                 <div class = "inputField">
                     <label for="patientID">Patient ID</label> 
-                    <input type="text" placeholder="Enter Patient ID" name="Patient ID" id="patientID" onfocusout="validatePatientID()"/>
+                    <input type="text" placeholder="Enter Patient ID" name="PatientID" id="patientID" onfocusout="validatePatientID()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class = "inputField">
                     <label for="firstName">First Name</label> 
-                    <input type="text" placeholder="Enter your first name" name="First Name" id="firstName" onfocusout="validateFirstName()"/>
+                    <input type="text" placeholder="Enter your first name" name="FirstName" id="firstName" onfocusout="validateFirstName()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class = "inputField">
                     <label for="lastName">Last Name</label>
-                    <input type="text" placeholder="Enter your last name" name="Last Name" id="lastName" onfocusout="validateLastName()"/>
+                    <input type="text" placeholder="Enter your last name" name="LastName" id="lastName" onfocusout="validateLastName()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class = "inputField"> 
                     <label for="roomNumber">Room Number</label>
-                    <input type="text" placeholder="Enter assigned patient number" name="Room Number" id="roomNumber" onfocusout="validateRoomNumber()"/> 
+                    <input type="text" placeholder="Enter assigned patient number" name="RoomNumber" id="roomNumber" onfocusout="validateRoomNumber()"/> 
                     <span class="errorTxt"></span>
                 </div>
                 <div>
                     <label for="patientProfile">Patient Photo</label>
-                    <input type="file" name="Patient Picture" id="patientPicture" accept="image/*">
+                    <input type="file" name="PatientPicture" id="patientPicture" accept="image/*">
                     <div class="imagePreview" id="imagePreview">
                         <img src="" alt="Image Preview" class="imagePreviewSample"> 
                         <span class="imagePreviewText">Image Preview</span>
                     </div>
                 </div>
-                <button class="submit" type="submit">Submit</button>
+                <button class="submit" type="submit" name="editPatient">Submit</button>
+                <button class="submit" type="submit" name="removePatient" style="background:red;">Remove patient</button>
             </form>
         </div>
 
