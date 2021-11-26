@@ -155,6 +155,9 @@ a:hover {
 body {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 /* Header and Footer */
 header {
@@ -175,9 +178,8 @@ header {
 }
 footer {
   background: #143774;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .middle-footer {
