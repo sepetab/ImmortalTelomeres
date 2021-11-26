@@ -142,6 +142,22 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
             </table>                
         </div>
     </div>
+    <footer>
+            <div class="footer-container">
+                <div>
+                    <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
+                </div>
+                <div class="middle-footer">
+                    <p class="footer-title">HEALTHHACKER WORKSHOP</p>
+                    <p class="footer-copyright">&copy; 2021 ImmortalTelomeres</p>
+                </div>
+                <div>
+                    <p class="footer-title">CONTACT US</p>
+                    <p class="footer-copyright">+61 432842728</p>
+                    <p class="footer-copyright"><A class="footer-mail" HREF="mailto:enquires@hackerhealth.com">enquires@hackerhealth.com</a></p>
+                </div>
+            </div>
+        </footer>
 </body>
 <script src="script/scriptSignin.js"></script>
 </html>
