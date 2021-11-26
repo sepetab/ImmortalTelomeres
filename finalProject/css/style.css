@@ -233,7 +233,7 @@ footer {
 /* Navigation tabs */
 nav {
   width: 40%;
-  max-width: 700px;
+  max-width: 100%;
 }
 
 .nav-ul {
@@ -245,6 +245,7 @@ nav {
   margin-right: 3em;
   position: absolute;
   top: -30px;
+  right: 0.5px;
   white-space: nowrap;
 }
 
@@ -289,7 +290,7 @@ nav ul li ul a:hover {
 }
 
 .nav-li {
-  margin: 3.5em;
+  margin: 4.5em;
 }
 
 .nav-a {
