@@ -36,28 +36,28 @@
         <div class='formContainer'> 
             <h1>Edit Prescription Form</h1>
             <form id="prescriptionForm" onsubmit="return validateEditPrescription()">
+                <div class = "inputField">
+                    <label for="prescriptionType">Type of Prescription:</label> 
+                    <select id= "prescriptionOption" name="Prescription Options" onchange="OptionsToggler()" class="required" autocomplete="off">
+                        <!-- <option hidden disabled selected value>(Select Option)</option> -->
+                        <option value="med">Medication</option>
+                        <option value="diet">Dietary</option>
+                    </select>
+                    <span class="errorTxt"></span>
+                </div>
                 <div>
                     <label for="patientID">Patient ID</label> 
                     <input type="text" placeholder="Enter Patient ID" name="Patient ID" id="patientID" onfocusout="validatePatientID()"/>
                     <span class="errorTxt"></span>
                 </div>
-                <div>
+                <div class="medOpt">
                     <label for="medID">Medication ID</label> 
                     <input type="text" placeholder="Enter Medication ID" name="Medication ID" id="medID" onfocusout="validateMedID()"/>
                     <span class="errorTxt"></span>
                 </div>
-                <div>
+                <div class="DROpt" style="display:none;">
                     <label for="dietID">Diet ID</label> 
                     <input type="text" placeholder="Enter Diet ID" name="Diet ID" id="dietID" onfocusout="validateDietID()"/>
-                    <span class="errorTxt"></span>
-                </div>
-                <div class = "inputField">
-                    <label for="prescriptionType">Type of Prescription:</label> 
-                    <select id= "prescriptionOption" name="Prescription Options" class="required" autocomplete="off">
-                        <option hidden disabled selected value>(Select Option)</option>
-                        <option value="med">Medication</option>
-                        <option value="diet">Dietary</option>
-                    </select>
                     <span class="errorTxt"></span>
                 </div>
                 <div> 
@@ -81,38 +81,41 @@
                     </label>
                 </div>
                 <!-- Medication regime -->
-                <div class='inputField'>
+                <div class='inputField medOpt'>
                     <label for="medName">Medication Name</label>
                     <input type="text" placeholder="Enter Medication Name" name="Medication Name" id="medName" onfocusout="validateMedName()"/>
                     <span class="errorTxt"></span>
                 </div>
-                <div class='inputField'>
+                <div class='inputField medOpt'>
                     <label for="dosage">Dosage</label>
                     <input type="text" placeholder="Enter dosage amount" name="Dosage" id="dosage" onfocusout="validateDosage()"/>
                     <span class="errorTxt"></span>
                 </div> 
-                <div class='inputField'>
+                <div class='inputField medOpt'>
                     <label for="routeAdmin">Route of Administration</label>
                     <input type="text" placeholder="Enter Route of Administration" name="Route of Administration" id="routeAdmin" onfocusout="validateRouteAdmin()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <!-- Diet Regime -->
-                <div class='inputField'>
+                <div class='inputField DROpt' style="display:none;">
                     <label for="food">Food</label>
                     <input type="text" placeholder="Enter food" name="Food" id="food" onfocusout="validateFood()"/>
                     <span class="errorTxt"></span>
                 </div>
-                <div class='inputField'>
+                <div class='inputField DROpt' style="display:none;">
                     <label for="excercise">Excercise</label>
                     <input type="text" placeholder="Enter Excercise" name="Excercise" id="excercise" onfocusout="validateExcercise()"/>
                     <span class="errorTxt"></span>
                 </div>
-                <div class='inputField'>
+                <div class='inputField DROpt' style="display:none;">
                     <label for="beauty">Beauty</label>
                     <input type="text" placeholder="Enter beauty" name="Beauty" id="beauty" onfocusout="validateBeauty()"/>
                     <span class="errorTxt"></span>
                 </div>
-                <button class="submit" type="submit" onclick= "">Submit</button>
+                <button class="submit medOpt" type="submit" name="editMed">Edit Medication</button>
+                <button class="submit medOpt" type="submit" name="removeMed" style="background:red;" >Remove Medication</button>
+                <button class="submit DROpt" type="submit" name="editDR" style="display:none;" >Edit Diet Regime</button>
+                <button class="submit DROpt" type="submit"  name="removeDR" style="background:red; display:none;" >Remove Diet Regime</button>
             </form>
         </div>
 

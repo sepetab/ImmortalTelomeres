@@ -357,3 +357,43 @@ th {
   text-align: center;
   word-wrap: break-word;
 }
+
+
+
+
+/* SearchBarCSS from */
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  float: left;
+  display:flex;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 10px;
+  background: #143875;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #3192D2;
+  color:black;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}

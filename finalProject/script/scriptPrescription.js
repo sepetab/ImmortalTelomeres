@@ -9,6 +9,8 @@ const routeAdmin = document.getElementById('routeAdmin');
 const food = document.getElementById('food');
 const excercise = document.getElementById('excercise');
 const beauty = document.getElementById('beauty');
+const presOpt = document.getElementById('prescriptionOption');
+const prescriptionForm = document.getElementById('prescriptionForm');
 //validation colours
 const green = '#4CAF50';
 const red = '#F44336'; 
@@ -145,8 +147,39 @@ function matchWithRegEx(regEx, field, message) {
     }
 }
 
+// OptionSelector
+
+function OptionsToggler(){
+
+    if (presOpt.value == 'diet') {
+        dietFields = document.getElementsByClassName('DROpt')
+        medFields = document.getElementsByClassName('medOpt')
+        for (let dietField of dietFields){
+            dietField.style.display = "block"
+        }
+        for (let medField of medFields){
+            medField.style.display = "none"
+        }
+        prescriptionForm.action = "dietRegimes.php"
+    }else {
+        dietFields = document.getElementsByClassName('DROpt')
+        medFields = document.getElementsByClassName('medOpt')
+        for (let dietField of dietFields){
+            dietField.style.display = "none"
+        }
+        for (let medField of medFields){
+            medField.style.display = "block"
+        }
+        prescriptionForm.action = "medications.php"
+    }
+
+
+
+}
+
 // Handling form submit
 function validateNewPrescription() {
+    console.log(validatePatientID() && validateMedName() && validateDosage() && validateRouteAdmin() && validateFood() && validateExcercise() && validateBeauty())
     return validatePatientID() && validateMedName() && validateDosage() && validateRouteAdmin() && validateFood() && validateExcercise() && validateBeauty();
 }
 function validateEditPrescription() {
