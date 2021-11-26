@@ -126,12 +126,12 @@ function containsCharacters(field, code) {
           'Must contain at least one letter and one number'
         );
       case 5:
-        // only contain letters
-        regEx = /(?=.*[a-z])/; 
+        // lowercase, optional numbers
+        regEx = /^[a-zA-Z\d]+$/; 
         return matchWithRegEx(
           regEx, 
           field,
-          'Must contain only contain letters'
+          'Contain only letters and/or numbers'
         );
       default:
         return false;
