@@ -152,6 +152,10 @@ a {
 a:hover {
   color: #143774;
 }
+body {
+  width: 100%;
+  height: 100%;
+}
 /* Header and Footer */
 header {
   text-align: center;
@@ -171,6 +175,9 @@ header {
 }
 footer {
   background: #143774;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .middle-footer {
