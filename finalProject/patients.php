@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet"> 
 </head>
 <?php 
-$conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
+$conn = odbc_connect('z5206712', '', '', SQL_CUR_USE_ODBC);
 $picPID = 0;
 if(!$conn){exit("Connection Failed:". $conn);}
 if(isset($_POST["newPatient"])){
@@ -86,19 +86,24 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
                 <p class="subtitle">HealthHacker</p>
             </div></a>
             <nav>
-                <ul class="nav-ul">
-                    <li class="nav-li"><a class="nav-a" href="patients.php">Patients</a>
-                    <li class="nav-li"><a class="nav-a" href="#">Forms</a>
-                        <ul>
-                            <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
-                            <li><a class = "nav-a" href="editPatient.html">Edit Patient</a></li>
-                            <li><a class = "nav-a" href="newPrescription.html">New Prescription</a></li>
-                            <li><a class = "nav-a" href="editPrescription.html">Edit Prescription</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-li"><a class="nav-a" href="">Logout</a></li>
-                </ul>
-            </nav>
+                    <ul class="nav-ul">
+                        <li class="nav-li"><a class="nav-a" href="#">Information</a>
+                            <ul>
+                                <li><a class = "nav-a" href="patients.php">Patient List</a></li>
+                                <li><a class = "nav-a" href="">Diet Regime</a></li>
+                                <li><a class = "nav-a" href="">Medication Regime</a></li>
+                            </ul>
+                        <li class="nav-li"><a class="nav-a" href="#">Forms</a>
+                            <ul>
+                                <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
+                                <li><a class = "nav-a" href="editPatient.html">Edit Patient</a></li>
+                                <li><a class = "nav-a" href="newPrescription.html">New Prescription</a></li>
+                                <li><a class = "nav-a" href="editPrescription.html">Edit Prescription</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-li"><a class="nav-a" href="">Logout</a></li>
+                    </ul>
+                </nav>
         </div>
     </header>
     <!-- normal sign in page  -->

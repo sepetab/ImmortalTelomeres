@@ -8,7 +8,7 @@
     <body>
         <header>
             <div class="container-header">
-              <a HREF="mainpage.html"><div class="logo-container">
+              <a HREF="mainpage.php"><div class="logo-container">
                   <img src="img/logo2.png" class="logo" alt="Hearth with stethoscope"/>
                   <p class="subtitle">HealthHacker</p>
                 </div></a>
@@ -16,17 +16,16 @@
                     <ul class="nav-ul">
                         <li class="nav-li"><a class="nav-a" href="#">Information</a>
                             <ul>
-                                <li><a class = "nav-a" href="">Patient List</a></li>
+                                <li><a class = "nav-a" href="patients.php">Patient List</a></li>
                                 <li><a class = "nav-a" href="">Diet Regime</a></li>
                                 <li><a class = "nav-a" href="">Medication Regime</a></li>
                             </ul>
-                        <li class="nav-li"><a class="nav-a" href="patients.php">Patients</a>
                         <li class="nav-li"><a class="nav-a" href="#">Forms</a>
                             <ul>
                                 <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
                                 <li><a class = "nav-a" href="editPatient.html">Edit Patient</a></li>
                                 <li><a class = "nav-a" href="newPrescription.html">New Prescription</a></li>
-                                <li><a class = "nav-a" href="#">Edit Prescription</a></li>
+                                <li><a class = "nav-a" href="editPrescription.html">Edit Prescription</a></li>
                             </ul>
                         </li>
                         <li class="nav-li"><a class="nav-a" href="">Logout</a></li>
@@ -37,9 +36,19 @@
         <div class='formContainer'> 
             <h1>Edit Prescription Form</h1>
             <form id="prescriptionForm" onsubmit="return validateEditPrescription()">
-                <div class = "inputField">
-                    <label for="prescriiptionID">Prescription ID</label> 
-                    <input type="text" placeholder="Enter Prescription ID" name="Prescription ID" id="prescriptionID" onfocusout="validatePrescriptionID()"/>
+                <div>
+                    <label for="patientID">Patient ID</label> 
+                    <input type="text" placeholder="Enter Patient ID" name="Patient ID" id="patientID" onfocusout="validatePatientID()"/>
+                    <span class="errorTxt"></span>
+                </div>
+                <div>
+                    <label for="medID">Medication ID</label> 
+                    <input type="text" placeholder="Enter Medication ID" name="Medication ID" id="medID" onfocusout="validateMedID()"/>
+                    <span class="errorTxt"></span>
+                </div>
+                <div>
+                    <label for="dietID">Diet ID</label> 
+                    <input type="text" placeholder="Enter Diet ID" name="Diet ID" id="dietID" onfocusout="validateDietID()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class = "inputField">
@@ -71,11 +80,39 @@
                         <span class="checkmark"></span>     
                     </label>
                 </div>
-                <div>
-                    <label>Additional Information:</label>
-                    <textarea rows="5" cols="40" name="description" form="prescriptionForm">Include Patient Name and ID, with any additional medication requirements!</textarea>
+                <!-- Medication regime -->
+                <div class='inputField'>
+                    <label for="medName">Medication Name</label>
+                    <input type="text" placeholder="Enter Medication Name" name="Medication Name" id="medName" onfocusout="validateMedName()"/>
+                    <span class="errorTxt"></span>
                 </div>
-                <button class="submit" type="submit" onclick= "validateDebug()">Submit</button>
+                <div class='inputField'>
+                    <label for="dosage">Dosage</label>
+                    <input type="text" placeholder="Enter dosage amount" name="Dosage" id="dosage" onfocusout="validateDosage()"/>
+                    <span class="errorTxt"></span>
+                </div> 
+                <div class='inputField'>
+                    <label for="routeAdmin">Route of Administration</label>
+                    <input type="text" placeholder="Enter Route of Administration" name="Route of Administration" id="routeAdmin" onfocusout="validateRouteAdmin()"/>
+                    <span class="errorTxt"></span>
+                </div>
+                <!-- Diet Regime -->
+                <div class='inputField'>
+                    <label for="food">Food</label>
+                    <input type="text" placeholder="Enter food" name="Food" id="food" onfocusout="validateFood()"/>
+                    <span class="errorTxt"></span>
+                </div>
+                <div class='inputField'>
+                    <label for="excercise">Excercise</label>
+                    <input type="text" placeholder="Enter Excercise" name="Excercise" id="excercise" onfocusout="validateExcercise()"/>
+                    <span class="errorTxt"></span>
+                </div>
+                <div class='inputField'>
+                    <label for="beauty">Beauty</label>
+                    <input type="text" placeholder="Enter beauty" name="Beauty" id="beauty" onfocusout="validateBeauty()"/>
+                    <span class="errorTxt"></span>
+                </div>
+                <button class="submit" type="submit" onclick= "">Submit</button>
             </form>
         </div>
 

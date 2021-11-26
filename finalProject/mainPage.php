@@ -14,7 +14,12 @@
                 </div></a>
                 <nav>
                     <ul class="nav-ul">
-                        <li class="nav-li"><a class="nav-a" href="patients.php">Patients</a>
+                        <li class="nav-li"><a class="nav-a" href="#">Information</a>
+                            <ul>
+                                <li><a class = "nav-a" href="patients.php">Patient List</a></li>
+                                <li><a class = "nav-a" href="">Diet Regime</a></li>
+                                <li><a class = "nav-a" href="">Medication Regime</a></li>
+                            </ul>
                         <li class="nav-li"><a class="nav-a" href="#">Forms</a>
                             <ul>
                                 <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
