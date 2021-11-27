@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+      <!---javascript functions-->
+    <script type="text/javascript">
+
+      //declaration of global variabls
+      var emailbool = false;
+      var passbool = false;
+      var passconfirmbool = false;
+      var firstnamebool = false;
+      var lastnamebool = false;
+      var dobbool = false;
+
+      function validEmail(){
+        emailbool = false;
+        //alert("test")
+        var useremail = email.value;
+        //var myRE = /^\w+.\*-\*@[a-z]\*[A-Z]\*\d\*.\*-\*.\*[a-z]{2,4}|[A-Z]{2,4}$/;
+        var myRE = /^\w*\.*\-*@[a-z]*[A-Z]*\d*\.*\-*(.[a-z]{2,4}|[A-Z]{2,4})$/;
+        var x = myRE.test(useremail);
+        //alert(x);
+        if(x){
+          document.getElementById("email_err_mes").innerHTML = "Email is valid";
+          emailbool = true;
+        }
+        else{document.getElementById("email_err_mes").innerHTML = "Email is invalid\n The email address must have the following form:\n Before the ‘@’ you can have any number of a-z, A-Z, 0-9, ‘.’, ‘_’, or ‘-’\nAfter the ‘@’ you can have any number of a-z, A-Z, 0-9, ‘.’, or ‘-’\nAt the end you can have a ‘.’ followed by between 2 and 4 characters from a-z or A-Z";}
+      }
+
+      function validPassword(){
+        passbool = false;
+        var userpass = pass.value;
+       
+        var myRE = /^([a-z]+[A-Z]+[0-9]+)|([a-z]+[0-9]+[A-Z]+)|([0-9]+[a-z]+[A-Z]+)|([0-9]+[A-Z]+[a-z]+)|([A-Z]+[0-9]+[a-z]+)|([A-Z]+[a-z]+[0-9]+)$/;
+      
+        var x = myRE.test(userpass);
+        //first thing to do is check the that the size of password is at least 8
+        if(userpass.length>=8){
+          //now we check whether the pass word contains an uppercase, lower case and numerical character
+          if(x){
+            document.getElementById("Password_err_mes").innerHTML = "Password is valid";
+            passbool = true;
+          }
+          else{"Password is invalid. Password must contain at least 8 characters, and include uppercase, lowercase, and numerical characters";}
+        }
+        else{document.getElementById("Password_err_mes").innerHTML = "Password is invalid. Password must contain at least 8 characters, and include uppercase, lowercase, and numerical characters";}
+        
+      }
+
+      function confirmPassword(){
+        passconfirmbool = false;
+        var userconfirmpass = passconfirm.value;
+        if(userconfirmpass==pass.value){
+          document.getElementById("confirm_pass_err_mes").innerHTML = "Re-entered Password is valid";
+          passconfirmbool = true;
+        }
+        else{document.getElementById("confirm_pass_err_mes").innerHTML = "Re-entered Password is invalid. Re-entered password must match Password entered above";};
+
+      }
+
+      function validFirstName(){
+        firstnamebool = false;
+        var userfirst = firstname.value;
+        var myRE = /^([a-zA-z\s'-])+$/;
+        var x = myRE.test(userfirst);
+        if(x){
+          document.getElementById("first_name_err_mes").innerHTML = "First name is valid";
+          firstnamebool = true;
+        }
+        else{document.getElementById("first_name_err_mes").innerHTML = "First name is invalid. Allowable characters are upper and lowercase letters, white spaces, apostrophes and hyphens.";};
+      }
+
+      function validLastName(){
+        lastnamebool = false;
+        var userlast = lastname.value;
+        var myRE = /^([a-zA-z\s'-])+$/;
+        var x = myRE.test(userlast);
+        if(x){
+          document.getElementById("last_name_err_mes").innerHTML = "Last name is valid";
+            lastnamebool = true;
+        }
+        else{document.getElementById("last_name_err_mes").innerHTML = "Last name is invalid. Allowable characters are upper and lowercase letters, white spaces, apostrophes and hyphens.";};
+      }
+
+      function validDOB(){
+        dobbool = false;
+        var userdob = dob.value;
+        var myRE = /^\d\d[/]\d\d[/]\d\d\d\d$/;
+        var x = myRE.test(userdob);
+        //check date of birth matches the format required
+        document.getElementById("dob_err_mes").innerHTML = "";
+        //initialise our date to be wrong.
+        var good_date = false;
+        if(x){
+          var parts = userdob.split("/");
+          //check that the year is realistic
+          if(parts[2]>1871&&parts[2]<=2021){
+            //check that the month is realistic
+            if(parts[1]>0&&parts[1]<13){
+              
+              //do checks to see that day is realistic releative to month
+              //first check if it is feb, then we need to do a leap year check
+              if(parts[1]==2){
+                if((parts[2]%4)==0){
+                  if(parts[1]>0&&parts[1]<=29){
+                    //good date
+                    var good_date = true;
+                  }
+                }
+                else{
+                  if(parts[1]>0&&parts[1]<=28){
+                    //good date
+                    var good_date = true;
+                  }
+                }
+              }
+              //check other months that have 31 days
+              if(parts[1]==1||parts[1]==3||parts[1]==5||parts[1]==7||parts[1]==8||parts[1]==10||parts[1]==12){
+                //so for these months the day needs to be less than or equal to 31
+                if(parts[0]>0&&parts[0]<=31){
+                  //good date
+                  var good_date = true;
+                }
+              }
+              //if we are not dealing with february, and we are not dealing with months with 31 days.
+              //the months that are left have a max of 30 days
+              else{
+                if(parts[0]>0&&parts[0]<=30){
+                  //good date
+                  var good_date = true;
+                }
+              }
+            }
+          }
+        }
+
+        //Now good_date tells us if the date is realistic or not
+        if(good_date){
+          document.getElementById("dob_err_mes").innerHTML = "The date is valid";
+          dobbool = true;
+        }
+        else{document.getElementById("dob_err_mes").innerHTML = "The date is invalid. Please input a realistic date in the format of dd/mm/yyyy";};
+      }
+
+      function check_submission(){
+         //document.getElementById('form').innerHTML="Please enter a valid name";
+         //when I click submit, i need to check that all the functions listed below have been successful.
+
+         if(emailbool&&passbool&&passconfirmbool&&firstnamebool&&lastnamebool&&dobbool){
+          return true;
+         }
+         else{
+          //something in the form has not been entered correctly
+          alert("Please address the errors in the form before resubmitting");
+          return false;
+          //<form id="registrantInfo" method="GET" action="schedule.html">
+         }
+         
+         
+      }
+
+    </script>
+
+        <!--Referencing style sheet-->	
+        <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+      
+    </head>
+    <body> 
+      <header>
+      	       <!--Title of workshop along with logo at top of webpage-->
+              <H1>Telemedicine & Disease Categorisation Workshop</H1>
+              <p>
+              <img src="img/blender_heart_logo.png" class="Center" style="width:20%"/>
+              </p>
+              <nav>
+                  <ul class="nav-ul">
+                      <li class="nav-li"><a class="nav-a current-page" href="#">Home</a></li>
+                      <li class="nav-li"><a class="nav-a" href="schedule.html">Schedule</a></li>
+                       
+                  </ul>
+              </nav>
+          </div>
+      </header>
+       <!--call for abstracts and link to workshop program-->
+      <div class="container container-info">
+        <article class="article-main">
+            <h2 class="article-subtitle">CALL FOR ABSTRACTS </h2>
+
+            <!--script type = "text/javascript">
+            document.write( "Welcome to BIOM9450!" );
+			</script-->
+
+            <p class="article-body">This is a great opportunity for academics to gain exposure in the medical informatics field. Abstracts will be reviewed by a selected panel of judges with expertise in the area. Thereafter, preferred candidates will be contacted and made aware of their achievement.<br><br>
+                Please read our <a HREF="Schedule.html" class="underline">workshop program</a> to learn more.
+            </p>
+        </article>
+    </div>
+       <!--Venue details-->
+      <div class="container container-main">
+            <div class="sidebar-div">
+                <h2 class="sidebar-title">Location</h2>
+                <p class="subtitle-sb">Address</p><p class="sidebar-body">Floor 38, <strong>School of Data Science and Medical Innovation</strong>, UNSW Main Library, Kensington NSW 2033</p>
+                <p class="subtitle-sb">Date and Time</p><p class="sidebar-body">18/OCT/2021 &nbsp; &nbsp; 09:00 - 17:00</p>   
+                
+                  <p class="subtitle-sb">Login Details</p>
+            	     <!---javascript functions-->
+                   
+                   <form onsubmit="return check_submission()" action="Confirmation.php" method="post">
+                        <label>email</label>
+                        <input type="text" name="email" placeholder = "email" id ="email" onChange="validEmail()"><br>
+                        <p id="email_err_mes"></p>
+                        <label>Password</label>
+                        <input type="text" placeholder = "Password" id ="pass" onChange="validPassword()">
+                        <p id="Password_err_mes"></p>
+                        <label>Re-enter Password</label>
+                        <input type="text" placeholder = "Re-enter Password" id ="passconfirm" onChange="confirmPassword()">
+                        <p id="confirm_pass_err_mes"></p>
+                   
+                      <p class="subtitle-sb">User Details</p>
+                        <label>First Name</label>
+                        <input type="text" name="FirstName" placeholder = "First Name" id ="firstname" onChange="validFirstName()">
+                        <p id="first_name_err_mes"></p>
+                        <label>Last Name</label>
+                        <input type="text" name="LastName" placeholder = "Last Name" id ="lastname" onChange="validLastName()">
+                        <p id="last_name_err_mes"></p>
+                        <label>DOB (dd/mm/yyyy)</label>
+                        <input type="text" name = "dob" placeholder = "dd/mm/yyyy" id ="dob" onChange="validDOB()">
+                        <p id="dob_err_mes"></p>
+                        <label for="cars">Gender</label>
+                          <select name="Gender" id="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                          </select>
+                        <p></p>
+                        <label>I want to receive marketing material.</label>
+                        <input type="checkbox" id ="marketing">
+                        <p></p>
+                        <input type="submit" value = "Submit" id ="submit" onclick="check_submission()">
+                   </form>
+                  
+                    <!--button onclick="check_submission()">Submit</button-->
+
+
+            	
+            </div>
+            
+        </div>
+
+         <!--At the bottom of webpage we place our contact details-->
+        <footer>
+            <div class="footer-container">
+                <div>
+                    <img src="img/blender_heart_logo.png" class="logo" alt="a deco"/>
+                </div>
+                <div>
+                    <p class="footer-title">Telemedicine & Disease Categorisation Workshop</p>
+                    <p class="footer-copyright">&copy; 2021 ImmortalTelomeres</p>
+                </div>
+                <div>
+                    <p class="footer-title">CONTACT US</p>
+                    <p class="footer-copyright">+61 123456789</p>
+                    <p class="footer-copyright"><A class="footer-mail" HREF="mailto:enquires@biomedX.com">enquires@biomedX.com</a></p>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+</html>
+

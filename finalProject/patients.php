@@ -9,9 +9,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <?php 
-$conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
+$conn = odbc_connect('z5115189', '', '', SQL_CUR_USE_ODBC);
 $picPID = 0;
 if(!$conn){exit("Connection Failed:". $conn);}
+
 if(isset($_POST["newPatient"])){
     $firstName = $_POST["FirstName"];
     $lastName = $_POST["LastName"];
