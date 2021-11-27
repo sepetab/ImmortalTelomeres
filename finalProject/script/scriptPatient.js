@@ -22,7 +22,7 @@ function validateLastName(){
 
 function validateRoomNumber(){
     if(checkIfEmpty(roomNumber)) {return false};
-    if(!checkIfOnlyNumbers(roomNumber)) {return false};
+    if(!containsCharacters(roomNumber,1)) {return false};
     return true;
 }
 
@@ -75,6 +75,30 @@ function checkIfOnlyNumbers(field){
     } else {
         setInvalid(field, `${field.name} must contain only numbers`); 
         return false; 
+    }
+}
+function containsCharacters(field, code) {
+    let regEx;
+    switch (code) {
+      case 1:
+          // only contain 1-3 characters
+          regEx = /^[A-Za-z\d]{1,3}$/; 
+          return matchWithRegEx(
+              regEx,
+              field, 
+              'Maximum of 3 characters using letters/numbers'
+          ); 
+      default:
+          return false;
+    }
+}
+function matchWithRegEx(regEx, field, message) {
+    if (field.value.match(regEx)) {
+      setValid(field);
+      return true;
+    } else {
+      setInvalid(field, message);
+      return false;
     }
 }
 // Image preview
