@@ -34,7 +34,7 @@ function validateDietID(){
 // Medication regime
 function validateMedName() {
     if(checkIfEmpty(medName)) {return false};
-    if(!containsCharacters(medName,4)) {return false};
+    if(!containsCharacters(medName,1)) {return false};
     return true;
 }
 function validateDosage() {
@@ -44,23 +44,23 @@ function validateDosage() {
 }
 function validateRouteAdmin() {
     if(checkIfEmpty(routeAdmin)) {return false};
-    if(!containsCharacters(routeAdmin,4)) {return false};
+    if(!containsCharacters(routeAdmin,1)) {return false};
     return true;
 }
 // Diet regime
 function validateFood() {
     if(checkIfEmpty(food)) {return false};
-    if(!containsCharacters(food,4)) {return false};
+    if(!containsCharacters(food,1)) {return false};
     return true;
 }
 function validateExcercise() {
     if(checkIfEmpty(excercise)) {return false};
-    if(!containsCharacters(excercise,4)) {return false};
+    if(!containsCharacters(excercise,1)) {return false};
     return true;
 }
 function validateBeauty() {
     if(checkIfEmpty(beauty)) {return false};
-    if(!containsCharacters(beauty,4)) {return false};
+    if(!containsCharacters(beauty,1)) {return false};
     return true;
 }
 // Utility functions
@@ -104,30 +104,8 @@ function containsCharacters(field, code) {
     let regEx;
     switch (code) {
       case 1:
-          regEx = /^[A-Za-z\d]{1,3}$/; 
-          return matchWithRegEx(
-              regEx,
-              field, 
-              'Should contain either letters or numbers'
-          ); 
-      case 2:
-          regEx = /(?=.*\d)/; 
-          return matchWithRegEx(
-              regEx,
-              field, 
-              'Must contain only numbers'
-          );
-      case 3:
         // lowercase, optional numbers
-        regEx = /^[a-zA-Z\d]+$/; 
-        return matchWithRegEx(
-          regEx, 
-          field,
-          'Must contain only letters and/or numbers'
-        );
-      case 4:
-        // lowercase, optional numbers
-        regEx = /^[a-zA-Z]/; 
+        regEx = /[a-zA-Z]+$/; 
         return matchWithRegEx(
           regEx, 
           field,
@@ -161,6 +139,7 @@ function OptionsToggler(){
             medField.style.display = "none"
         }
         prescriptionForm.action = "dietRegimes.php"
+        prescriptionForm.onsubmit = "return validateNewMedPrescription()"
     }else {
         dietFields = document.getElementsByClassName('DROpt')
         medFields = document.getElementsByClassName('medOpt')
@@ -171,6 +150,7 @@ function OptionsToggler(){
             medField.style.display = "block"
         }
         prescriptionForm.action = "medications.php"
+        prescriptionForm.onsubmit = "return validateNewDietPrescription()"
     }
 
 
@@ -178,9 +158,13 @@ function OptionsToggler(){
 }
 
 // Handling form submit
-function validateNewPrescription() {
-    console.log(validatePatientID() && validateMedName() && validateDosage() && validateRouteAdmin() && validateFood() && validateExcercise() && validateBeauty())
-    return validatePatientID() && validateMedName() && validateDosage() && validateRouteAdmin() && validateFood() && validateExcercise() && validateBeauty();
+function validateNewMedPrescription() {
+    console.log(validatePatientID() && validateMedName() && validateDosage() && validateRouteAdmin());
+    return validatePatientID() && validateMedName() && validateDosage() && validateRouteAdmin();
+}
+function validateNewDietPrescription() {
+    console.log(validatePatientID()  && validateExcercise() && validateFood() && validateBeauty());
+    return validatePatientID()  && validateExcercise() && validateFood() && validateBeauty();
 }
 function validateEditPrescription() {
     return validatePatientID() && validateMedID() && validateDietID()&& validateMedName() && validateDosage() && validateRouteAdmin() && validateFood() && validateExcercise() && validateBeauty();

@@ -8,7 +8,7 @@
     <body>
         <header>
             <div class="container-header">
-              <a HREF="mainpage.php"><div class="logo-container">
+              <a HREF="mainpage.html"><div class="logo-container">
                   <img src="img/logo2.png" class="logo" alt="Hearth with stethoscope"/>
                   <p class="subtitle">HealthHacker</p>
                 </div></a>
@@ -38,7 +38,7 @@
             <form id="prescriptionForm" onsubmit="return validateEditPrescription()">
                 <div class = "inputField">
                     <label for="prescriptionType">Type of Prescription:</label> 
-                    <select id= "prescriptionOption" name="Prescription Options" onchange="OptionsToggler()" class="required" autocomplete="off">
+                    <select id= "prescriptionOption" name="Prescription Options" onchange="OptionsToggler()" class="required" autocomplete="off" required>
                         <!-- <option hidden disabled selected value>(Select Option)</option> -->
                         <option value="med">Medication</option>
                         <option value="diet">Dietary</option>

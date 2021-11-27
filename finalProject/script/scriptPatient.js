@@ -81,11 +81,12 @@ function containsCharacters(field, code) {
     let regEx;
     switch (code) {
       case 1:
-          regEx = /^[a-zA-Z\d]+$/; 
+          // only contain 1-3 characters
+          regEx = /^[A-Za-z\d]{1,3}$/; 
           return matchWithRegEx(
               regEx,
               field, 
-              'Should contain only letters or numbers'
+              'Maximum of 3 characters using letters/numbers'
           ); 
       default:
           return false;
