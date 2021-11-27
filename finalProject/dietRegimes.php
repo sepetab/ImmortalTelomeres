@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Patients</title>
+	<title>DietRegimes</title>
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <!-- FONT -->
   <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet"> 
@@ -10,30 +10,41 @@
 </head>
 <?php 
 $conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
-$picPID = 0;
 if(!$conn){exit("Connection Failed:". $conn);}
-if(isset($_POST["newPatient"])){
-    $firstName = $_POST["FirstName"];
-    $lastName = $_POST["LastName"];
-    $roomNumber = $_POST["RoomNumber"];
-    $insertQuery = "INSERT INTO Patient (FirstName, LastName, RoomNumber) VALUES ('$firstName','$lastName','$roomNumber')";
-    $insert = odbc_exec($conn,$insertQuery);
+if(isset($_POST["NewDR"])){
+    $PID = $_POST["PatientID"];
+    $startDate = $_POST["startDate"];
+    $endDate = $_POST["finishDate"];
+    $morning = $_POST["Morning"];
+    $afternoon = $_POST["Afternoon"];
+    $night = $_POST["Night"];
+    $food = $_POST["Food"];
+    $exercise = $_POST["Exercise"];
+    $beauty = $_POST["Beauty"];
+    echo $PID;
+    echo $startDate;
+    echo $endDate;
+    echo $morning;
+    echo $afternoon;
+    echo $night;
+    echo $food;
+    echo $exercise;
+    echo $beauty;
 
-    $getPid = "SELECT @@IDENTITY AS PID FROM Patient";
-    $pid = odbc_exec($conn,$getPid);
-    while ($row = odbc_fetch_array($pid)) {
-        $picPID =  $row['PID'];
-        break;
-    }
-}else if(isset($_POST["editPatient"])){
+
+
+    // $insertQuery = "INSERT INTO Patient (FirstName, LastName, RoomNumber) VALUES ('$firstName','$lastName','$roomNumber')";
+    // $insert = odbc_exec($conn,$insertQuery);
+
+
+}else if(isset($_POST["editDR"])){
     $PID = $_POST["PatientID"];
     $firstName = $_POST["FirstName"];
     $lastName = $_POST["LastName"];
     $roomNumber = $_POST["RoomNumber"];
-    $picPID =  $PID;
     $updateQuery = "UPDATE Patient SET FirstName = '$firstName', LastName = '$lastName', RoomNumber = '$roomNumber' WHERE PatientID = $PID";
     $update = odbc_exec($conn,$updateQuery);
-}else if(isset($_POST["removePatient"])){
+}else if(isset($_POST["removeDR"])){
     $PID = $_POST["PatientID"];
     $firstName = $_POST["FirstName"];
     $lastName = $_POST["LastName"];
@@ -41,43 +52,6 @@ if(isset($_POST["newPatient"])){
     $deleteQuery = "DELETE * FROM Patient WHERE PatientID = $PID";
     $delete = odbc_exec($conn,$deleteQuery);
 } 
-// Below If block derived from W3 schools: w3schools.com/php/php_file_upload.asp
-if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $picPID!=0){
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["PatientPicture"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-    
-    if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["PatientPicture"]["tmp_name"]);
-        if($check !== false) {
-          echo "File is an image - " . $check["mime"] . ".";
-          $uploadOk = 1;
-        } else {
-          echo "File is not an image.";
-          $uploadOk = 0;
-        }
-    }
-
-    if ($_FILES["PatientPicture"]["size"] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
-
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
-
-    if ($uploadOk == 1 && $imageFileType) {
-        if (!move_uploaded_file($_FILES["PatientPicture"]["tmp_name"], './' . $target_dir . $picPID . '.png')) {
-            echo "Sorry there was an error uploading your file.";
-        }
-    }else if($imageFileType){
-        echo "Sorry there was an error in file specifications.";
-    }
-
-}
 ?>
 
 

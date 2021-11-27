@@ -170,7 +170,7 @@ function OptionsToggler(){
             medField.style.display = "none"
         }
         prescriptionForm.action = "dietRegimes.php"
-        prescriptionForm.onsubmit = "return validateNewMedPrescription()"
+        prescriptionForm.setAttribute("onsubmit", "return validateNewMedPrescription()");  
     }else {
         dietFields = document.getElementsByClassName('DROpt')
         medFields = document.getElementsByClassName('medOpt')
@@ -181,7 +181,8 @@ function OptionsToggler(){
             medField.style.display = "block"
         }
         prescriptionForm.action = "medications.php"
-        prescriptionForm.onsubmit = "return validateNewDietPrescription()"
+        prescriptionForm.setAttribute("onsubmit", "return validateNewDietPrescription()");  
+        
     }
 
 
@@ -190,14 +191,10 @@ function OptionsToggler(){
 
 // Handling form submit
 function validateNewMedPrescription() {
-    console.log(validateCheckBox());
+    console.log(validatePatientID()  && validateCheckBox() && validateMedName() && validateDosage() && validateRouteAdmin());
     return validatePatientID()  && validateCheckBox() && validateMedName() && validateDosage() && validateRouteAdmin();
 }
 function validateNewDietPrescription() {
     console.log(validatePatientID()  && validateExercise() && validateFood() && validateBeauty());
-    return validatePatientID()  && validateExercise() && validateFood() && validateBeauty();
-}
-function validateEditPrescription() {
-    console.log(validateCheckBox());
-    return validatePatientID() && validateMedID() && validateDietID() && validateCheckBox() && validateMedName() && validateDosage() && validateRouteAdmin() && validateFood() && validateExercise() && validateBeauty();
+    return validatePatientID()  && validateCheckBox() && validateExercise() && validateFood() && validateBeauty();
 }
