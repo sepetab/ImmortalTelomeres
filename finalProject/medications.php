@@ -215,7 +215,7 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
                     <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
                 </div>
                 <div class="middle-footer">
-                    <p class="footer-title">HEALTHPortal</p>
+                    <p class="footer-title">HEALTHPORTAL</p>
                     <p class="footer-copyright">&copy; 2021 ImmortalTelomeres</p>
                 </div>
                 <div>
