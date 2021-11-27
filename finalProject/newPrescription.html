@@ -35,35 +35,40 @@
         </header>
         <div class='formContainer'> 
             <h1>New Prescription Form</h1>
-            <form id="prescriptionForm" onsubmit="return validateNewPrescription()"> 
+            <form id="prescriptionForm" onsubmit="return validateNewPrescription()" action="medications.php" method="post"> 
                 <div class = "inputField">
                     <label for="prescriptionType">Type of Prescription:</label> 
-                    <select id= "prescriptionOption" name="Prescription Options" class="required" autocomplete="off">
+                    <select id= "prescriptionOption" name="prescriptionOptions" class="required" autocomplete="off">
                         <option hidden disabled selected value>(Select Option)</option>
                         <option value="med">Medication</option>
                         <option value="diet">Dietary</option>
                     </select>
+                    <!--select id= "prescriptionOption" name="Prescription Options" class="required" autocomplete="off">
+                        <option hidden disabled selected value>(Select Option)</option>
+                        <option value="med">Medication</option>
+                        <option value="diet">Dietary</option>
+                    </select-->
                     <span class="errorTxt"></span>
                 </div>
                 <div> 
                     <label for="startDate">Start Date</label> 
-                    <input type="date" name="" max="" id="startDate" onfocusout="validatePrescriptionDate"/>
+                    <input type="date" name="startDate" max="" id="startDate" onfocusout="validatePrescriptionDate"/>
                     <span class="errorTxt"></span>
                     <label for="finishDate">Finish Date</label>
-                    <input type="date" name="" max="" id="finishDate" onfocusout="validatePrescriptionDate"/>
+                    <input type="date" name="finishDate" max="" id="finishDate" onfocusout="validatePrescriptionDate"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class = "inputField">
                     <label class="optionBox">Morning
-                        <input type="checkbox">
+                        <input type="checkbox" name="morning">
                         <span class="checkmark"></span>   
                     </label>
                     <label class="optionBox">Afternoon
-                        <input type="checkbox">
+                        <input type="checkbox" name="afternoon">
                         <span class="checkmark"></span>     
                     </label>
                     <label class="optionBox">Evening
-                        <input type="checkbox">
+                        <input type="checkbox" name="evening">
                         <span class="checkmark"></span>     
                     </label>
                 </div>
@@ -71,7 +76,7 @@
                     <label>Additional Information:</label>
                     <textarea rows="5" cols="40" name="description" form="prescriptionForm" placeholder="Include Patient Name and ID, with any additional medication requirements!"></textarea>
                 </div>
-                <button class="submit" type="submit" onclick= "validateDebug()">Submit</button>
+                <button class="submit" type="submit" onclick= "validateDebug()" name="newPrescription">Submit</button>
             </form>
         </div>
 

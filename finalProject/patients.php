@@ -6,9 +6,10 @@
   <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet"> 
 </head>
 <?php 
-$conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
+$conn = odbc_connect('z5115189', '', '', SQL_CUR_USE_ODBC);
 $picPID = 0;
 if(!$conn){exit("Connection Failed:". $conn);}
+
 if(isset($_POST["newPatient"])){
     $firstName = $_POST["FirstName"];
     $lastName = $_POST["LastName"];
@@ -61,10 +62,10 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
         $uploadOk = 0;
     }
 
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+    /*if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
-    }
+    }*/
 
     if ($uploadOk == 1) {
         if (move_uploaded_file($_FILES["PatientPicture"]["tmp_name"], './' . $target_dir . $picPID . '.png')) {
