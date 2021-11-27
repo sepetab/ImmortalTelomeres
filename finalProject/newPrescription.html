@@ -81,7 +81,7 @@
                 <!-- Medication regime -->
                 <div class='inputField medOpt'>
                     <label for="medName">Medication Name</label>
-                    <input type="text" placeholder="Enter Medication Name" name="Medication Name" id="medName" onfocusout="validateMedName()"/>
+                    <input type="text" placeholder="Enter Medication Name" name="MedicationName" id="medName" onfocusout="validateMedName()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class='inputField medOpt'>
@@ -91,7 +91,7 @@
                 </div> 
                 <div class='inputField medOpt'>
                     <label for="routeAdmin">Route of Administration</label>
-                    <input type="text" placeholder="Enter Route of Administration" name="Route of Administration" id="routeAdmin" onfocusout="validateRouteAdmin()"/>
+                    <input type="text" placeholder="Enter Route of Administration" name="RouteofAdministration" id="routeAdmin" onfocusout="validateRouteAdmin()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <!-- Diet Regime -->
@@ -113,7 +113,7 @@
                     <textarea type="text" placeholder="Enter beauty requirments" name="Beauty" id="beauty" rows="8" cols="67" onfocusout=""/></textarea>
                     <span class="errorTxt"></span>
                 </div>
-                <button class="submit medOpt" type="submit" name="NewMedication" onclick="validateNewPrescription()">Submit New Medication</button>
+                <button class="submit medOpt" type="submit" name="NewMedication" onclick="validateNewMedPrescription()">Submit New Medication</button>
                 <button class="submit DROpt" style="display:none;" type="submit" name="NewDR">Submit New Diet Regime</button>
             </form>
         </div>

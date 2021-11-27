@@ -151,10 +151,10 @@ function validateCheckBox(){
     }
     else if (document.getElementById("evening").checked) {
         valid = true; 
-    } else {
+    }else{
         alert('Select at least one time slot'); 
-        return false;
     }
+    return valid;
 }
 // OptionSelector
 
