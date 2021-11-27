@@ -393,3 +393,11 @@ form.example::after {
   clear: both;
   display: table;
 }
+
+
+
+/* Error text width */
+
+.errorTXT {
+  width:100%;
+}

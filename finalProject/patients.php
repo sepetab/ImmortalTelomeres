@@ -36,9 +36,6 @@ if(isset($_POST["newPatient"])){
     $update = odbc_exec($conn,$updateQuery);
 }else if(isset($_POST["removePatient"])){
     $PID = $_POST["PatientID"];
-    $firstName = $_POST["FirstName"];
-    $lastName = $_POST["LastName"];
-    $roomNumber = $_POST["RoomNumber"];
     $deleteQuery = "DELETE * FROM Patient WHERE PatientID = $PID";
     $delete = odbc_exec($conn,$deleteQuery);
 } 

@@ -39,7 +39,7 @@ if(isset($_POST["NewMedication"])){
     //Insert form information into table
     //manually make dummy values
     $pid = $_POST["PatientID"];
-    $medName = $_POST["medicationName"];
+    $medName = $_POST["MedicationName"];
     $dos = $_POST["Dosage"];
     $roa = $_POST["RouteofAdministration"];
     $insertQuery = "INSERT INTO Medication (PatientID, StartDate, EndDate, MedTime, MedName, Dosage, ROA) VALUES ('$pid','$sDate','$fDate','$time','$medName','$dos','$roa')";
