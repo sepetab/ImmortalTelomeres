@@ -7,7 +7,7 @@ const medName = document.getElementById('medName');
 const dosage = document.getElementById('dosage');
 const routeAdmin = document.getElementById('routeAdmin');
 const food = document.getElementById('food');
-const excercise = document.getElementById('excercise');
+const exercise = document.getElementById('exercise');
 const beauty = document.getElementById('beauty');
 const presOpt = document.getElementById('prescriptionOption');
 const prescriptionForm = document.getElementById('prescriptionForm');
@@ -53,9 +53,9 @@ function validateFood() {
     if(!containsCharacters(food,1)) {return false};
     return true;
 }
-function validateExcercise() {
-    if(checkIfEmpty(excercise)) {return false};
-    if(!containsCharacters(excercise,1)) {return false};
+function validateExercise() {
+    if(checkIfEmpty(exercise)) {return false};
+    if(!containsCharacters(exercise,1)) {return false};
     return true;
 }
 function validateBeauty() {
@@ -124,7 +124,23 @@ function matchWithRegEx(regEx, field, message) {
       return false;
     }
 }
-
+// validateCheckBox 
+function validateCheckBox(){
+    var valid = false;
+    
+    if(document.getElementById("morning").checked) {
+        valid = true; 
+    }
+    else if (document.getElementById("afternoon").checked) {
+        valid = true; 
+    }
+    else if (document.getElementById("evening").checked) {
+        valid = true; 
+    } else {
+        alert('Select at least one time slot'); 
+        return false;
+    }
+}
 // OptionSelector
 
 function OptionsToggler(){
@@ -159,13 +175,14 @@ function OptionsToggler(){
 
 // Handling form submit
 function validateNewMedPrescription() {
-    console.log(validatePatientID() && validateMedName() && validateDosage() && validateRouteAdmin());
-    return validatePatientID() && validateMedName() && validateDosage() && validateRouteAdmin();
+    console.log(validateCheckBox());
+    return validatePatientID()  && validateCheckBox() && validateMedName() && validateDosage() && validateRouteAdmin();
 }
 function validateNewDietPrescription() {
-    console.log(validatePatientID()  && validateExcercise() && validateFood() && validateBeauty());
-    return validatePatientID()  && validateExcercise() && validateFood() && validateBeauty();
+    console.log(validatePatientID()  && validateExercise() && validateFood() && validateBeauty());
+    return validatePatientID()  && validateExercise() && validateFood() && validateBeauty();
 }
 function validateEditPrescription() {
-    return validatePatientID() && validateMedID() && validateDietID()&& validateMedName() && validateDosage() && validateRouteAdmin() && validateFood() && validateExcercise() && validateBeauty();
+    console.log(validateCheckBox());
+    return validatePatientID() && validateMedID() && validateDietID() && validateCheckBox() && validateMedName() && validateDosage() && validateRouteAdmin() && validateFood() && validateExercise() && validateBeauty();
 }

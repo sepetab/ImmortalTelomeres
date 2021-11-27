@@ -144,7 +144,6 @@ label {
 span {
   font-weight: bold;
 }
-
 a {
   text-decoration: none;
   color: #1792d2;
@@ -358,18 +357,15 @@ th {
   word-wrap: break-word;
 }
 
-
-
-
 /* SearchBarCSS from */
 
-form.example input[type=text] {
+form.example input[type="text"] {
   padding: 10px;
   font-size: 17px;
   border: 1px solid grey;
   box-sizing: border-box;
   float: left;
-  display:flex;
+  display: flex;
   width: 80%;
   background: #f1f1f1;
 }
@@ -388,8 +384,8 @@ form.example button {
 }
 
 form.example button:hover {
-  background: #3192D2;
-  color:black;
+  background: #3192d2;
+  color: black;
 }
 
 form.example::after {

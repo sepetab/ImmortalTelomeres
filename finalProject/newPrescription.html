@@ -61,15 +61,15 @@
                 <div class = "inputField">
                     <label class="inputField">Time</label>
                     <label class="optionBox">Morning
-                        <input type="checkbox">
+                        <input type="checkbox" name="Morning" id="morning">
                         <span class="checkmark"></span>   
                     </label>
                     <label class="optionBox">Afternoon
-                        <input type="checkbox">
+                        <input type="checkbox" name="Afternoon" id="afternoon">
                         <span class="checkmark"></span>     
                     </label>
                     <label class="optionBox">Evening
-                        <input type="checkbox">
+                        <input type="checkbox" name="Evening" id="evening">
                         <span class="checkmark"></span>     
                     </label>
                 </div>
@@ -92,17 +92,20 @@
                 <!-- Diet Regime -->
                 <div class='inputField DROpt' style="display:none;">
                     <label for="food">Food</label>
-                    <input type="text" placeholder="Enter food" name="Food" id="food" onfocusout="validateFood()"/>
+                    <!-- <p class="subtitle">Add "none" if unapplicable</p> -->
+                    <textarea type="text" placeholder="Enter food requirements" name="Food" id="food" rows="8" cols="67" onfocusout=""/></textarea>
                     <span class="errorTxt"></span>
                 </div>
                 <div class='inputField DROpt' style="display:none;">
-                    <label for="excercise">Excercise</label>
-                    <input type="text" placeholder="Enter Excercise" name="Excercise" id="excercise" onfocusout="validateExcercise()"/>
+                    <label for="exercise">Exercise</label>
+                    <!-- <p class="subtitle">Add "none" if unapplicable</p> -->
+                    <textarea type="text" placeholder="Enter exercise requirments" name="Excercise" id="exercise" rows="8" cols="67" onfocusout=""/></textarea>
                     <span class="errorTxt"></span>
                 </div>
                 <div class='inputField DROpt' style="display:none;">
                     <label for="beauty">Beauty</label>
-                    <input type="text" placeholder="Enter beauty" name="Beauty" id="beauty" onfocusout="validateBeauty()"/>
+                    <!-- <p class="subtitle">Add "none" if unapplicable</p> -->
+                    <textarea type="text" placeholder="Enter beauty requirments" name="Beauty" id="beauty" rows="8" cols="67" onfocusout=""/></textarea>
                     <span class="errorTxt"></span>
                 </div>
                 <button class="submit medOpt" type="submit" name="NewMedication" onclick="validateNewPrescription()">Submit New Medication</button>
