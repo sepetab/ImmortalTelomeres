@@ -13,14 +13,14 @@ $picPID = 0;
 if(!$conn){exit("Connection Failed:". $conn);}
 
 //Check to see if prescription type is medeication or diet
-if(isset($_POST["newPrescription"])){
+if(isset($_POST["NewMedication"])){
 
     $presOpt = $_POST["prescriptionOptions"];
     $sDate = $_POST["startDate"];
     $fDate = $_POST["finishDate"];
-    $morning = $_POST["morning"];
-    $afternoon = $_POST["afternoon"];
-    $evening = $_POST["evening"];
+    $morning = $_POST["Morning"];
+    $afternoon = $_POST["Afternoon"];
+    $evening = $_POST["Evening"];
 
     $time = "";
     if($morning=="on"){
@@ -38,10 +38,10 @@ if(isset($_POST["newPrescription"])){
 
     //Insert form information into table
     //manually make dummy values
-    $pid = 2;
-    $medName = "Pills";
-    $dos = 3;
-    $roa = "Oral";
+    $pid = $_POST["PatientID"];
+    $medName = $_POST["medicationName"];
+    $dos = $_POST["Dosage"];
+    $roa = $_POST["RouteofAdministration"];
     $insertQuery = "INSERT INTO Medication (PatientID, StartDate, EndDate, MedTime, MedName, Dosage, ROA) VALUES ('$pid','$sDate','$fDate','$time','$medName','$dos','$roa')";
     $insert = odbc_exec($conn,$insertQuery);
   
@@ -157,8 +157,8 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
         <h1>Medications list</h1>
         <!-- Search app -->
         <form class="example" method = "post" action="medications.php" style="margin:auto;max-width:700px">
-            <input type="text" placeholder="Enter Patient's First Name, Last Name or ID" name="search2">
-            <button type="submit" name="search"><i class="fa fa-search"></i> Search for patient</button>
+            <input type="text" placeholder="Enter Medication Name or Medication ID" name="search2">
+            <button type="submit" name="search"><i class="fa fa-search"></i> Search for Medication</button>
         </form>
     </div>
         <div>
@@ -186,10 +186,22 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
                 <!--Exemplar data-->
                 <tbody> 
                     <?php 
-                        $medicationsQ = "SELECT * FROM Medication";
-                        $medications = odbc_exec($conn,$medicationsQ);
-                        while ($row = odbc_fetch_array($medications)) {    
-                            echo "<tr>";
+                        //Addressing the search bar
+                        if(isset($_POST["search"])){
+                            $query = $_POST["search2"];
+                            if($query){
+                                if(is_numeric($query)){
+                                    $searchQ = "SELECT * FROM Medication WHERE MedID = $query";
+                                }else{
+                                    $searchQ = "SELECT * FROM Medication WHERE UCase(MedName) ='" . strtoupper($query) . "'";
+                                }
+                            }else{
+                                $searchQ = "SELECT * FROM Medication";
+                            }
+                            // echo $searchQ;
+                            $searchResults = odbc_exec($conn,$searchQ);
+                            while ($row = odbc_fetch_array($searchResults)) {    
+                                echo "<tr>";
                             echo "<td>" . $row['MedID'] . "</td>";
                             echo "<td>" . $row['PatientID'] . "</td>";
                             echo "<td>" . $row['StartDate'] . "</td>";
@@ -198,10 +210,26 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
                             echo "<td>" . $row['MedName'] . "</td>";
                             echo "<td>" . $row['Dosage'] . "</td>";
                             echo "<td>" . $row['ROA'] . "</td>";
-                            //echo "<td>" . $row['FirstName'] . " " . $row['LastName'] . "</td>";
-                            //echo "<td>" . $row['RoomNumber'] . "</td>";
-                            //echo "<td><img src='./uploads/" . $row['PatientID'] .".png' alt='' height=100 width=100></img></td>";
                             echo "</tr>";
+                            }
+                        }else{
+                            $medicationsQ = "SELECT * FROM Medication";
+                            $medications = odbc_exec($conn,$medicationsQ);
+                            while ($row = odbc_fetch_array($medications)) {    
+                                echo "<tr>";
+                                echo "<td>" . $row['MedID'] . "</td>";
+                                echo "<td>" . $row['PatientID'] . "</td>";
+                                echo "<td>" . $row['StartDate'] . "</td>";
+                                echo "<td>" . $row['EndDate'] . "</td>";
+                                echo "<td>" . $row['MedTime'] . "</td>";
+                                echo "<td>" . $row['MedName'] . "</td>";
+                                echo "<td>" . $row['Dosage'] . "</td>";
+                                echo "<td>" . $row['ROA'] . "</td>";
+                                //echo "<td>" . $row['FirstName'] . " " . $row['LastName'] . "</td>";
+                                //echo "<td>" . $row['RoomNumber'] . "</td>";
+                                //echo "<td><img src='./uploads/" . $row['PatientID'] .".png' alt='' height=100 width=100></img></td>";
+                                echo "</tr>";
+                            }
                         }
                     
                     ?>
