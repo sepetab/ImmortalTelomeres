@@ -84,9 +84,9 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
 <body>
     <header>
         <div class="container-header">
-            <a HREF="mainpage.php"><div class="logo-container">
+            <a HREF="mainpage.html"><div class="logo-container">
                 <img src="img/logo2.png" class="logo" alt="Hearth with stethoscope"/>
-                <p class="subtitle">HealthHacker</p>
+                <p class="subtitle">HealthPortal</p>
             </div></a>
             <nav>
                     <ul class="nav-ul">
@@ -182,7 +182,7 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
                     <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
                 </div>
                 <div class="middle-footer">
-                    <p class="footer-title">HEALTHHACKER WORKSHOP</p>
+                    <p class="footer-title">HEALTHPortal</p>
                     <p class="footer-copyright">&copy; 2021 ImmortalTelomeres</p>
                 </div>
                 <div>
