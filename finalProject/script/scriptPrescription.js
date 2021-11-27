@@ -50,7 +50,6 @@ function validateRouteAdmin() {
 // Diet regime
 function validateFood() {
     if(checkIfEmpty(food)) {return false};
-    if(!containsCharacters(food,1)) {return false};
     return true;
 }
 function validateExercise() {
@@ -66,8 +65,13 @@ function validateBeauty() {
 // Utility functions
 function checkIfEmpty(field){
     if(isEmpty(field.value.trim())){
-        //set field invalid 
-        setInvalid(field, `${field.name} must not be empty`);
+        //set field invalid
+        
+        if (field.name == "Food" || field.name == "Exercise" || field.name == "Beauty"){
+            setInvalid(field, 'At least one of the regimes must be filled');
+        }else{
+            setInvalid(field, `${field.name} must not be empty`);
+        }
         return true;
     } else {
         //set field valid (not-empty)
@@ -170,7 +174,7 @@ function OptionsToggler(){
             medField.style.display = "none"
         }
         prescriptionForm.action = "dietRegimes.php"
-        prescriptionForm.setAttribute("onsubmit", "return validateNewMedPrescription()");  
+        prescriptionForm.setAttribute("onsubmit", "return validateNewDietPrescription()");  
     }else {
         dietFields = document.getElementsByClassName('DROpt')
         medFields = document.getElementsByClassName('medOpt')
@@ -181,12 +185,8 @@ function OptionsToggler(){
             medField.style.display = "block"
         }
         prescriptionForm.action = "medications.php"
-        prescriptionForm.setAttribute("onsubmit", "return validateNewDietPrescription()");  
-        
+        prescriptionForm.setAttribute("onsubmit", "return validateNewMedPrescription()");     
     }
-
-
-
 }
 
 // Handling form submit
@@ -196,5 +196,7 @@ function validateNewMedPrescription() {
 }
 function validateNewDietPrescription() {
     console.log(validatePatientID()  && validateExercise() && validateFood() && validateBeauty());
-    return validatePatientID()  && validateCheckBox() && validateExercise() && validateFood() && validateBeauty();
+    return validatePatientID() && validateCheckBox() && (validateExercise() || validateFood() || validateBeauty());
 }
+
+

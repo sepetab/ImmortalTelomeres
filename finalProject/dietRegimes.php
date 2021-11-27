@@ -12,44 +12,95 @@
 $conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
 if(!$conn){exit("Connection Failed:". $conn);}
 if(isset($_POST["NewDR"])){
-    $PID = $_POST["PatientID"];
-    $startDate = $_POST["startDate"];
-    $endDate = $_POST["finishDate"];
-    $morning = $_POST["Morning"];
-    $afternoon = $_POST["Afternoon"];
-    $night = $_POST["Night"];
+    $pid = $_POST["PatientID"];
+    $sDate = $_POST["startDate"];
+    $fDate = $_POST["finishDate"];
+    $morning = $_POST["morning"];
+    $afternoon = $_POST["afternoon"];
+    $evening = $_POST["evening"];
     $food = $_POST["Food"];
     $exercise = $_POST["Exercise"];
     $beauty = $_POST["Beauty"];
-    echo $PID;
-    echo $startDate;
-    echo $endDate;
-    echo $morning;
-    echo $afternoon;
-    echo $night;
-    echo $food;
-    echo $exercise;
-    echo $beauty;
+
+    $time = "";
+    if($morning=="on"){
+        $morning = "M";
+        $time = $time.$morning;
+    }
+    if($afternoon=="on"){
+        $afternoon = "A";
+        $time = $time.$afternoon;
+    }
+    if($evening=="on"){
+        $evening = "N";
+        $time = $time.$evening;
+    }
+    $insertQuery = "INSERT INTO DietRegime (PatientID, StartDate, EndDate, DietTime, Food, Exercise, Beauty) VALUES ('$pid','$sDate','$fDate','$time','$food','$exercise','$beauty')";
+    $insert = odbc_exec($conn,$insertQuery);
+
+    // Input Into DRScribe
+
+    // Date array
+    $begin = new DateTime($sDate);
+    $end = new DateTime($fDate);
+    $interval = DateInterval::createFromDateString('1 day');
+    $period = new DatePeriod($begin, $interval, $end);
 
 
+    // Time array
+    $times = str_split($time);
 
-    // $insertQuery = "INSERT INTO Patient (FirstName, LastName, RoomNumber) VALUES ('$firstName','$lastName','$roomNumber')";
-    // $insert = odbc_exec($conn,$insertQuery);
+    // Current DRID
+    $getDid = "SELECT @@IDENTITY AS DID FROM DietRegime";
+    $dide = odbc_exec($conn,$getDid);
+    while ($row = odbc_fetch_array($dide)) {
+        $did =  $row['DID'];
+        break;
+    }
 
+    foreach ($period as $dt) {
+        foreach ($times as $t){
+            $dateToInsert = $dt->format("Y-m-d");
+            $insertQuery = "INSERT INTO DRScribe (PractitionerID,PatientID, DRDate, DRSTime, DRCheck, Refused,Notes DRID) VALUES (0,$pid,'$dateToInsert','$t','No','No','',$did)";
+            echo $insertQuery;
+            $insert = odbc_exec($conn,$insertQuery);
+            break;
+        }
+        break;
+    }
 
 }else if(isset($_POST["editDR"])){
-    $PID = $_POST["PatientID"];
-    $firstName = $_POST["FirstName"];
-    $lastName = $_POST["LastName"];
-    $roomNumber = $_POST["RoomNumber"];
-    $updateQuery = "UPDATE Patient SET FirstName = '$firstName', LastName = '$lastName', RoomNumber = '$roomNumber' WHERE PatientID = $PID";
+    $pid = $_POST["PatientID"];
+    $did = $_POST["DietID"];
+    $sDate = $_POST["startDate"];
+    $fDate = $_POST["finishDate"];
+    $morning = $_POST["morning"];
+    $afternoon = $_POST["afternoon"];
+    $evening = $_POST["evening"];
+    $food = $_POST["Food"];
+    $exercise = $_POST["Exercise"];
+    $beauty = $_POST["Beauty"];
+
+    $time = "";
+    if($morning=="on"){
+        $morning = "M";
+        $time = $time.$morning;
+    }
+    if($afternoon=="on"){
+        $afternoon = "A";
+        $time = $time.$afternoon;
+    }
+    if($evening=="on"){
+        $evening = "N";
+        $time = $time.$evening;
+    }
+
+    $updateQuery = "UPDATE DietRegime SET PatientID = $pid, StartDate = '$sDate', EndDate = '$fDate', DietTime = '$time' , Food = '$food' , Exercise = '$exercise' , Beauty = '$beauty' WHERE DRID = $did";
     $update = odbc_exec($conn,$updateQuery);
+
 }else if(isset($_POST["removeDR"])){
-    $PID = $_POST["PatientID"];
-    $firstName = $_POST["FirstName"];
-    $lastName = $_POST["LastName"];
-    $roomNumber = $_POST["RoomNumber"];
-    $deleteQuery = "DELETE * FROM Patient WHERE PatientID = $PID";
+    $did = $_POST["DietID"];
+    $deleteQuery = "DELETE * FROM DietRegime WHERE DRID = $did";
     $delete = odbc_exec($conn,$deleteQuery);
 } 
 ?>
@@ -85,25 +136,35 @@ if(isset($_POST["NewDR"])){
     </header>
     <!-- normal sign in page  -->
     <div class="formContainer">
-        <h1>Patients list</h1>
-        <form class="example" method = "post" action="patients.php" style="margin:auto;max-width:700px">
-            <input type="text" placeholder="Enter Patient's First Name, Last Name or ID" name="search2">
-            <button type="submit" name="search"><i class="fa fa-search"></i> Search for patient</button>
+        <h1>Diet Regimes</h1>
+        <form class="example" method = "post" action="dietRegimes.php" style="margin:auto;max-width:700px">
+            <input type="text" placeholder="Enter Diet Regime ID" name="search2">
+            <button type="submit" name="search"><i class="fa fa-search"></i> Search for Diet Regime</button>
         </form>
     </div>
 
         <div>
-            <table class="table table-sortable" style="max-width:60%">
+            <p style="text-align:center;margin:0;">Key for Times column: M - Morning, A - Afternoon, N - Evening</p>
+            <table class="table table-sortable" style="max-width:90%">
+                <col style="width:5%">
+                <col style="width:8%">
                 <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:7%">
                 <col style="width:20%">
                 <col style="width:20%">
-                <col style="width:50%">
+                <col style="width:20%">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Room Number</th>
-                        <th>Profile picture</th>
+                        <th>Patient ID</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Times</th>
+                        <th>Food</th>
+                        <th>Exercise</th>
+                        <th>Beauty</th>
+                        
                     </tr>
                 </thead>
                 <!-- Exemplar data -->
@@ -111,35 +172,39 @@ if(isset($_POST["NewDR"])){
                     <?php 
                         if(isset($_POST["search"])){
                             $query = $_POST["search2"];
-                            if($query){
-                                if(is_numeric($query)){
-                                    $searchQ = "SELECT * FROM Patient WHERE PatientID = $query";
-                                }else{
-                                    $searchQ = "SELECT * FROM Patient WHERE UCase(FirstName) ='" . strtoupper($query) . "' OR Ucase(LastName) ='" . strtoupper($query) . "'";
-                                }
+                            if(is_numeric($query)){
+                                $searchQ = "SELECT * FROM DietRegime WHERE DRID = $query";
                             }else{
-                                $searchQ = "SELECT * FROM Patient";
+                                $searchQ = "SELECT * FROM DietRegime";
                             }
                             // echo $searchQ;
                             $searchResults = odbc_exec($conn,$searchQ);
                             while ($row = odbc_fetch_array($searchResults)) {    
                                 echo "<tr>";
+                                echo "<td>" . $row['DRID'] . "</td>";
                                 echo "<td>" . $row['PatientID'] . "</td>";
-                                echo "<td>" . $row['FirstName'] . " " . $row['LastName'] . "</td>";
-                                echo "<td>" . $row['RoomNumber'] . "</td>";
-                                echo "<td><img src='./uploads/" . $row['PatientID'] .".png' alt='' height=100 width=100></img></td>";
+                                echo "<td>" . $row['StartDate'] . "</td>";
+                                echo "<td>" . $row['EndDate'] . "</td>";
+                                echo "<td>" . $row['DietTime'] . "</td>";
+                                echo "<td>" . $row['Food'] . "</td>";
+                                echo "<td>" . $row['Exercise'] . "</td>";
+                                echo "<td>" . $row['Beauty'] . "</td>";
                                 echo "</tr>";
                             }
 
                         }else{
-                            $patientsQ = "SELECT * FROM Patient";
-                            $patients = odbc_exec($conn,$patientsQ);
-                            while ($row = odbc_fetch_array($patients)) {    
+                            $DRsQ = "SELECT * FROM DietRegime";
+                            $DRs = odbc_exec($conn,$DRsQ);
+                            while ($row = odbc_fetch_array($DRs)) {    
                                 echo "<tr>";
+                                echo "<td>" . $row['DRID'] . "</td>";
                                 echo "<td>" . $row['PatientID'] . "</td>";
-                                echo "<td>" . $row['FirstName'] . " " . $row['LastName'] . "</td>";
-                                echo "<td>" . $row['RoomNumber'] . "</td>";
-                                echo "<td><img src='./uploads/" . $row['PatientID'] .".png' alt='' height=100 width=100></img></td>";
+                                echo "<td>" . $row['StartDate'] . "</td>";
+                                echo "<td>" . $row['EndDate'] . "</td>";
+                                echo "<td>" . $row['DietTime'] . "</td>";
+                                echo "<td>" . $row['Food'] . "</td>";
+                                echo "<td>" . $row['Exercise'] . "</td>";
+                                echo "<td>" . $row['Beauty'] . "</td>";
                                 echo "</tr>";
                             }
                         }
