@@ -124,6 +124,21 @@ function matchWithRegEx(regEx, field, message) {
       return false;
     }
 }
+// validateDateRange
+var startDate; 
+$('#startDate').on('change', function() {
+    startDate = $(this).val();
+    $('#finishDate').prop('min', function(){
+        return startDate;
+    })
+})
+var finishDate; 
+$('#finishDate').on('change', function() {
+    finishDate = $(this).val();
+    $('#startDate').prop('max', function(){
+        return finishDate;
+    })
+})
 // validateCheckBox 
 function validateCheckBox(){
     var valid = false;
