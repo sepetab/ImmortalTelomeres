@@ -173,12 +173,11 @@ if(isset($_POST["NewDR"])){
     <!-- normal sign in page  -->
     <div class="formContainer">
         <h1>Diet Regimes</h1>
-        <form class="example" method = "post" action="dietRegimes.php" style="margin:auto;max-width:700px">
+        <form class="inputForm" method = "post" action="dietRegimes.php" style="margin:auto;max-width:700px">
             <input type="text" placeholder="Enter Diet Regime ID" name="search2">
-            <button type="submit" name="search"><i class="fa fa-search"></i> Search for Diet Regime</button>
+            <button class= "inputBtn submit" type="submit" name="search"><i class="fa fa-search"></i> Search for Diet Regime</button>
         </form>
     </div>
-
         <div>
             <p style="text-align:center;margin:0;">Key for Times column: M - Morning, A - Afternoon, N - Evening</p>
             <table class="table table-sortable" style="max-width:90%">

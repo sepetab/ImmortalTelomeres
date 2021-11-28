@@ -199,9 +199,9 @@ else if(isset($_POST["editMed"])){
     <div class="formContainer">
         <h1>Medications list</h1>
         <!-- Search app -->
-        <form class="example" method = "post" action="medications.php" style="margin:auto;max-width:700px">
+        <form class="inputForm" method = "post" action="medications.php" style="margin:auto;max-width:700px">
             <input type="text" placeholder="Enter Medication Name or Medication ID" name="search2">
-            <button type="submit" name="search"><i class="fa fa-search"></i> Search for Medication</button>
+            <button class="inputBtn submit" type="submit" name="search"><i class="fa fa-search"></i> Search for Medication</button>
         </form>
     </div>
         <div>

@@ -15,13 +15,11 @@
   position: relative;
   width: 600px;
   height: 100%;
-  padding: 50px 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding-top: 50px;
 }
 
 Input {
@@ -352,7 +350,9 @@ table {
   border: 5px solid #ebebeb;
   table-layout: fixed;
   width: 95%;
-  margin: 5% auto;
+  margin-left: 3%;
+  margin-bottom: 5%;
+  margin-top: 3%;
 }
 td,
 th {
@@ -493,7 +493,7 @@ form.example::after {
   margin-top: 5px;
   font-size: 16px;
   padding-bottom: 5px;
-  border: 2px solid rgba(109, 93, 93, 0.4);
+  border-bottom: 2px solid rgba(109, 93, 93, 0.4);
   background: none;
   text-align: center;
   margin-right: 80px;

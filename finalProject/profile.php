@@ -42,6 +42,7 @@
     <!-- normal sign in page  -->
     <div class="formContainer">
         <h1>Your profile</h1>
+        <button class="inputBtn submit" style="margin:0 auto;margin-bottom:1em;">Edit Profile</button> 
     </div>
 
         <div>
@@ -77,8 +78,7 @@
                     }
                     ?>
                 </tbody>
-            </table>  
-            <button class="submit" style="margin:0 auto;margin-bottom:5em;">Edit Profile</button>              
+            </table>               
         </div>
     </div>
     <footer>
