@@ -18,9 +18,9 @@ if(isset($_POST["NewMedication"])){
     $presOpt = $_POST["prescriptionOptions"];
     $sDate = $_POST["startDate"];
     $fDate = $_POST["finishDate"];
-    $morning = $_POST["Morning"];
-    $afternoon = $_POST["Afternoon"];
-    $evening = $_POST["Evening"];
+    $morning = $_POST["morning"];
+    $afternoon = $_POST["afternoon"];
+    $evening = $_POST["evening"];
 
     $time = "";
     if($morning=="on"){
@@ -57,6 +57,38 @@ if(isset($_POST["NewMedication"])){
         $picPID =  $row['PID'];
         break;
     }*/
+    /////////////////////////////////////////////////////////////
+    // Input Into MedicationScribe
+
+    // Date array
+    $begin = new DateTime($sDate);
+    $end = new DateTime($fDate);
+    $interval = DateInterval::createFromDateString('1 day');
+    $period = new DatePeriod($begin, $interval, $end);
+
+
+    // Time array
+    $times = str_split($time);
+
+    // Current MedID
+    $getDid = "SELECT @@IDENTITY AS MID FROM Medication";
+    $dide = odbc_exec($conn,$getDid);
+    while ($row = odbc_fetch_array($dide)) {
+        $did =  $row['MID'];
+        break;
+    }
+
+    foreach ($period as $dt) {
+        foreach ($times as $t){
+            $dateToInsert = $dt->format("Y-m-d");
+            
+            //$insertQuery = "INSERT INTO DRScribe (PractitionerID,PatientID, DRDate, DRSTime, DRCheck, Refused,Notes, DRID) VALUES (0,'$pid','$dateToInsert','$t','ON','ON','','$did')";
+            $insertQuery = "INSERT INTO MedicationScribe (PractitionerID,PatientID, MedDate, MedTime, MedicationCheck, Refused,Notes, MedID) VALUES ('4','$pid','$dateToInsert','$t',0,0,0,'2')";
+            //echo $insertQuery;
+            $insert = odbc_exec($conn,$insertQuery);
+        }
+    }
+    ///////////////////////////////////////////////////////////
 }
 //If the ser presses edit, we update the table
 else if(isset($_POST["editMed"])){
@@ -90,11 +122,43 @@ else if(isset($_POST["editMed"])){
     $updateQuery = "UPDATE Medication SET PatientID = $pid, StartDate = '$sDate', EndDate = '$fDate', MedTime = '$time' , MedName = '$medName' , Dosage = '$dos' , ROA = '$roa' WHERE MedID = $mid";
     $update = odbc_exec($conn,$updateQuery);
 
+    ///////////////////////////////////////////////////////////////////////////////
+    // Edit MedicationScribe
+
+    // Delete linked DRs
+    $deleteQ = "DELETE * FROM MedicationScribe WHERE MedID=$mid";
+    $delete = odbc_exec($conn,$deleteQ);
+
+    // Insert new info
+     // Date array
+     $begin = new DateTime($sDate);
+     $end = new DateTime($fDate);
+     $interval = DateInterval::createFromDateString('1 day');
+     $period = new DatePeriod($begin, $interval, $end);
+ 
+ 
+     // Time array
+     $times = str_split($time);
+
+     foreach ($period as $dt) {
+        foreach ($times as $t){
+            $dateToInsert = $dt->format("Y-m-d");
+            $insertQuery = "INSERT INTO MedicationScribe (PractitionerID,PatientID, MedDate, MedTime, MedicationCheck, Refused,Notes, MedID) VALUES ('4','$pid','$dateToInsert','$t',0,0,0,'2')";
+            //$insertQuery = "INSERT INTO DRScribe (PatientID, DRDate, DRSTime, DRID, PractitionerID, DRCheck, Refused,Notes) VALUES ('$pid','$dateToInsert','$t','$did',0,0,0,' ')";
+            $insert = odbc_exec($conn,$insertQuery);
+        }
+    }
+    /////////////////////////////////////////////////////////////////////////////
+
 }else if(isset($_POST["removeMed"])){
     echo "well i am in the right place";
     $mid = $_POST["MedicationID"];
     $deleteQuery = "DELETE * FROM Medication WHERE MedID = $mid";
     $delete = odbc_exec($conn,$deleteQuery);
+
+    // Delete linked Medicationss
+    $deleteQ = "DELETE * FROM MedicationScribe WHERE MedID=$mid";
+    $delete = odbc_exec($conn,$deleteQ);
 } 
 ?>
 
@@ -195,9 +259,6 @@ else if(isset($_POST["editMed"])){
                                 echo "<td>" . $row['MedName'] . "</td>";
                                 echo "<td>" . $row['Dosage'] . "</td>";
                                 echo "<td>" . $row['ROA'] . "</td>";
-                                //echo "<td>" . $row['FirstName'] . " " . $row['LastName'] . "</td>";
-                                //echo "<td>" . $row['RoomNumber'] . "</td>";
-                                //echo "<td><img src='./uploads/" . $row['PatientID'] .".png' alt='' height=100 width=100></img></td>";
                                 echo "</tr>";
                             }
                         }
