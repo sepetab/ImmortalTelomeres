@@ -14,6 +14,7 @@
                 </div></a>
                 <nav>
                     <ul class="nav-ul">
+                        <li class="nav-li"><a class="nav-a" href="#">Home</a></li>
                         <li class="nav-li"><a class="nav-a" href="#">Information</a>
                             <ul>
                                 <li><a class = "nav-a" href="patients.php">Patient List</a></li>
@@ -22,6 +23,7 @@
                                 <li><a class = "nav-a" href="practitioners.php">Practitioners</a></li>
                                 <li><a class = "nav-a" href="profile.php">Profile</a></li>
                             </ul>
+                        </li>
                         <li class="nav-li"><a class="nav-a" href="#">Forms</a>
                             <ul>
                                 <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
@@ -35,46 +37,159 @@
                 </nav>
             </div>
         </header>
+        <div class="sepContainer">
+            <div class ="filtContainer">
+                <form id="filtForm" class="filtForm">
+                    <ul class="filtFormUl">
+                        <li class="filtFormLi"><input class="formInput" style="border: 2px solid rgba(109, 93, 93, 0.4)" type="date" id="filtDate" name="Filter Date"></li>
+                        <li class="filtFormLi"><select id="filtTime" name="Filter Time">
+                            <option value="morning">Morning</option>
+                            <option value="afternoon">Afternoon</option>
+                            <option value="evening">Evening</option>
+                        </select>
+                        </li>
+                        <li class="filtFormLi"><select id="choiceType" name="Chosen Type">
+                            <option value="med">Medication</option>
+                            <option value="diet">Dietary</option>
+                        </select>
+                        </li>
+                    </ul>
+                    <button class="filterBtn submit" type="submit" name="Filter">Filter</button>
+                </form>
+            </div>
+            <div class="searchContainer">
+                <form id="searchForm" class="searchForm">
+                    <li class = "filtFormLi"><input class="searchInput" type="text" id="searchInput" name="Search input" placeholder="Insert search requirements"></li>
+                    <button class="searchBtn submit" type="submit" name="Filter">Search</button>
+                </form>
+            </div>
+        </div>
+        <p class="mainLeg">Key for Times column: M - Morning, A - Afternoon, N - Evening</p>
         <div class="container">
+            <!-- Medication -->
             <div>
-                <table class="table table-sortable">
-                    <col style="width:7%">
-                    <col style="width:10%">
-                    <col style="width:15%">
+                <table style="border: 0" class="table table-sortable">
+                    <col style="width:5%">
                     <col style="width:6%">
                     <col style="width:8%">
+                    <col style="width:6%">
+                    <col style="width:8%">
+                    <col style="width:7%">
+                    <col style="width:30%">
+                    <col style="width:7%">
+                    <col style="width:7%">
                     <col style="width:10%">
-                    <col style="width:50%">
+                    <col style="width:7%">
                     <thead>
                         <tr>
+                            <th>Prac ID</th>
                             <th>Patient ID</th>
-                            <th>Patient Name</th>
-                            <th>Medication/Dietary</th>
-                            <th>Given</th>
-                            <th>Accepted</th>
-                            <th>Dispensing practioner</th>
-                            <th>Notes for medication status</th>
+                            <th>Med Date</th>
+                            <th>Time</th>
+                            <th>Medication Check</th>
+                            <th>Refused</th>
+                            <th>Notes</th>
+                            <th>Medicine Name</th>
+                            <th>Dosage</th>
+                            <th>Route of Administration</th>
+                            <th class="doneCheck"></th>
                         </tr>
                     </thead>
                     <!-- Exemplar data -->
                     <tbody> 
                         <tr>
-                            <td>8</td>
-                            <td>9</td>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>12</td>
-                            <td>13</td>
-                            <td>14</td>
+                            <form id="form 1">
+                                <td>5</td>
+                                <td>26</td>
+                                <td>28/11/2021</td>
+                                <td>M</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><textarea class="noteText">He likes to swim.</textarea></td>
+                                <td>Pills</td>
+                                <td>2</td>
+                                <td>Oral</td> 
+                                <td class="doneCheck"><button class="doneBtn submit" type="submit" name="Submit Details">Update</button></td>  
+                            </form>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
+                            <form id="form 2">
+                                <td>8</td>
+                                <td>62</td>
+                                <td>20/11/2021</td>
+                                <td>N</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><textarea class="noteText">He hates germs!</textarea></td>
+                                <td>Antibotics</td>
+                                <td>1</td>
+                                <td>Syringe</td> 
+                                <td class="doneCheck"><button class="doneBtn submit" type="submit" name="Submit Details">Update</button></td>  
+                            </form>
+                        </tr>
+                    </tbody>
+                </table>                
+            </div>
+            <!-- Diet Regime (hidden) -->
+            <div>
+                <table style="border: 0" class="table table-sortable">
+                    <col style="width:5%">
+                    <col style="width:6%">
+                    <col style="width:8%">
+                    <col style="width:6%">
+                    <col style="width:8%">
+                    <col style="width:7%">
+                    <col style="width:30%">
+                    <col style="width:9%">
+                    <col style="width:9%">
+                    <col style="width:9%">
+                    <col style="width:7%">
+                    <thead>
+                        <tr>
+                            <th>Prac ID</th>
+                            <th>Patient ID</th>
+                            <th>Diet Regime Date</th>
+                            <th>Time</th>
+                            <th>Medication Check</th>
+                            <th>Refused</th>
+                            <th>Notes</th>
+                            <th>Food</th>
+                            <th>Exercise</th>
+                            <th>Beauty</th>
+                            <th class="doneCheck"></th>
+                        </tr>
+                    </thead>
+                    <!-- Exemplar data -->
+                    <tbody> 
+                        <tr>
+                            <form id="form 1">
+                                <td>5</td>
+                                <td>26</td>
+                                <td>28/11/2021</td>
+                                <td>M</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><textarea class="noteText">Everyday workman</textarea></td>
+                                <td>Spinach</td>
+                                <td>Pull-ups</td>
+                                <td>Face-wash</td> 
+                                <td class="doneCheck"><button class="doneBtn submit" type="submit" name="Submit Details">Update</button></td>  
+                            </form>
+                        </tr>
+                        <tr>
+                            <form id="form 2">
+                                <td>8</td>
+                                <td>62</td>
+                                <td>20/11/2021</td>
+                                <td>N</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><textarea class="noteText">He loves his gym workouts</textarea></td>
+                                <td>Chicken breast</td>
+                                <td>Weights</td>
+                                <td>Sleep</td> 
+                                <td class="doneCheck"><button class="doneBtn submit" type="submit" name="Submit Details">Update</button></td>  
+                            </form>
                         </tr>
                     </tbody>
                 </table>                

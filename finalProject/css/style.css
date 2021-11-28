@@ -11,7 +11,7 @@
   justify-content: center;
 }
 
-form {
+.inputForm {
   position: relative;
   width: 600px;
   height: 100%;
@@ -24,16 +24,21 @@ form {
   padding-top: 50px;
 }
 
-input {
+Input {
   display: block;
   width: 100%;
   margin-top: 5px;
   font-size: 16px;
   padding-bottom: 5px;
   border: none;
+  font-family: "Ubuntu", sans-serif;
   border-bottom: thin solid rgba(109, 93, 93, 0.4);
   background: none;
   text-align: center;
+}
+
+option {
+  font-family: "Ubuntu", sans-serif;
 }
 
 .optionBox {
@@ -86,7 +91,7 @@ input {
   background-color: #eee;
 }
 
-button {
+.inputBtn {
   display: block;
   margin-top: 50px;
   width: 260px;
@@ -346,7 +351,7 @@ table {
   border-collapse: collapse;
   border: 5px solid #ebebeb;
   table-layout: fixed;
-  width: 90%;
+  width: 95%;
   margin: 5% auto;
 }
 td,
@@ -356,7 +361,29 @@ th {
   text-align: center;
   word-wrap: break-word;
 }
-
+.noteText {
+  font-family: "Ubuntu", sans-serif;
+  width: 100%;
+  /* border or no border? */
+  /* border: none; */
+  border: 1px solid #cccccc;
+  resize: none;
+  box-sizing: border-box;
+}
+.doneCheck {
+  border: 0;
+}
+.doneBtn {
+  display: block;
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  margin-left: 0.5em;
+}
 /* SearchBarCSS from */
 
 form.example input[type="text"] {
@@ -394,10 +421,105 @@ form.example::after {
   display: table;
 }
 
-
-
 /* Error text width */
 
 .errorTXT {
-  width:100%;
+  width: 100%;
+}
+
+/* Main page */
+.sepContainer {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  max-height: 50px;
+  margin-left: 30px;
+}
+
+.filtContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  border: none;
+}
+.filtForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 4em;
+}
+
+.filtFormUl {
+  list-style-type: none;
+}
+
+.filtFormLi {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.filterBtn {
+  display: block;
+  width: 80px;
+  height: 30px;
+  font-size: 14px;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  margin-left: 50px;
+}
+
+.searchContainer {
+  display: flex;
+  justify-content: space-between;
+  /* Adjust width, dependent to search */
+  width: 35%;
+  border: none;
+  margin-right: 84px;
+}
+.searchForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20%;
+  margin-right: 4em;
+}
+
+.searchInput {
+  display: flex;
+  justify-content: space-between;
+  width: 210%;
+  margin-top: 5px;
+  font-size: 16px;
+  padding-bottom: 5px;
+  border: 2px solid rgba(109, 93, 93, 0.4);
+  background: none;
+  text-align: center;
+  margin-right: 80px;
+  padding-right: 1em;
+  margin-left: -1em;
+}
+
+.searchBtn {
+  display: block;
+  width: 150px;
+  height: 30px;
+  font-size: 14px;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  margin-left: 210px;
+}
+
+.mainLeg {
+  text-align: center;
+  margin: 0;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.dropOpt {
+  color: none;
 }

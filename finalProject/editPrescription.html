@@ -14,28 +14,32 @@
                 </div></a>
                 <nav>
                     <ul class="nav-ul">
+                        <li class="nav-li"><a class="nav-a" href="mainpage.html">Home</a></li>
                         <li class="nav-li"><a class="nav-a" href="#">Information</a>
                             <ul>
                                 <li><a class = "nav-a" href="patients.php">Patient List</a></li>
-                                <li><a class = "nav-a" href="">Diet Regime</a></li>
-                                <li><a class = "nav-a" href="">Medication Regime</a></li>
+                                <li><a class = "nav-a" href="dietRegimes.php">Diet Regimes</a></li>
+                                <li><a class = "nav-a" href="medications.php">Medication List</a></li>
+                                <li><a class = "nav-a" href="practitioners.php">Practitioners</a></li>
+                                <li><a class = "nav-a" href="profile.php">Profile</a></li>
                             </ul>
+                        </li>
                         <li class="nav-li"><a class="nav-a" href="#">Forms</a>
                             <ul>
                                 <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
                                 <li><a class = "nav-a" href="editPatient.html">Edit Patient</a></li>
                                 <li><a class = "nav-a" href="newPrescription.html">New Prescription</a></li>
-                                <li><a class = "nav-a" href="editPrescription.html">Edit Prescription</a></li>
+                                <li><a class = "nav-a" href="#">Edit Prescription</a></li>
                             </ul>
                         </li>
-                        <li class="nav-li"><a class="nav-a" href="">Logout</a></li>
+                        <li class="nav-li"><a class="nav-a" href="loginFirst.html">Logout</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
         <div class='formContainer'> 
             <h1>Edit Prescription Form</h1>
-            <form id="prescriptionForm" method="post" action="medications.php" onsubmit="return validateNewMedPrescription()">
+            <form class="inputForm" id="prescriptionForm" method="post" action="medications.php" onsubmit="return validateNewMedPrescription()">
                 <div class = "inputField">
                     <label for="prescriptionType">Type of Prescription:</label> 
                     <select id= "prescriptionOption" name="Prescription Options" onchange="OptionsToggler()" class="required" autocomplete="off" required>
@@ -47,78 +51,78 @@
                 </div>
                 <div>
                     <label for="patientID">Patient ID</label> 
-                    <input type="text" placeholder="Enter Patient ID" name="PatientID" id="patientID" onfocusout="validatePatientID()"/>
+                    <input class="formInput" type="text" placeholder="Enter Patient ID" name="PatientID" id="patientID" onfocusout="validatePatientID()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class="medOpt">
                     <label for="medID">Medication ID</label> 
-                    <input type="text" placeholder="Enter Medication ID" name="MedicationID" id="medID" onfocusout="validateMedID()"/>
+                    <input class="formInput" type="text" placeholder="Enter Medication ID" name="MedicationID" id="medID" onfocusout="validateMedID()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class="DROpt" style="display:none;">
                     <label for="dietID">Diet ID</label> 
-                    <input type="text" placeholder="Enter Diet ID" name="DietID" id="dietID" onfocusout="validateDietID()"/>
+                    <input class="formInput" type="text" placeholder="Enter Diet ID" name="DietID" id="dietID" onfocusout="validateDietID()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div> 
                     <label for="startDate">Start Date</label> 
-                    <input type="date" name="startDate" max="" id="startDate" onfocusout="validatePrescriptionDate"/>
+                    <input class="formInput" type="date" name="startDate" max="" id="startDate" onfocusout="validatePrescriptionDate"/>
                     <span class="errorTxt"></span>
                     <label for="finishDate">Finish Date</label>
-                    <input type="date" name="finishDate" max="" id="finishDate" onfocusout="validatePrescriptionDate"/>
+                    <input class="formInput" type="date" name="finishDate" max="" id="finishDate" onfocusout="validatePrescriptionDate"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class = "inputField">
                     <label class="inputField">Time</label>
                     <label class="optionBox">Morning
-                        <input type="checkbox" name="morning" id="morning">
+                        <input class="formInput" type="checkbox" name="morning" id="morning">
                         <span class="checkmark"></span>   
                     </label>
                     <label class="optionBox">Afternoon
-                        <input type="checkbox" name="afternoon" id="afternoon">
+                        <input class="formInput" type="checkbox" name="afternoon" id="afternoon">
                         <span class="checkmark"></span>     
                     </label>
                     <label class="optionBox">Evening
-                        <input type="checkbox" name="evening" id="evening">
+                        <input class="formInput" type="checkbox" name="evening" id="evening">
                         <span class="checkmark"></span>     
                     </label>
                 </div>
                 <!-- Medication regime -->
                 <div class='inputField medOpt'>
                     <label for="medName">Medication Name</label>
-                    <input type="text" placeholder="Enter Medication Name" name="MedicationName" id="medName" onfocusout="validateMedName()"/>
+                    <input class="formInput" type="text" placeholder="Enter Medication Name" name="MedicationName" id="medName" onfocusout="validateMedName()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class='inputField medOpt'>
                     <label for="dosage">Dosage</label>
-                    <input type="text" placeholder="Enter dosage amount" name="Dosage" id="dosage" onfocusout="validateDosage()"/>
+                    <input class="formInput" type="text" placeholder="Enter dosage amount" name="Dosage" id="dosage" onfocusout="validateDosage()"/>
                     <span class="errorTxt"></span>
                 </div> 
                 <div class='inputField medOpt'>
                     <label for="routeAdmin">Route of Administration</label>
-                    <input type="text" placeholder="Enter Route of Administration" name="RouteofAdministration" id="routeAdmin" onfocusout="validateRouteAdmin()"/>
+                    <input class="formInput" type="text" placeholder="Enter Route of Administration" name="RouteofAdministration" id="routeAdmin" onfocusout="validateRouteAdmin()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <!-- Diet Regime -->
                 <div class='inputField DROpt' style="display:none;">
                     <label for="food">Food</label>
-                    <input type="text" placeholder="Enter food" name="Food" id="food" onfocusout="validateFood()"/>
+                    <input class="formInput" type="text" placeholder="Enter food" name="Food" id="food" onfocusout="validateFood()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class='inputField DROpt' style="display:none;">
                     <label for="excercise">Excercise</label>
-                    <input type="text" placeholder="Enter Excercise" name="Exercise" id="excercise" onfocusout="validateExcercise()"/>
+                    <input class="formInput" type="text" placeholder="Enter Excercise" name="Exercise" id="excercise" onfocusout="validateExcercise()"/>
                     <span class="errorTxt"></span>
                 </div>
                 <div class='inputField DROpt' style="display:none;">
                     <label for="beauty">Beauty</label>
-                    <input type="text" placeholder="Enter beauty" name="Beauty" id="beauty" onfocusout="validateBeauty()"/>
+                    <input class="formInput" type="text" placeholder="Enter beauty" name="Beauty" id="beauty" onfocusout="validateBeauty()"/>
                     <span class="errorTxt"></span>
                 </div>
-                <button class="submit medOpt" type="submit" name="editMed" onclick="validateNewMedPrescription()">Edit Medication</button>
-                <button class="submit medOpt" type="submit" name="removeMed" style="background:red;" >Remove Medication</button>
-                <button class="submit DROpt" type="submit" name="editDR" style="display:none;" onclick="validateNewDietPrescription()">Edit Diet Regime</button>
-                <button class="submit DROpt" type="submit"  name="removeDR" style="background:red; display:none;"  >Remove Diet Regime</button>
+                <button class="inputBtn submit medOpt" type="submit" name="editMed" onclick="validateNewMedPrescription()">Edit Medication</button>
+                <button class="inputBtn submit medOpt" type="submit" name="removeMed" style="background:red;" >Remove Medication</button>
+                <button class="inputBtn submit DROpt" type="submit" name="editDR" style="display:none;" onclick="validateNewDietPrescription()">Edit Diet Regime</button>
+                <button class="inputBtn submit DROpt" type="submit"  name="removeDR" style="background:red; display:none;"  >Remove Diet Regime</button>
             </form>
         </div>
 
