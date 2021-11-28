@@ -35,7 +35,7 @@
         </header>
         <div class='formContainer'> 
             <h1>New Prescription Form</h1>
-            <form id="prescriptionForm" method="post" action="medications.php" onsubmit="return validateNewMedPrescription()"> 
+            <form class="inputForm" id="prescriptionForm" method="post" action="medications.php" onsubmit="return validateNewMedPrescription()"> 
                 <div class = "inputField">
                     <label for="prescriptionType">Type of Prescription:</label> 
                     <select id= "prescriptionOption" name="Prescription Options" class="required" onchange="OptionsToggler()" autocomplete="off" required>

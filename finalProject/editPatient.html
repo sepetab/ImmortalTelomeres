@@ -35,7 +35,7 @@
         </header>
         <div class='formContainer'> 
             <h1>Edit Patient Registration Form</h1>
-            <form id="editPatientForm" onsubmit="return validateEditPatient()" method="post" action="patients.php" enctype="multipart/form-data"> 
+            <form class="inputForm" id="editPatientForm" onsubmit="return validateEditPatient()" method="post" action="patients.php" enctype="multipart/form-data"> 
                 <div class = "inputField">
                     <label for="patientID">Patient ID</label> 
                     <input type="text" placeholder="Enter Patient ID" name="PatientID" id="patientID" onfocusout="validatePatientID()"/>

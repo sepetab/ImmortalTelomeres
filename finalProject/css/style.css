@@ -11,7 +11,7 @@
   justify-content: center;
 }
 
-form {
+.inputForm {
   position: relative;
   width: 600px;
   height: 100%;
@@ -394,10 +394,38 @@ form.example::after {
   display: table;
 }
 
-
-
 /* Error text width */
 
 .errorTXT {
-  width:100%;
+  width: 100%;
+}
+
+/* Main page */
+.sepContainer {
+  display: flex;
+  justify-content: space-between;
+  border: thin solid #707070;
+  max-height: 50px;
+}
+
+.filtContainer {
+  display: flex;
+  justify-content: space-between;
+  /* Adjust width, dependent to search */
+  width: 30%;
+  border: thin solid #707070;
+}
+.filtForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+}
+
+.filtFormUl {
+  list-style-type: none;
+}
+
+.filtFormLi {
+  display: inline-block;
+  margin-left: 20px;
 }
