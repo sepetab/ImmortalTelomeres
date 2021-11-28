@@ -142,28 +142,32 @@ if(isset($_POST["NewDR"])){
     <header>
         <div class="container-header">
             <a HREF="mainpage.html"><div class="logo-container">
-                <img src="img/logo2.png" class="logo" alt="Hearth with stethoscope"/>
+                <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
                 <p class="subtitle">HealthPortal</p>
             </div></a>
             <nav>
-                    <ul class="nav-ul">
-                        <li class="nav-li"><a class="nav-a" href="#">Information</a>
-                            <ul>
-                                <li><a class = "nav-a" href="patients.php">Patient List</a></li>
-                                <li><a class = "nav-a" href="">Diet Regime</a></li>
-                                <li><a class = "nav-a" href="">Medication Regime</a></li>
-                            </ul>
-                        <li class="nav-li"><a class="nav-a" href="#">Forms</a>
-                            <ul>
-                                <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
-                                <li><a class = "nav-a" href="editPatient.html">Edit Patient</a></li>
-                                <li><a class = "nav-a" href="newPrescription.html">New Prescription</a></li>
-                                <li><a class = "nav-a" href="editPrescription.html">Edit Prescription</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-li"><a class="nav-a" href="">Logout</a></li>
-                    </ul>
-                </nav>
+                <ul class="nav-ul">
+                    <li class="nav-li"><a class="nav-a" href="mainpage.html">Home</a></li>
+                    <li class="nav-li"><a class="nav-a" href="#">Information</a>
+                        <ul>
+                            <li><a class = "nav-a" href="patients.php">Patient List</a></li>
+                            <li><a class = "nav-a" href="#">Diet Regimes</a></li>
+                            <li><a class = "nav-a" href="medications.php">Medication List</a></li>
+                            <li><a class = "nav-a" href="practitioners.php">Practitioners</a></li>
+                            <li><a class = "nav-a" href="profile.php">Profile</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-li"><a class="nav-a" href="#">Forms</a>
+                        <ul>
+                            <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
+                            <li><a class = "nav-a" href="editPatient.html">Edit Patient</a></li>
+                            <li><a class = "nav-a" href="newPrescription.html">New Prescription</a></li>
+                            <li><a class = "nav-a" href="editPrescription.html">Edit Prescription</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-li"><a class="nav-a" href="loginFirst.html">Logout</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
     <!-- normal sign in page  -->

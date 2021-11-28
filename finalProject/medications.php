@@ -103,12 +103,21 @@ else if(isset($_POST["editMed"])){
     <header>
         <div class="container-header">
             <a HREF="mainpage.php"><div class="logo-container">
-                <img src="img/logo2.png" class="logo" alt="Hearth with stethoscope"/>
+                <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
                 <p class="subtitle">HealthHacker</p>
             </div></a>
             <nav>
                 <ul class="nav-ul">
-                    <li class="nav-li"><a class="nav-a" href="patients.php">Patients</a>
+                    <li class="nav-li"><a class="nav-a" href="mainpage.html">Home</a></li>
+                    <li class="nav-li"><a class="nav-a" href="#">Information</a>
+                        <ul>
+                            <li><a class = "nav-a" href="patients.php">Patient List</a></li>
+                            <li><a class = "nav-a" href="dietRegimes.php">Diet Regimes</a></li>
+                            <li><a class = "nav-a" href="#">Medication List</a></li>
+                            <li><a class = "nav-a" href="practitioners.php">Practitioners</a></li>
+                            <li><a class = "nav-a" href="profile.php">Profile</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-li"><a class="nav-a" href="#">Forms</a>
                         <ul>
                             <li><a class = "nav-a" href="newPatient.html">New Patient</a></li>
@@ -117,7 +126,7 @@ else if(isset($_POST["editMed"])){
                             <li><a class = "nav-a" href="editPrescription.html">Edit Prescription</a></li>
                         </ul>
                     </li>
-                    <li class="nav-li"><a class="nav-a" href="">Logout</a></li>
+                    <li class="nav-li"><a class="nav-a" href="loginFirst.html">Logout</a></li>
                 </ul>
             </nav>
         </div>
