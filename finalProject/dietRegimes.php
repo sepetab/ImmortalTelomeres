@@ -22,6 +22,8 @@ if(isset($_POST["NewDR"])){
     $exercise = $_POST["Exercise"];
     $beauty = $_POST["Beauty"];
 
+    echo $sDate;
+
     $time = "";
     if($morning=="on"){
         $morning = "M";
@@ -67,9 +69,7 @@ if(isset($_POST["NewDR"])){
             $insertQuery = "INSERT INTO DRScribe (PractitionerID,PatientID, DRDate, DRSTime, DRCheck, Refused,Notes, DRID) VALUES ('4','$pid','$dateToInsert','$t',1,1,'$dummyNotes','2')";
             //echo $insertQuery;
             $insert = odbc_exec($conn,$insertQuery);
-            break;
         }
-        break;
     }
 
 }else if(isset($_POST["editDR"])){
@@ -101,10 +101,39 @@ if(isset($_POST["NewDR"])){
     $updateQuery = "UPDATE DietRegime SET PatientID = $pid, StartDate = '$sDate', EndDate = '$fDate', DietTime = '$time' , Food = '$food' , Exercise = '$exercise' , Beauty = '$beauty' WHERE DRID = $did";
     $update = odbc_exec($conn,$updateQuery);
 
+    // Edit DRScribe
+
+    // Delete linked DRs
+    $deleteQ = "DELETE * FROM DRScribe WHERE DRID=$did";
+    $delete = odbc_exec($conn,$deleteQ);
+
+    // Insert new info
+     // Date array
+     $begin = new DateTime($sDate);
+     $end = new DateTime($fDate);
+     $interval = DateInterval::createFromDateString('1 day');
+     $period = new DatePeriod($begin, $interval, $end);
+ 
+ 
+     // Time array
+     $times = str_split($time);
+
+     foreach ($period as $dt) {
+        foreach ($times as $t){
+            $dateToInsert = $dt->format("Y-m-d");
+            $insertQuery = "INSERT INTO DRScribe (PatientID, DRDate, DRSTime, DRID, PractitionerID, DRCheck, Refused,Notes) VALUES ('$pid','$dateToInsert','$t','$did',0,0,0,' ')";
+            $insert = odbc_exec($conn,$insertQuery);
+        }
+    }
+
 }else if(isset($_POST["removeDR"])){
     $did = $_POST["DietID"];
     $deleteQuery = "DELETE * FROM DietRegime WHERE DRID = $did";
     $delete = odbc_exec($conn,$deleteQuery);
+
+     // Delete linked DRs
+     $deleteQ = "DELETE * FROM DRScribe WHERE DRID=$did";
+     $delete = odbc_exec($conn,$deleteQ);
 } 
 ?>
 
