@@ -119,9 +119,8 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
             <button class="inputBtn submit" type="submit" name="search"><i class="fa fa-search"></i> Search for patient</button>
         </form>
     </div>
-
         <div>
-            <table class="table table-sortable" style="max-width:60%">
+            <table class="tableAdjust table-sortable" style="max-width:60%">
                 <col style="width:10%">
                 <col style="width:20%">
                 <col style="width:20%">

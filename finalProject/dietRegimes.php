@@ -180,7 +180,7 @@ if(isset($_POST["NewDR"])){
     </div>
         <div>
             <p style="text-align:center;margin:0;">Key for Times column: M - Morning, A - Afternoon, N - Evening</p>
-            <table class="table table-sortable" style="max-width:90%">
+            <table class="tableAdjust table-sortable" style="max-width:90%">
                 <col style="width:5%">
                 <col style="width:8%">
                 <col style="width:10%">

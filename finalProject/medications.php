@@ -205,7 +205,7 @@ else if(isset($_POST["editMed"])){
         </form>
     </div>
         <div>
-            <table class="table table-sortable" style="max-width:60%">
+            <table class="tableAdjust table-sortable" style="max-width:60%">
                 <col style="width:12%">
                 <col style="width:12%">
                 <col style="width:12%">

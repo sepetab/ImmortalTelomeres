@@ -354,6 +354,9 @@ table {
   margin-bottom: 5%;
   margin-top: 3%;
 }
+.tableAdjust {
+  margin: 5% auto;
+}
 td,
 th {
   padding: 10px;
