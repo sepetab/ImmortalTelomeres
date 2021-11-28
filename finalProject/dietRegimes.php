@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <?php 
-$conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
+$conn = odbc_connect('z5115189', '', '', SQL_CUR_USE_ODBC);
 if(!$conn){exit("Connection Failed:". $conn);}
 if(isset($_POST["NewDR"])){
     $pid = $_POST["PatientID"];
@@ -35,7 +35,7 @@ if(isset($_POST["NewDR"])){
         $evening = "N";
         $time = $time.$evening;
     }
-    $insertQuery = "INSERT INTO DietRegime (PatientID, StartDate, EndDate, DietTime, Food, Exercise, Beauty) VALUES ('$pid','$sDate','$fDate','$time','$food','$exercise','$beauty')";
+    $insertQuery = "INSERT INTO DietRegime (DRID, PatientID, StartDate, EndDate, DietTime, Food, Exercise, Beauty) VALUES (1,'$pid','$sDate','$fDate','$time','$food','$exercise','$beauty')";
     $insert = odbc_exec($conn,$insertQuery);
 
     // Input Into DRScribe
@@ -61,8 +61,11 @@ if(isset($_POST["NewDR"])){
     foreach ($period as $dt) {
         foreach ($times as $t){
             $dateToInsert = $dt->format("Y-m-d");
-            $insertQuery = "INSERT INTO DRScribe (PractitionerID,PatientID, DRDate, DRSTime, DRCheck, Refused,Notes DRID) VALUES (0,$pid,'$dateToInsert','$t','No','No','',$did)";
-            echo $insertQuery;
+            
+            //$insertQuery = "INSERT INTO DRScribe (PractitionerID,PatientID, DRDate, DRSTime, DRCheck, Refused,Notes, DRID) VALUES (0,'$pid','$dateToInsert','$t','ON','ON','','$did')";
+            $dummyNotes = "hello";
+            $insertQuery = "INSERT INTO DRScribe (PractitionerID,PatientID, DRDate, DRSTime, DRCheck, Refused,Notes, DRID) VALUES ('4','$pid','$dateToInsert','$t',1,1,'$dummyNotes','2')";
+            //echo $insertQuery;
             $insert = odbc_exec($conn,$insertQuery);
             break;
         }
