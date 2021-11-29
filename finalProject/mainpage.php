@@ -8,13 +8,13 @@
     <body>
         <header>
             <div class="container-header">
-              <a HREF="mainpage.html"><div class="logo-container">
+              <a HREF="mainpage.php"><div class="logo-container">
                   <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
                   <p class="subtitle">HealthPortal</p>
                 </div></a>
                 <nav>
                     <ul class="nav-ul">
-                        <li class="nav-li"><a class="nav-a" href="#">Home</a></li>
+                        <li class="nav-li"><a class="nav-a" href="mainpage.php">Home</a></li>
                         <li class="nav-li"><a class="nav-a" href="#">Information</a>
                             <ul>
                                 <li><a class = "nav-a" href="patients.php">Patient List</a></li>
@@ -170,7 +170,7 @@
                         </tbody>
                     </table>                
                 </div>
-
+            </main>
 
             <?php else: ?>
             <!-- Dietary section -->

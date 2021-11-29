@@ -144,13 +144,13 @@ if(isset($_POST["NewDR"])){
 <body>
     <header>
         <div class="container-header">
-            <a HREF="mainpage.html"><div class="logo-container">
+            <a HREF="mainpage.php"><div class="logo-container">
                 <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
                 <p class="subtitle">HealthPortal</p>
             </div></a>
             <nav>
                 <ul class="nav-ul">
-                    <li class="nav-li"><a class="nav-a" href="mainpage.html">Home</a></li>
+                    <li class="nav-li"><a class="nav-a" href="mainpage.php">Home</a></li>
                     <li class="nav-li"><a class="nav-a" href="#">Information</a>
                         <ul>
                             <li><a class = "nav-a" href="patients.php">Patient List</a></li>
@@ -181,7 +181,7 @@ if(isset($_POST["NewDR"])){
             <button class= "inputBtn submit" type="submit" name="search"><i class="fa fa-search"></i> Search for Diet Regime</button>
         </form>
     </div>
-        <div>
+        <div class="container">
             <p style="text-align:center;margin:0;">Key for Times column: M - Morning, A - Afternoon, N - Evening</p>
             <table class="tableAdjust table-sortable" style="max-width:90%">
                 <col style="width:5%">
@@ -259,7 +259,7 @@ if(isset($_POST["NewDR"])){
                     <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
                 </div>
                 <div class="middle-footer">
-                    <p class="footer-title">HEALTHPortal</p>
+                    <p class="footer-title">HEALTHPORTAL</p>
                     <p class="footer-copyright">&copy; 2021 ImmortalTelomeres</p>
                 </div>
                 <div>
