@@ -77,6 +77,31 @@
                 $filterDate = $_POST['FilterDate'];
                 $type = $_POST['FilterType'];
 
+            }else if(isset($_POST['updateSubmission'])){
+                
+
+                $filterTime = $_POST['ftime'];
+                $filterDate = $_POST['fdate'];
+                $type = $_POST['ftype'];
+                $did = $_POST['fdrid'];
+                
+                $performed = 0;
+                $refused = 0;
+                if(isset($_POST['performed'])){
+                    // print("Switching on");
+                    $performed = 1;
+                }
+                if(isset($_POST['refused'])){
+                    // print("Refusal on");
+                    $refused = 1;
+                }
+                $notes = $_POST['Notes'];
+                if($type == "Medication"){
+
+                }else{
+                    $updateQuery = "UPDATE DRScribe SET DRCheck = $performed, Refused = $refused, Notes = '$notes' WHERE DRID = $did AND DRDate = #$filterDate# AND DRSTime = '$filterTime'";
+                    $update = odbc_exec($conn,$updateQuery);
+                }
             }else{
                 $filterTime = 'M';
                 $filterDate = date("Y-m-d");
@@ -149,7 +174,6 @@
                 
                 
                 <!-- Set appropriate filters -->        
-                <?php if(isset($_POST['Filter'])): ?>
                 <script>
                     var time = "<?php echo $filterTime; ?>";
                     var date = "<?php echo $filterDate; ?>";
@@ -157,11 +181,11 @@
                     // $filterTime = $_POST['FilterTime'];
                     // $filterDate = $_POST['FilterDate'];
                     // $type = $_POST['FilterType'];
+                    console.log(choice)
                     document.getElementById('filtTime').value = time
                     document.getElementById('filtDate').value = date
                     document.getElementById('choiceType').value = choice
                 </script>
-                <?php endif; ?>  
                 <!-- Diet Regime (hidden) -->
                 <div id = "DRTable">
                     <table style="border: 0" class="table table-sortable">
@@ -195,7 +219,7 @@
                             $drs = odbc_exec($conn,$DRQ);
                             while ($row = odbc_fetch_array($drs)) {   
                                 echo "<tr>";
-                                    echo "<form id='formDR'>";
+                                    echo "<form id='formDR' method='post' action = 'mainpage.php'>";
                                         // Get practitioner Info
                                         if ($row['Practitioner'] == 0){
                                             echo "<td>N/A</td>";
@@ -221,18 +245,19 @@
 
                                         // Set Checkboxes
                                         if($row['DRCheck'] == 0){
-                                            echo "<td><input name='drCheck' type='checkbox'></td>";
+                                            echo "<td><input name='performed' type='checkbox'></td>";
                                         }else{
-                                            echo "<td><input name='drCheck' type='checkbox' checked></td>";
+                                            echo "<td><input name='performed' type='checkbox' checked value=1></td>";
                                         }
 
                                         if($row['Refused'] == 0){
                                             echo "<td><input name='refused' type='checkbox'></td>";
                                         }else{
-                                            echo "<td><input name='refused' type='checkbox' checked></td>";
+                                            echo "<td><input name='refused' type='checkbox' checked value=1></td>";
                                         }
                                         // Notes
-                                        echo  "<td><textarea class='noteText' name'Notes'>" . $row['Notes'] ."</textarea></td>";
+                                        echo  "<td><textarea class='noteText' name='Notes' >" . $row['Notes'] ." </textarea></td>";
+                                
 
                                         // DR information - Food
                                         $getInfo = "SELECT * FROM DietRegime WHERE DRID = " . $row['DRID'];
@@ -246,13 +271,13 @@
                                         echo "<td> $inputFood </td>";
                                         echo "<td> $inputExercise </td>";
                                         echo "<td> $inputBeauty </td>";
-                                        
 
-                                        // Get some essential information across
-                                        echo "<input type='text' name='fdate' style='display:none;' value='$filterDate'>";
-                                        echo "<input type='text' name='fdrid' style='display:none;' value='$DRID'>";
-                                        echo "<input type='text' name='ftime' style='display:none;' value='$filterTime'>";
-                                        echo "<input type='text' name='ftype' style='display:none;' value='$type'>";
+
+                                        echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='ftime' >" . $filterTime ."</textarea></td>";
+                                        echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='fdrid' >" . $row['DRID'] ."</textarea></td>";
+                                        echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='ftype' >" . $type ."</textarea></td>";
+                                        echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='fdate' >" . $filterDate ."</textarea></td>";
+                                        
 
                                         // Submit
                                         echo "<td class='doneCheck'><button class='doneBtn submit' type='submit' name='updateSubmission'>Update</button></td>";
