@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <!--Referencing style sheet-->
+       <!--Referencing style sheet-->
         <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/styles.css">
     </head>
@@ -13,7 +13,7 @@
               </div></a>
               <nav>
                   <ul class="nav-ul">
-                    <!--Inserting links to go back to home and schedule webpage-->
+                     <!--Inserting links to go back to home and schedule webpage-->
                       <li class="nav-li"><a class="nav-a" href="index.html">Home</a></li>
                       <li class="nav-li"><a class="nav-a" href="schedule.html">Schedule</a></li>
                       
@@ -21,23 +21,21 @@
               </nav>
           </div>
       </header>
-      <!--Paragraphs of info about HL7-->
       <div class="container" style="display:block">
-      <!--First we check if the registration failed or not-->
-      <?php
-  
-        $presc_id = $_POST["prescription_id"];
-        
-        echo $presc_id;
-        echo("\n");
-     
-      ?>
+        <article class="article-main" style="border:none;">
+           <!--Paragraphs of info about ICD-10-AM-->
+            <h2 class="article-subtitle">ICD-10-AM</h2>
+            <p class="article-body">The ICD-10-AM (International Statistical Classification of Diseases and Related Health Problems, Tenth Revision, Australian Modification) is used to classify diseases and other heath issues. This system is practiced in both public and private hospitals in Australia and is used to classify episodes of admitted patient care. To ensure this system of classification is up to date, it is revised and updated every three years.</p>
+            <p class="article-body">The ICD-10-AM includes major changes to its predecessor in the areas of obstetrics, endoscopy, procedural complications, and chronic pain among others. </p>
+            <p class="article-body">The ICD-10-AM is tabular list of diseases with an accompanying index. It has been formed with the help of clinicians, health information managers and clinical coders. The standard employs an alphanumeric coding scheme for diseases and is structured by body system and aetiology. </p>
+            <p class="article-body">The core usefulness of the ICD-10-AM stems from its ability to assist in the recording, analysis and understanding of medical data.</p>
+        </article>
     </div>
 
 
         <footer>
-          <!--Inserting contact details at bottom of page-->
             <div class="footer-container">
+               <!--Inserting contact details at bottom of page-->
                 <div>
                     <img src="img/blender_heart_logo.png" class="logo" alt="a deco"/>
                 </div>
