@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if($row['Password'] == $password){
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user'] = $user;
+                $_SESSION['userID'] = $row['PractitionerID'];
                 header('Location: http://engpwws005/z5208102$/ImmortalTelomeres/finalProject/mainPage.html');
                 exit;
             }else{

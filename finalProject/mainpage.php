@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html>
     <head>
         <title>Practioner Directory</title>
@@ -100,11 +101,14 @@
                     // print("Refusal on");
                     $refused = 1;
                 }
+
+                $pracID = $_SESSION['userID'];
+
                 $notes = $_POST['Notes'];
                 if($type == "Medication"){
 
                 }else{
-                    $updateQuery = "UPDATE DRScribe SET DRCheck = $performed, Refused = $refused, Notes = '$notes' WHERE DRID = $did AND DRDate = #$filterDate# AND DRSTime = '$filterTime'";
+                    $updateQuery = "UPDATE DRScribe SET PractitionerID = $pracID , DRCheck = $performed, Refused = $refused, Notes = '$notes' WHERE DRID = $did AND DRDate = #$filterDate# AND DRSTime = '$filterTime'";
                     $update = odbc_exec($conn,$updateQuery);
                 }
             }else{
@@ -226,10 +230,10 @@
                                 echo "<tr>";
                                     echo "<form id='formDR' method='post' action = 'mainpage.php'>";
                                         // Get practitioner Info
-                                        if ($row['Practitioner'] == 0){
+                                        if ($row['PractitionerID'] == 0){
                                             echo "<td>N/A</td>";
                                         }else{
-                                            $getPrac = "SELECT * FROM Practitioner WHERE PractitionerID = " . $row['Practitioner'];
+                                            $getPrac = "SELECT * FROM Practitioner WHERE PractitionerID = " . $row['PractitionerID'];
                                             $pracs = odbc_exec($conn,$getPrac);
                                             while ($pracRow = odbc_fetch_array($pracs)) {
                                                 $inputVal = $pracRow['PractitionerID'] . " " . $pracRow['FirstName'] . " " . $pracRow['lastName'];
