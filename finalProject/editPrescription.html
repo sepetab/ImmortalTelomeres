@@ -105,19 +105,22 @@
                 </div>
                 <!-- Diet Regime -->
                 <div class='inputField DROpt' style="display:none;">
-                    <label for="food">Food</label>
-                    <input class="formInput" type="text" placeholder="Enter food" name="Food" id="food" onfocusout="validateFood()"/>
-                    <span class="errorTxt"></span>
+                    <label class="formInput" for="food">Food</label>
+                    <!-- <p class="subtitle">Add "none" if unapplicable</p> -->
+                    <textarea style="resize: none" type="text" placeholder="Enter food requirements" name="Food" id="food" rows="8" cols="67" onfocusout=""/></textarea>
+                    <p style="font-weight:bold;" class="errorTxt"></p>
                 </div>
                 <div class='inputField DROpt' style="display:none;">
-                    <label for="excercise">Excercise</label>
-                    <input class="formInput" type="text" placeholder="Enter Excercise" name="Exercise" id="excercise" onfocusout="validateExcercise()"/>
-                    <span class="errorTxt"></span>
+                    <label class="formInput" for="exercise">Exercise</label>
+                    <!-- <p class="subtitle">Add "none" if unapplicable</p> -->
+                    <textarea style="resize: none" type="text" placeholder="Enter exercise requirments" name="Exercise" id="exercise" rows="8" cols="67" onfocusout=""/></textarea>
+                    <p style="display:none;" class="errorTxt"></p>
                 </div>
                 <div class='inputField DROpt' style="display:none;">
-                    <label for="beauty">Beauty</label>
-                    <input class="formInput" type="text" placeholder="Enter beauty" name="Beauty" id="beauty" onfocusout="validateBeauty()"/>
-                    <span class="errorTxt"></span>
+                    <label class="formInput" for="beauty">Beauty</label>
+                    <!-- <p class="subtitle">Add "none" if unapplicable</p> -->
+                    <textarea style="resize: none" type="text" placeholder="Enter beauty requirments" name="Beauty" id="beauty" rows="8" cols="67" onfocusout=""/></textarea>
+                    <p style="display:none;" class="errorTxt"></p>
                 </div>
                 <button class="inputBtn submit medOpt" type="submit" name="editMed" onclick="validateNewMedPrescription()">Edit Medication</button>
                 <button class="inputBtn submit medOpt" type="submit" name="removeMed" style="background:red;" >Remove Medication</button>

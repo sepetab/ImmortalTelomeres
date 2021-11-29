@@ -41,14 +41,16 @@
             <div class ="filtContainer">
                 <form id="filtForm" class="filtForm">
                     <ul class="filtFormUl">
-                        <li class="filtFormLi"><input class="formInput" style="border: 2px solid rgba(109, 93, 93, 0.4)" type="date" id="filtDate" name="Filter Date"></li>
-                        <li class="filtFormLi"><select id="filtTime" name="Filter Time">
+                        <li class="filtFormLi"><input class="formInput" style="border-bottom: 2px solid rgba(109, 93, 93, 0.4)" type="date" id="filtDate" name="Filter Date" required></li>
+                        <li class="filtFormLi"><select id="filtTime" name="Filter Time" autocomplete="off" required>
+                            <option hidden disabled selected value>Time</option>
                             <option value="morning">Morning</option>
                             <option value="afternoon">Afternoon</option>
                             <option value="evening">Evening</option>
                         </select>
                         </li>
-                        <li class="filtFormLi"><select id="choiceType" name="Chosen Type">
+                        <li class="filtFormLi"><select id="choiceType" name="Chosen Type" autocomplete="off" required>
+                            <option hidden disabled selected value>Type</option>
                             <option value="med">Medication</option>
                             <option value="diet">Dietary</option>
                         </select>
@@ -69,10 +71,8 @@
             <!-- Medication -->
             <div>
                 <table style="border: 0" class="table table-sortable">
-                    <col style="width:5%">
-                    <col style="width:6%">
-                    <col style="width:8%">
-                    <col style="width:6%">
+                    <col style="width:11%">
+                    <col style="width:11%">
                     <col style="width:8%">
                     <col style="width:7%">
                     <col style="width:30%">
@@ -82,10 +82,8 @@
                     <col style="width:7%">
                     <thead>
                         <tr>
-                            <th>Prac ID</th>
-                            <th>Patient ID</th>
-                            <th>Med Date</th>
-                            <th>Time</th>
+                            <th>Practioner</th>
+                            <th>Patient</th>
                             <th>Medication Check</th>
                             <th>Refused</th>
                             <th>Notes</th>
@@ -98,11 +96,9 @@
                     <!-- Exemplar data -->
                     <tbody> 
                         <tr>
-                            <form id="form 1">
-                                <td>5</td>
-                                <td>26</td>
-                                <td>28/11/2021</td>
-                                <td>M</td>
+                            <form id="formM">
+                                <td>5 FENG Clayton</td>
+                                <td>26 SMITH John</td>
                                 <td><input type="checkbox"></td>
                                 <td><input type="checkbox"></td>
                                 <td><textarea class="noteText">He likes to swim.</textarea></td>
@@ -113,11 +109,9 @@
                             </form>
                         </tr>
                         <tr>
-                            <form id="form 2">
-                                <td>8</td>
-                                <td>62</td>
-                                <td>20/11/2021</td>
-                                <td>N</td>
+                            <form id="formMM">
+                                <td>8 DUCKY Mark</td>
+                                <td>62 PLANT Soil</td>
                                 <td><input type="checkbox"></td>
                                 <td><input type="checkbox"></td>
                                 <td><textarea class="noteText">He hates germs!</textarea></td>
@@ -133,23 +127,19 @@
             <!-- Diet Regime (hidden) -->
             <div>
                 <table style="border: 0" class="table table-sortable">
-                    <col style="width:5%">
-                    <col style="width:6%">
-                    <col style="width:8%">
-                    <col style="width:6%">
+                    <col style="width:11%">
+                    <col style="width:11%">
                     <col style="width:8%">
                     <col style="width:7%">
                     <col style="width:30%">
-                    <col style="width:9%">
-                    <col style="width:9%">
-                    <col style="width:9%">
+                    <col style="width:7%">
+                    <col style="width:7%">
+                    <col style="width:10%">
                     <col style="width:7%">
                     <thead>
                         <tr>
-                            <th>Prac ID</th>
-                            <th>Patient ID</th>
-                            <th>Diet Regime Date</th>
-                            <th>Time</th>
+                            <th>Practitioner</th>
+                            <th>Patient</th>
                             <th>Medication Check</th>
                             <th>Refused</th>
                             <th>Notes</th>
@@ -162,11 +152,9 @@
                     <!-- Exemplar data -->
                     <tbody> 
                         <tr>
-                            <form id="form 1">
-                                <td>5</td>
-                                <td>26</td>
-                                <td>28/11/2021</td>
-                                <td>M</td>
+                            <form id="formDR">
+                                <td>7 CARROT Smells</td>
+                                <td>23 KURT Tom </td>
                                 <td><input type="checkbox"></td>
                                 <td><input type="checkbox"></td>
                                 <td><textarea class="noteText">Everyday workman</textarea></td>
@@ -177,11 +165,9 @@
                             </form>
                         </tr>
                         <tr>
-                            <form id="form 2">
-                                <td>8</td>
-                                <td>62</td>
-                                <td>20/11/2021</td>
-                                <td>N</td>
+                            <form id="formDRR">
+                                <td>19 WOOD JESSICA</td>
+                                <td>62 TYAN JACOB</td>
                                 <td><input type="checkbox"></td>
                                 <td><input type="checkbox"></td>
                                 <td><textarea class="noteText">He loves his gym workouts</textarea></td>

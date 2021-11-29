@@ -42,10 +42,11 @@
     <!-- normal sign in page  -->
     <div class="formContainer">
         <h1>Your profile</h1>
+        <button class="inputBtn submit" style="margin:0 auto;margin-bottom:1em;">Edit Profile</button> 
     </div>
 
         <div>
-            <table class="table table-sortable" style="max-width:60%">
+            <table class="tableAdjust table-sortable" style="max-width:60%">
                 <col style="width:10%">
                 <col style="width:20%">
                 <col style="width:20%">
@@ -77,8 +78,7 @@
                     }
                     ?>
                 </tbody>
-            </table>  
-            <button class="submit" style="margin:0 auto;margin-bottom:5em;">Edit Profile</button>              
+            </table>               
         </div>
     </div>
     <footer>

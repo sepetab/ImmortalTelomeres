@@ -9,7 +9,7 @@
     <!-- normal sign in page  -->
     <div class="formContainer">
         <h1>Practitioner Login</h1>
-        <form id="pracLogin"  onsubmit="return validateForm()" method="post" action="signIn.php">
+        <form class="inputForm" id="pracLogin"  onsubmit="return validateForm()" method="post" action="signIn.php">
             <div class="inputField">
                 <label for ="username">Username</label>
                 <input type="text" name="Username" id="username" onfocusout="validateUsername()"/>
@@ -20,7 +20,7 @@
                 <input type="password" name="Password" id="password" onfocusout="validatePassword()"/>
                 <span class="errorTxt"></span>
             </div>
-            <button class="submit" type="submit">Sign In</button>
+            <button class="inputBtn submit" type="submit">Sign In</button>
         </form>
     </div>
 </body>

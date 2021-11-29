@@ -114,14 +114,13 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
     <!-- normal sign in page  -->
     <div class="formContainer">
         <h1>Patients list</h1>
-        <form class="example" method = "post" action="patients.php" style="margin:auto;max-width:700px">
-            <input type="text" placeholder="Enter Patient's First Name, Last Name or ID" name="search2">
-            <button type="submit" name="search"><i class="fa fa-search"></i> Search for patient</button>
+        <form class="inputForm" method = "post" action="patients.php" style="margin:auto;max-width:700px">
+            <input type="text" placeholder="Enter Patient's First Name, Last Name or ID" name="search2"></li>
+            <button class="inputBtn submit" type="submit" name="search"><i class="fa fa-search"></i> Search for patient</button>
         </form>
     </div>
-
         <div>
-            <table class="table table-sortable" style="max-width:60%">
+            <table class="tableAdjust table-sortable" style="max-width:60%">
                 <col style="width:10%">
                 <col style="width:20%">
                 <col style="width:20%">

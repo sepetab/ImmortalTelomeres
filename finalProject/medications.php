@@ -8,8 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <?php 
-$conn = odbc_connect('z5115189', '', '', SQL_CUR_USE_ODBC);
-$picPID = 0;
+$conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
 if(!$conn){exit("Connection Failed:". $conn);}
 
 //Check to see if prescription type is medeication or diet
@@ -199,13 +198,13 @@ else if(isset($_POST["editMed"])){
     <div class="formContainer">
         <h1>Medications list</h1>
         <!-- Search app -->
-        <form class="example" method = "post" action="medications.php" style="margin:auto;max-width:700px">
+        <form class="inputForm" method = "post" action="medications.php" style="margin:auto;max-width:700px">
             <input type="text" placeholder="Enter Medication Name or Medication ID" name="search2">
-            <button type="submit" name="search"><i class="fa fa-search"></i> Search for Medication</button>
+            <button class="inputBtn submit" type="submit" name="search"><i class="fa fa-search"></i> Search for Medication</button>
         </form>
     </div>
         <div>
-            <table class="table table-sortable" style="max-width:60%">
+            <table class="tableAdjust table-sortable" style="max-width:60%">
                 <col style="width:12%">
                 <col style="width:12%">
                 <col style="width:12%">
