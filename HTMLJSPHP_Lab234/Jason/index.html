@@ -1,33 +1,6 @@
 <!DOCTYPE html>
 <html>
-
     <head>
-      <!---javascript functions-->
-    <script type="text/javascript">
-
-      //declaration of global variabls
-      var prescIDbool = false;
-    
-      function validPrescriptionID(){
-
-      }   
-
-      function check_submission(){
-         // I check if all entered information passed their respective validation functions
-         if(prescIDbool){
-          return true;
-         }
-         else{
-          //something in the form has not been entered correctly
-          //alert("Please address the errors in the form before resubmitting");
-          return true;
-         }
-      }
-
-
-      
-
-    </script>
 
         <!--Referencing style sheet-->	
         <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet">
@@ -37,38 +10,37 @@
     <body> 
       <header>
       	       <!--Title of workshop along with logo at top of webpage-->
-              <H1>New Prescription Form</H1>
+              <H1>Telemedicine & Disease Categorisation Workshop</H1>
               <p>
               <img src="img/blender_heart_logo.png" class="Center" style="width:20%"/>
               </p>
               <nav>
                   <ul class="nav-ul">
                       <li class="nav-li"><a class="nav-a current-page" href="#">Home</a></li>
+                      <li class="nav-li"><a class="nav-a" href="schedule.html">Schedule</a></li>
+                       
                   </ul>
               </nav>
           </div>
       </header>
-   
+       <!--call for abstracts and link to workshop program-->
+      <div class="container container-info">
+        <article class="article-main">
+            <h2 class="article-subtitle">CALL FOR ABSTRACTS </h2>
+            <p class="article-body">This is a great opportunity for academics to gain exposure in the medical informatics field. Abstracts will be reviewed by a selected panel of judges with expertise in the area. Thereafter, preferred candidates will be contacted and made aware of their achievement.<br><br>
+                Please read our <a HREF="Schedule.html" class="underline">workshop program</a> to learn more.
+            </p>
+        </article>
+    </div>
        <!--Venue details-->
       <div class="container container-main">
-        <div class="sidebar-div">
-          <form onsubmit="return check_submission()" action="prescription_ID_form_confirmation.php" method="post">
-           
-            <!--PRESCRIPTION TYPE-->
-            <label for="prescription_id">Prescription ID</label>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="text" name="prescription_id" placeholder = "prescription id" id ="prescription_id" onChange="validPrescriptionID()">
-              <p id="presc_id_err_mes"></p>
+            <div class="sidebar-div">
+                <h2 class="sidebar-title">Location</h2>
+                <p class="subtitle-sb">Address</p><p class="sidebar-body">Floor 38, <strong>School of Data Science and Medical Innovation</strong>, UNSW Main Library, Kensington NSW 2033</p>
+                <p class="subtitle-sb">Date and Time</p><p class="sidebar-body">18/OCT/2021 &nbsp; &nbsp; 09:00 - 17:00</p>
 
-            <input type="submit" value = "Submit" id ="submit" onclick="check_submission()">
-          </form>
-                  
-                    <!--button onclick="check_submission()">Submit</button-->
-
-
-            	
-            </div>
-            
+                
+            </div>  
         </div>
 
          <!--At the bottom of webpage we place our contact details-->
@@ -89,6 +61,5 @@
             </div>
         </footer>
     </body>
-
 </html>
 
