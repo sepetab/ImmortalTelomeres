@@ -448,11 +448,11 @@ form.example::after {
   justify-content: space-between;
   width: 40%;
 }
+
 .filtForm {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 10em;
 }
 
 .filtFormUl {

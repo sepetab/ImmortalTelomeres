@@ -42,14 +42,14 @@
             <div class ="filtContainer">
                 <form id="filtForm" class="filtForm" method="post" action="mainpage.php">
                     <ul class="filtFormUl">
-                        <li class="filtFormLi"><input class="formInput" style="border-bottom: 2px solid rgba(109, 93, 93, 0.4)" type="date" id="filtDate" name="FilterDate"></li>
-                        <li class="filtFormLi"><select id="filtTime" name="FilterTime">
+                        <li class="filtFormLi"><input class="formInput" style="border-bottom: 2px solid rgba(109, 93, 93, 0.4)" type="date" id="filtDate" name="FilterDate" required></li>
+                        <li class="filtFormLi"><select id="filtTime" name="FilterTime" required>
                             <option value="M">Morning</option>
                             <option value="A">Afternoon</option>
                             <option value="N">Evening</option>
                         </select>
                         </li>
-                        <li class="filtFormLi"><select id="choiceType" name="FilterType">
+                        <li class="filtFormLi"><select id="choiceType" name="FilterType" required>
                             <option value="Medication">Medication</option>
                             <option value="Dietary">Dietary</option>
                         </select>
@@ -125,9 +125,9 @@
                         <col style="width:11%">
                         <col style="width:8%">
                         <col style="width:7%">
-                        <col style="width:30%">
-                        <col style="width:7%">
-                        <col style="width:7%">
+                        <col style="width:24%">
+                        <col style="width:10%">
+                        <col style="width:10%">
                         <col style="width:10%">
                         <col style="width:7%">
                         <thead>
@@ -146,12 +146,12 @@
                         <!-- Exemplar data -->
                         <tbody> 
                             <tr>
-                                <form id="formM">
+                                <form id="formM" method="post" action='mainpage.php' onsubmit="return validateMedUpdate()">
                                     <td>5 FENG Clayton</td>
                                     <td>26 SMITH John</td>
-                                    <td><input type="checkbox"></td>
-                                    <td><input type="checkbox"></td>
-                                    <td><textarea class="noteText">He likes to swim.</textarea></td>
+                                    <td><input id="MedCheck" type="checkbox" class="medBoxCheck"></td>
+                                    <td><input id="MedRefused" type="checkbox" class="medBoxCheck"></td>
+                                    <td><textarea id="MedText" class="noteText"></textarea></td>
                                     <td>Pills</td>
                                     <td>2</td>
                                     <td>Oral</td> 
@@ -202,9 +202,9 @@
                         <col style="width:11%">
                         <col style="width:8%">
                         <col style="width:7%">
-                        <col style="width:30%">
-                        <col style="width:7%">
-                        <col style="width:7%">
+                        <col style="width:24%">
+                        <col style="width:10%">
+                        <col style="width:10%">
                         <col style="width:10%">
                         <col style="width:7%">
                         <thead>
@@ -316,5 +316,6 @@
             </div>
         </footer>
         <script src="script/scriptTableSort.js"></script>
+        <script src="script/scriptUpdate.js"></script>
     </body>
 </html>
