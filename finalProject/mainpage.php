@@ -260,19 +260,6 @@
                                 echo "</tr>";
                             }
                             ?>
-                            <tr>
-                                <form id="formDRR">
-                                    <td>19 WOOD JESSICA</td>
-                                    <td>62 TYAN JACOB</td>
-                                    <td><input type="checkbox"></td>
-                                    <td><input type="checkbox"></td>
-                                    <td><textarea class="noteText">He loves his gym workouts</textarea></td>
-                                    <td>Chicken breast</td>
-                                    <td>Weights</td>
-                                    <td>Sleep</td> 
-                                    <td class="doneCheck"><button class="doneBtn submit" type="submit" name="Submit Details">Update</button></td>  
-                                </form>
-                            </tr>
                         </tbody>
                     </table>  
                 <?php endif; ?>              
