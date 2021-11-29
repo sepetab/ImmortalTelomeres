@@ -22,7 +22,7 @@ if(isset($_POST["NewDR"])){
     $exercise = $_POST["Exercise"];
     $beauty = $_POST["Beauty"];
 
-    echo $sDate;
+    //echo $sDate;
 
     $time = "";
     if($morning=="on"){
@@ -37,7 +37,10 @@ if(isset($_POST["NewDR"])){
         $evening = "N";
         $time = $time.$evening;
     }
-    $insertQuery = "INSERT INTO DietRegime (DRID, PatientID, StartDate, EndDate, DietTime, Food, Exercise, Beauty) VALUES (1,'$pid','$sDate','$fDate','$time','$food','$exercise','$beauty')";
+   
+    
+    //$insertQuery = "INSERT INTO DietRegime (DRID, PatientID, StartDate, EndDate, DietTime, Food, Exercise, Beauty) VALUES ('1','$pid','$sDate','$fDate','$time','$food','$exercise','$beauty')";
+    $insertQuery = "INSERT INTO DietRegime (PatientID, StartDate, EndDate, DietTime, Food, Exercise, Beauty) VALUES ('$pid','$sDate','$fDate','$time','$food','$exercise','$beauty')";
     $insert = odbc_exec($conn,$insertQuery);
 
     // Input Into DRScribe
@@ -65,8 +68,8 @@ if(isset($_POST["NewDR"])){
             $dateToInsert = $dt->format("Y-m-d");
             
             //$insertQuery = "INSERT INTO DRScribe (PractitionerID,PatientID, DRDate, DRSTime, DRCheck, Refused,Notes, DRID) VALUES (0,'$pid','$dateToInsert','$t','ON','ON','','$did')";
-            $dummyNotes = "hello";
-            $insertQuery = "INSERT INTO DRScribe (PractitionerID,PatientID, DRDate, DRSTime, DRCheck, Refused,Notes, DRID) VALUES ('4','$pid','$dateToInsert','$t',1,1,'$dummyNotes','2')";
+            $dummyNotes = "";
+            $insertQuery = "INSERT INTO DRScribe (PractitionerID,PatientID, DRDate, DRSTime, DRCheck, Refused,Notes, DRID) VALUES ('0','$pid','$dateToInsert','$t',0,0,'$dummyNotes','$did')";
             //echo $insertQuery;
             $insert = odbc_exec($conn,$insertQuery);
         }
