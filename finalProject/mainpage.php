@@ -83,7 +83,12 @@
                 $filterTime = $_POST['ftime'];
                 $filterDate = $_POST['fdate'];
                 $type = $_POST['ftype'];
-                $did = $_POST['fdrid'];
+
+                if($type == "Medication"){
+
+                }else{
+                    $did = $_POST['fdrid'];
+                }
                 
                 $performed = 0;
                 $refused = 0;
