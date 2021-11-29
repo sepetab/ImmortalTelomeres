@@ -41,14 +41,16 @@
             <div class ="filtContainer">
                 <form id="filtForm" class="filtForm">
                     <ul class="filtFormUl">
-                        <li class="filtFormLi"><input class="formInput" style="border-bottom: 2px solid rgba(109, 93, 93, 0.4)" type="date" id="filtDate" name="Filter Date"></li>
-                        <li class="filtFormLi"><select id="filtTime" name="Filter Time">
+                        <li class="filtFormLi"><input class="formInput" style="border-bottom: 2px solid rgba(109, 93, 93, 0.4)" type="date" id="filtDate" name="Filter Date" required></li>
+                        <li class="filtFormLi"><select id="filtTime" name="Filter Time" autocomplete="off" required>
+                            <option hidden disabled selected value>Time</option>
                             <option value="morning">Morning</option>
                             <option value="afternoon">Afternoon</option>
                             <option value="evening">Evening</option>
                         </select>
                         </li>
-                        <li class="filtFormLi"><select id="choiceType" name="Chosen Type">
+                        <li class="filtFormLi"><select id="choiceType" name="Chosen Type" autocomplete="off" required>
+                            <option hidden disabled selected value>Type</option>
                             <option value="med">Medication</option>
                             <option value="diet">Dietary</option>
                         </select>

@@ -443,13 +443,12 @@ form.example::after {
   display: flex;
   justify-content: space-between;
   width: 40%;
-  border: none;
 }
 .filtForm {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 4em;
+  margin-right: 10em;
 }
 
 .filtFormUl {
