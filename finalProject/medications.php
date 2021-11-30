@@ -70,10 +70,10 @@ if(isset($_POST["NewMedication"])){
     $times = str_split($time);
 
     // Current MedID
-    $getDid = "SELECT @@IDENTITY AS MID FROM Medication";
-    $dide = odbc_exec($conn,$getDid);
-    while ($row = odbc_fetch_array($dide)) {
-        $did =  $row['MID'];
+    $getMid = "SELECT @@IDENTITY AS MID FROM Medication";
+    $mime = odbc_exec($conn,$getMid);
+    while ($row = odbc_fetch_array($mime)) {
+        $mid =  $row['MID'];
         break;
     }
 
@@ -82,7 +82,8 @@ if(isset($_POST["NewMedication"])){
             $dateToInsert = $dt->format("Y-m-d");
             
             //$insertQuery = "INSERT INTO DRScribe (PractitionerID,PatientID, DRDate, DRSTime, DRCheck, Refused,Notes, DRID) VALUES (0,'$pid','$dateToInsert','$t','ON','ON','','$did')";
-            $insertQuery = "INSERT INTO MedicationScribe (PractitionerID,PatientID, MedDate, MedTime, MedicationCheck, Refused,Notes, MedID) VALUES ('4','$pid','$dateToInsert','$t',0,0,0,'2')";
+            $dummyNotes = "";
+            $insertQuery = "INSERT INTO MedicationScribe (PractitionerID,PatientID, MedDate, MedTime, MedicationCheck, Refused,Notes, MedID) VALUES ('0','$pid','$dateToInsert','$t',0,0,'$dummyNotes','$mid')";
             //echo $insertQuery;
             $insert = odbc_exec($conn,$insertQuery);
         }
@@ -142,7 +143,7 @@ else if(isset($_POST["editMed"])){
      foreach ($period as $dt) {
         foreach ($times as $t){
             $dateToInsert = $dt->format("Y-m-d");
-            $insertQuery = "INSERT INTO MedicationScribe (PractitionerID,PatientID, MedDate, MedTime, MedicationCheck, Refused,Notes, MedID) VALUES ('4','$pid','$dateToInsert','$t',0,0,0,'2')";
+            $insertQuery = "INSERT INTO MedicationScribe (PractitionerID,PatientID, MedDate, MedTime, MedicationCheck, Refused,Notes, MedID) VALUES ('4','$pid','$dateToInsert','$t',0,0,0,'$mid')";
             //$insertQuery = "INSERT INTO DRScribe (PatientID, DRDate, DRSTime, DRID, PractitionerID, DRCheck, Refused,Notes) VALUES ('$pid','$dateToInsert','$t','$did',0,0,0,' ')";
             $insert = odbc_exec($conn,$insertQuery);
         }

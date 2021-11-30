@@ -58,9 +58,15 @@
                     <button class="filterBtn submit" type="submit" name="Filter">Filter</button>
                 </form>
             </div>
-            <div class="searchContainer">
+            <!--div class="searchContainer">
                 <form id="searchForm" class="searchForm">
-                    <li class = "filtFormLi" style="max-width:150px;"><input class="searchInput" type="text" id="searchInput" name="Search input" placeholder="Insert search requirements"></li>
+                    <li class = "filtFormLi" style="max-width:150px;"><input class="searchInput" type="text" id="searchInput" name="Searchinput" placeholder="Insert search requirements"></li>
+                    <button class="searchBtn submit" style="max-width:150px;" type="submit" name="Search">Search</button>
+                </form>
+            </div-->
+            <div class="searchContainer">
+                <form id="searchForm" class="searchForm" method="post" action="mainpage.php">
+                    <li class = "filtFormLi" style="max-width:150px;"><input class="searchInput" type="text" id="searchInput" name="Searchinput" placeholder="Insert search requirements"></li>
                     <button class="searchBtn submit" style="max-width:150px;" type="submit" name="Search">Search</button>
                 </form>
             </div>
@@ -72,9 +78,29 @@
             <?php 
             //$conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
             //using my zID instead of Aravinds
-           $conn = odbc_connect('z5115189', '', '', SQL_CUR_USE_ODBC);
+            $conn = odbc_connect('z5115189', '', '', SQL_CUR_USE_ODBC);
             if(!$conn){exit("Connection Failed:". $conn);}
-
+            
+            $newSearch = 0;
+            //We check if anything was search for
+            if(isset($_POST["Search"])){
+                $newSearch = 1;
+                //When they search for something, we check if it is letters or numbers
+                $searchInput = $_POST["Searchinput"];
+                //some default values if user types nothign
+                $searchNumber = -1;
+                $searchWord = "nothing";
+                if(is_numeric($searchInput)){
+                    //echo "well its a number\n";
+                    $searchNumber = $searchInput;
+                }
+                if(!is_numeric($searchInput)){
+                    //echo "it is not a number";
+                    $searchWord = $searchInput;
+                };
+            };
+          
+        
             if(isset($_POST['Filter'])){
                 $filterTime = $_POST['FilterTime'];
                 $filterDate = $_POST['FilterDate'];
@@ -88,7 +114,7 @@
                 $type = $_POST['ftype'];
 
                 if($type == "Medication"){
-
+                    $mid = $_POST['fmid'];
                 }else{
                     $did = $_POST['fdrid'];
                 }
@@ -113,9 +139,12 @@
                     $notes = " ";
                 }
 
-                
                 if($type == "Medication"){
-
+                    //this is what is should be like
+                    //$updateQuery = "UPDATE MedicationScribe SET PractitionerID = $pracID , MedicationCheck = $performed, Refused = $refused, Notes = '$notes' WHERE MedID = $mid AND MedDate = #$filterDate# AND MedTime = '$filterTime'";
+                    //$updateQuery = "UPDATE MedicationScribe SET PractitionerID = $pracID , MedicationCheck = $performed, Refused = $refused, Notes = '$notes' WHERE MedTime = '$filterTime' AND MedDate = #$filterDate#";
+                    $updateQuery = "UPDATE MedicationScribe SET PractitionerID = $pracID , MedicationCheck = $performed, Refused = $refused , Notes = '$notes' WHERE MedID = $mid AND MedTime = '$filterTime' AND MedDate = #$filterDate#";
+                    $update = odbc_exec($conn,$updateQuery);
                 }else{
                     $updateQuery = "UPDATE DRScribe SET PractitionerID = $pracID , DRCheck = $performed, Refused = $refused, Notes = '$notes' WHERE DRID = $did AND DRDate = #$filterDate# AND DRSTime = '$filterTime'";
                     $update = odbc_exec($conn,$updateQuery);
@@ -128,13 +157,7 @@
                 $type = "Medication";
             }
             /////////////////////////////
-            //debug
-            echo $filterTime;
-            echo "\n";
-            echo $filterDate;
-            echo "\n";
-            echo $type;
-            echo "\n";
+            
             /////////////////////////////
             ?>
              <!-- Set appropriate filters -->        
@@ -191,13 +214,32 @@
                             <?php
                                 //$MQ = "SELECT * FROM MedicationScribe WHERE MedTime = '$filterTime' AND MedDate = #$filterDate#";
                                 //$MQ = "SELECT * FROM MedicationScribe WHERE MedTime = '$filterTime' AND MedDate = '$filterDate'";
-                                $MQ = "SELECT * FROM MedicationScribe WHERE MedTime = '$filterTime' AND MedDate = #$filterDate#";
+                                //First check if the user has searched for a number or word
+                               if($newSearch){
+                                    if(is_numeric($searchInput)){
+                                        //just add the patient id as an extra condition to query
+                                        $MQ = "SELECT * FROM MedicationScribe WHERE MedTime = '$filterTime' AND PatientID = $searchNumber AND MedDate = #$filterDate#";
+                                    }
+                                    if(!is_numeric($searchInput)){
+                                        echo $searchInput;
+                                        echo "\n";
+                                        //$MQ = "SELECT * FROM MedicationScribe AS MS JOIN Patient as P on P.PatientID = MS.PatientID WHERE MS.MedTime = $filterTime AND (P.FirstName = '$searchInput' OR P.LastName = '$searchInput') AND MS.MedDate = #$filterDate#";
+                                        $MQ = "SELECT * FROM MedicationScribe AS MS INNER JOIN Patient as P on MS.PatientID = P.PatientID WHERE MS.MedTime = '$filterTime' AND P.FirstName = '$searchInput'";
+                                        echo $MQ;
+                                        
+                                    }
+                                    $newSearch = 0;
+                               }else{
+                                    $MQ = "SELECT * FROM MedicationScribe WHERE MedTime = '$filterTime' AND MedDate = #$filterDate#";
+                               }
+                           
+                              
                                 $ms = odbc_exec($conn,$MQ);
                                 //debug
                                 if(!$ms){exit("Connection Failed at point b:". $ms);}
                                 while ($row = odbc_fetch_array($ms)) { 
                                     echo "<tr>";
-                                    echo "<form id='formMed'>";
+                                    echo "<form id='formMed' method='post' action = 'mainpage.php'>";
                                         // Get practitioner Info
                                         if ($row['Practitioner'] == 0){
                                             echo "<td>N/A</td>";
@@ -221,9 +263,9 @@
                                         echo "<td> $inputVal </td>";
                                         // Set Checkboxes
                                         if($row['MedicationCheck'] == 0){
-                                            echo "<td><input name='medCheck' type='checkbox'></td>";
+                                            echo "<td><input name='performed' type='checkbox'></td>";
                                         }else{
-                                            echo "<td><input name='medCheck' type='checkbox' checked></td>";
+                                            echo "<td><input name='performed' type='checkbox' checked></td>";
                                         }
 
                                         if($row['Refused'] == 0){
@@ -237,6 +279,7 @@
                                         
                                         // Medication information - Food
                                     $getInfo = "SELECT * FROM Medication WHERE MedID = " . $row['MedID'];
+                                    
                                         $infos = odbc_exec($conn,$getInfo);
                                         while ($infoRow = odbc_fetch_array($infos)) {
                                             $inputMedName = $infoRow['MedName'];
@@ -249,10 +292,15 @@
                                     echo "<td> $inputROA </td>";
 
                                      // Get some essential information across
-                                     echo "<input type='text' name='fdate' style='display:none;' value='$filterDate'>";
+                                     // echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='ftime' >" . $filterTime ."</textarea></td>";
+                                     echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='ftime' >" . $filterTime ."</textarea></td>";
+                                     echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='fmid' >" . $row['MedID'] ."</textarea></td>";
+                                     echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='ftype' >" . $type ."</textarea></td>";
+                                     echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='fdate' >" . $filterDate ."</textarea></td>";
+                                     /*echo "<input type='text' name='fdate' style='display:none;' value='$filterDate'>";
                                      echo "<input type='text' name='fmedid' style='display:none;' value='$MedID'>";
                                      echo "<input type='text' name='ftime' style='display:none;' value='$filterTime'>";
-                                     echo "<input type='text' name='ftype' style='display:none;' value='$type'>";
+                                     echo "<input type='text' name='ftype' style='display:none;' value='$type'>";*/
                                     
                                      // Submit
                                      echo "<td class='doneCheck'><button class='doneBtn submit' type='submit' name='updateSubmission'>Update</button></td>";
