@@ -59,15 +59,10 @@
                         <button class="filterBtn submit" type="submit" name="Filter">Filter</button>
                     </form>
                 </div>
-                <!--div class="searchContainer">
-                    <form id="searchForm" class="searchForm">
-                        <li class = "filtFormLi" style="max-width:150px;"><input class="searchInput" type="text" id="searchInput" name="Searchinput" placeholder="Insert search requirements"></li>
-                        <button class="searchBtn submit" style="max-width:150px;" type="submit" name="Search">Search</button>
-                    </form>
-                </div-->
+
                 <div class="searchContainer">
                     <form id="searchForm" class="searchForm" method="post" action="mainpage.php">
-                        <li class = "filtFormLi" style="max-width:150px;"><input class="searchInput" type="text" id="searchInput" name="Searchinput" placeholder="Insert search requirements"></li>
+                        <li class = "filtFormLi" style="max-width:150px;"><input class="searchInput" type="text" id="searchInput" name="Searchinput" placeholder="Search by Patient ID or First/Last Name"></li>
                         <button class="searchBtn submit" style="max-width:150px;" type="submit" name="Search">Search</button>
                     </form>
                 </div>
@@ -133,9 +128,6 @@
                     }
 
                     if($type == "Medication"){
-                        //this is what is should be like
-                        //$updateQuery = "UPDATE MedicationScribe SET PractitionerID = $pracID , MedicationCheck = $performed, Refused = $refused, Notes = '$notes' WHERE MedID = $mid AND MedDate = #$filterDate# AND MedTime = '$filterTime'";
-                        //$updateQuery = "UPDATE MedicationScribe SET PractitionerID = $pracID , MedicationCheck = $performed, Refused = $refused, Notes = '$notes' WHERE MedTime = '$filterTime' AND MedDate = #$filterDate#";
                         $updateQuery = "UPDATE MedicationScribe SET PractitionerID = $pracID , MedicationCheck = $performed, Refused = $refused , Notes = '$notes' WHERE MedID = $mid AND MedTime = '$filterTime' AND MedDate = #$filterDate#";
                         $update = odbc_exec($conn,$updateQuery);
                     }else{
@@ -145,13 +137,8 @@
                 }else{
                     $filterTime = 'M';
                     $filterDate = date("Y-m-d");
-                    //changing format of date to match my database.
-                    //$filterDate = date("d-m-Y");
                     $type = "Medication";
                 }
-                /////////////////////////////
-                
-                /////////////////////////////
                 ?>
                 <!-- Set appropriate filters -->        
                 <?php if(isset($_POST['Filter'])): ?>
@@ -160,9 +147,6 @@
                             var time = "<?php echo $filterTime; ?>";
                             var date = "<?php echo $filterDate; ?>";
                             var choice = "<?php echo $type; ?>";
-                            // $filterTime = $_POST['FilterTime'];
-                            // $filterDate = $_POST['FilterDate'];
-                            // $type = $_POST['FilterType'];
                             document.getElementById('filtTime').value = time
                             document.getElementById('filtDate').value = date
                             document.getElementById('choiceType').value = choice
@@ -187,10 +171,10 @@
                             <col style="width:11%">
                             <col style="width:8%">
                             <col style="width:7%">
-                            <col style="width:11%">
-                            <col style="width:15%">
-                            <col style="width:15%">
-                            <col style="width:15%">
+                            <col style="width:18%">
+                            <col style="width:10%">
+                            <col style="width:7%">
+                            <col style="width:10%">
                             <col style="width:7%">
                             <thead>
                                 <tr>
@@ -239,7 +223,7 @@
                                                     $inputVal = $pracRow['PractitionerID'] . " " . $pracRow['FirstName'] . " " . $pracRow['LastName'];
                                                     break;
                                                 }
-                                                echo "<td> $inputVal </td>";
+                                                echo "<td><a href='practitioners.php' style='color:#143875;'> $inputVal </a></td>";
                                             }
 
                                             // Get patient Info
@@ -249,7 +233,7 @@
                                                     $inputVal = $patRow['PatientID'] . " " . $patRow['FirstName'] . " " . $patRow['LastName'];
                                                     break;
                                                 }
-                                            echo "<td> $inputVal </td>";
+                                                echo "<td><a href='patients.php' style='color:#143875;'> $inputVal </a></td>";
                                             // Set Checkboxes
                                             if($row['MedicationCheck'] == 0){
                                                 echo "<td><input name='performed' type='checkbox'></td>";
@@ -276,7 +260,7 @@
                                                 $inputROA = $infoRow['ROA'];
                                                 break;
                                             }
-                                        echo "<td> $inputMedName </td>";
+                                        echo "<td><a href='medications.php' style='color:#143875;'> $inputMedName </a></td>";
                                         echo "<td> $inputDosage </td>";
                                         echo "<td> $inputROA </td>";
 
@@ -286,10 +270,6 @@
                                         echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='fmid' >" . $row['MedID'] ."</textarea></td>";
                                         echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='ftype' >" . $type ."</textarea></td>";
                                         echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='fdate' >" . $filterDate ."</textarea></td>";
-                                        /*echo "<input type='text' name='fdate' style='display:none;' value='$filterDate'>";
-                                        echo "<input type='text' name='fmedid' style='display:none;' value='$MedID'>";
-                                        echo "<input type='text' name='ftime' style='display:none;' value='$filterTime'>";
-                                        echo "<input type='text' name='ftype' style='display:none;' value='$type'>";*/
                                         
                                         // Submit
                                         echo "<td class='doneCheck'><button class='doneBtn submit' type='submit' name='updateSubmission'>Update</button></td>";
@@ -310,10 +290,10 @@
                             <col style="width:11%">
                             <col style="width:8%">
                             <col style="width:7%">
-                            <col style="width:11%">
-                            <col style="width:15%">
-                            <col style="width:15%">
-                            <col style="width:15%">
+                            <col style="width:17%">
+                            <col style="width:13%">
+                            <col style="width:13%">
+                            <col style="width:13%">
                             <col style="width:7%">
                             <thead>
                                 <tr>
@@ -360,7 +340,7 @@
                                                     $inputVal = $pracRow['PractitionerID'] . " " . $pracRow['FirstName'] . " " . $pracRow['LastName'];
                                                     break;
                                                 }
-                                                echo "<td><a href='profile.php'> $inputVal </a></td>";
+                                                echo "<td><a href='practitioners.php' style='color:#143875;'> $inputVal </a></td>";
                                             }
 
                                             // Get patient Info
@@ -371,7 +351,7 @@
                                                     $inputVal = $patRow['PatientID'] . " " . $patRow['FirstName'] . " " . $patRow['LastName'];
                                                     break;
                                                 }
-                                            echo "<td> $inputVal </td>";
+                                                echo "<td><a href='patients.php' style='color:#143875;'> $inputVal </a></td>";
 
                                             // Set Checkboxes
                                             if($row['DRCheck'] == 0){
