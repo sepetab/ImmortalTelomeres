@@ -65,7 +65,7 @@
                 </form>
             </div>
         </div>
-        <p class="mainLeg">Key for Times column: M - Morning, A - Afternoon, N - Evening</p>
+        <!-- <p class="mainLeg">Key for Times column: M - Morning, A - Afternoon, N - Evening</p> -->
 
 
         <div class="container">
