@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user'] = $user;
                 $_SESSION['userID'] = $row['PractitionerID'];
-                header('Location: http://engpwws005/z5208102$/ImmortalTelomeres/finalProject/mainPage.html');
+                header('Location: http://engpwws005/z5208102$/ImmortalTelomeres/finalProject/mainPage.php');
                 exit;
             }else{
                 include 'loginFirst.html';     

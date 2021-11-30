@@ -129,7 +129,7 @@ function containsCharacters(field, code) {
     }
   }
 
-// Handle form validation -aravind edit plZ
+// Handle form validation
 function validateForm(){
   return validateUsername() && validatePassword();
 }

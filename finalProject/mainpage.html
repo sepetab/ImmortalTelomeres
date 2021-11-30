@@ -37,11 +37,12 @@
                 </nav>
             </div>
         </header>
+        <main> 
         <div class="sepContainer">
             <div class ="filtContainer">
                 <form id="filtForm" class="filtForm">
                     <ul class="filtFormUl">
-                        <li class="filtFormLi"><input class="formInput" style="border-bottom: 2px solid rgba(109, 93, 93, 0.4)" type="date" id="filtDate" name="Filter Date" required></li>
+                        <li class="filtFormLi"><input class="formInput" style="border-bottom: 2px solid rgba(109, 93, 93, 0.4)" type="date" id="filtDate" name="Filter Date" required value="12-01-2021"></li>
                         <li class="filtFormLi"><select id="filtTime" name="Filter Time" autocomplete="off" required>
                             <option hidden disabled selected value>Time</option>
                             <option value="morning">Morning</option>
@@ -67,7 +68,7 @@
             </div>
         </div>
         <p class="mainLeg">Key for Times column: M - Morning, A - Afternoon, N - Evening</p>
-        <div class="container">
+        <div class="tableContainer">
             <!-- Medication -->
             <div>
                 <table style="border: 0" class="table table-sortable">
@@ -181,6 +182,7 @@
                 </table>                
             </div>
         </div>
+        </main>
         <footer>
             <div class="footer-container">
                 <div>

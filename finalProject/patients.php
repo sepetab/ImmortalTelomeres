@@ -82,13 +82,13 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
 <body>
     <header>
         <div class="container-header">
-            <a HREF="mainpage.html"><div class="logo-container">
+            <a HREF="mainpage.php"><div class="logo-container">
                 <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
                 <p class="subtitle">HealthPortal</p>
             </div></a>
             <nav>
                 <ul class="nav-ul">
-                    <li class="nav-li"><a class="nav-a" href="mainpage.html">Home</a></li>
+                    <li class="nav-li"><a class="nav-a" href="mainpage.php">Home</a></li>
                     <li class="nav-li"><a class="nav-a" href="#">Information</a>
                         <ul>
                             <li><a class = "nav-a" href="#">Patient List</a></li>
@@ -119,7 +119,7 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
             <button class="inputBtn submit" type="submit" name="search"><i class="fa fa-search"></i> Search for patient</button>
         </form>
     </div>
-        <div>
+        <div class="container">
             <table class="tableAdjust table-sortable" style="max-width:60%">
                 <col style="width:10%">
                 <col style="width:20%">
@@ -183,7 +183,7 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
                     <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
                 </div>
                 <div class="middle-footer">
-                    <p class="footer-title">HEALTHPortal</p>
+                    <p class="footer-title">HEALTHPORTAL</p>
                     <p class="footer-copyright">&copy; 2021 ImmortalTelomeres</p>
                 </div>
                 <div>
