@@ -33,7 +33,7 @@
                                 <li><a class = "nav-a" href="editPrescription.html">Edit Prescription</a></li>
                             </ul>
                         </li>
-                        <li class="nav-li"><a class="nav-a" href="loginFirst.html">Logout</a></li>
+                        <li class="nav-li"><a class="nav-a" href="logout.php">Logout</a></li>
                     </ul>
                 </nav>
             </div>
@@ -237,7 +237,7 @@
                                                 $inputVal = $pracRow['PractitionerID'] . " " . $pracRow['FirstName'] . " " . $pracRow['LastName'];
                                                 break;
                                             }
-                                            echo "<td> $inputVal </td>";
+                                            echo "<td><a href='profile.php'> $inputVal </a></td>";
                                         }
 
                                         // Get patient Info
@@ -315,5 +315,10 @@
         </footer>
         <script src="script/scriptTableSort.js"></script>
         <script src="script/scriptUpdate.js"></script>
+        <script>
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+        </script>
     </body>
 </html>
