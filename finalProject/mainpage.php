@@ -70,6 +70,8 @@
         <div class="container">
             <?php 
             $conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
+            //using my zID instead of Aravinds
+            //$conn = odbc_connect('z5115189', '', '', SQL_CUR_USE_ODBC);
             if(!$conn){exit("Connection Failed:". $conn);}
 
             if(isset($_POST['Filter'])){
@@ -82,7 +84,31 @@
                 $filterDate = date("Y-m-d");
                 $type = "Medication";
             }
+            /////////////////////////////
+            //debug
+            echo $filterTime;
+            echo "\n";
+            echo $filterDate;
+            echo "\n";
+            echo $type;
+            echo "\n";
+            /////////////////////////////
             ?>
+             <!-- Set appropriate filters -->        
+             <?php if(isset($_POST['Filter'])): ?>
+                <script>
+                    var time = "<?php echo $filterTime; ?>";
+                    var date = "<?php echo $filterDate; ?>";
+                    var choice = "<?php echo $type; ?>";
+                    // $filterTime = $_POST['FilterTime'];
+                    // $filterDate = $_POST['FilterDate'];
+                    // $type = $_POST['FilterType'];
+                    document.getElementById('filtTime').value = time
+                    document.getElementById('filtDate').value = date
+                    document.getElementById('choiceType').value = choice
+                </script>
+                <?php endif; ?> 
+
             <!-- Medication -->
             <?php if($type == 'Medication'): ?>
                 <div id="MedTable">
@@ -111,32 +137,79 @@
                         </thead>
                         <!-- Exemplar data -->
                         <tbody> 
-                            <tr>
-                                <form id="formM">
-                                    <td>5 FENG Clayton</td>
-                                    <td>26 SMITH John</td>
-                                    <td><input type="checkbox"></td>
-                                    <td><input type="checkbox"></td>
-                                    <td><textarea class="noteText">He likes to swim.</textarea></td>
-                                    <td>Pills</td>
-                                    <td>2</td>
-                                    <td>Oral</td> 
-                                    <td class="doneCheck"><button class="doneBtn submit" type="submit" name="Submit Details">Update</button></td>  
-                                </form>
-                            </tr>
-                            <tr>
-                                <form id="formMM">
-                                    <td>8 DUCKY Mark</td>
-                                    <td>62 PLANT Soil</td>
-                                    <td><input type="checkbox"></td>
-                                    <td><input type="checkbox"></td>
-                                    <td><textarea class="noteText">He hates germs!</textarea></td>
-                                    <td>Antibotics</td>
-                                    <td>1</td>
-                                    <td>Syringe</td> 
-                                    <td class="doneCheck"><button class="doneBtn submit" type="submit" name="Submit Details">Update</button></td>  
-                                </form>
-                            </tr>
+                            <?php
+                                //$MQ = "SELECT * FROM MedicationScribe WHERE MedTime = '$filterTime' AND MedDate = #$filterDate#";
+                                //$MQ = "SELECT * FROM MedicationScribe WHERE MedTime = '$filterTime' AND MedDate = '$filterDate'";
+                                $MQ = "SELECT * FROM MedicationScribe WHERE MedicationTime = $filterTime";
+                                $ms = odbc_exec($conn,$MQ);
+                                //debug
+                                if(!$ms){exit("Connection Failed:". $ms);}else{echo "nice\n";}
+
+                                while ($row = odbc_fetch_array($ms)) { 
+                                    echo "<tr>";
+                                    echo "<form id='formMed'>";
+                                        // Get practitioner Info
+                                        if ($row['Practitioner'] == 0){
+                                            echo "<td>N/A</td>";
+                                        }else{
+                                            $getPrac = "SELECT * FROM Practitioner WHERE PractitionerID = " . $row['Practitioner'];
+                                            $pracs = odbc_exec($conn,$getPrac);
+                                            while ($pracRow = odbc_fetch_array($pracs)) {
+                                                $inputVal = $pracRow['PractitionerID'] . " " . $pracRow['FirstName'] . " " . $pracRow['lastName'];
+                                                break;
+                                            }
+                                            echo "<td> $inputVal </td>";
+                                        }
+
+                                        // Get patient Info
+                                        $getPat = "SELECT * FROM Patient WHERE PatientID = " . $row['PatientID'];
+                                            $pats = odbc_exec($conn,$getPat);
+                                            while ($patRow = odbc_fetch_array($pats)) {
+                                                $inputVal = $patRow['PatientID'] . " " . $patRow['FirstName'] . " " . $patRow['LastName'];
+                                                break;
+                                            }
+                                        echo "<td> $inputVal </td>";
+                                        // Set Checkboxes
+                                        if($row['MedicationCheck'] == 0){
+                                            echo "<td><input name='medCheck' type='checkbox'></td>";
+                                        }else{
+                                            echo "<td><input name='medCheck' type='checkbox' checked></td>";
+                                        }
+
+                                        if($row['Refused'] == 0){
+                                            echo "<td><input name='refused' type='checkbox'></td>";
+                                        }else{
+                                            echo "<td><input name='refused' type='checkbox' checked></td>";
+                                        }
+
+                                        // Notes
+                                        echo  "<td><textarea class='noteText' name'Notes'>" . $row['Notes'] ."</textarea></td>";
+                                        
+                                        // Medication information - Food
+                                    $getInfo = "SELECT * FROM Medication WHERE MedID = " . $row['MedID'];
+                                        $infos = odbc_exec($conn,$getInfo);
+                                        while ($infoRow = odbc_fetch_array($infos)) {
+                                            $inputMedName = $infoRow['MedName'];
+                                            $inputDosage = $infoRow['Dosage'];
+                                            $inputROA = $infoRow['ROA'];
+                                            break;
+                                        }
+                                    echo "<td> $inputMedName </td>";
+                                    echo "<td> $inputDosage </td>";
+                                    echo "<td> $inputROA </td>";
+
+                                     // Get some essential information across
+                                     echo "<input type='text' name='fdate' style='display:none;' value='$filterDate'>";
+                                     echo "<input type='text' name='fmedid' style='display:none;' value='$MedID'>";
+                                     echo "<input type='text' name='ftime' style='display:none;' value='$filterTime'>";
+                                     echo "<input type='text' name='ftype' style='display:none;' value='$type'>";
+                                    
+                                     // Submit
+                                     echo "<td class='doneCheck'><button class='doneBtn submit' type='submit' name='updateSubmission'>Update</button></td>";
+                                     echo "</form>";
+                                 echo "</tr>";
+                                }
+                            ?>
                         </tbody>
                     </table>                
                 </div>
