@@ -78,7 +78,7 @@
             <?php 
             //$conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
             //using my zID instead of Aravinds
-            $conn = odbc_connect('z5115189', '', '', SQL_CUR_USE_ODBC);
+            $conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
             if(!$conn){exit("Connection Failed:". $conn);}
             
             $newSearch = 0;
