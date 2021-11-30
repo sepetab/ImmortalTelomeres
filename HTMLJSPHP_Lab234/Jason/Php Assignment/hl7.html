@@ -23,34 +23,12 @@
       </header>
       <!--Paragraphs of info about HL7-->
       <div class="container" style="display:block">
-      <!--First we check if the registration failed or not-->
-      <?php
-        if (isset($_POST["morning"])){
-          $morning = $_POST["morning"];
-          echo $morning;
-          echo("\n");
-        }
-        if (isset($_POST["afternoon"])){
-          $afternoon = $_POST["afternoon"];
-          echo $afternoon;
-          echo("\n");
-        }
-        if (isset($_POST["night"])){
-          $night = $_POST["night"];
-          echo $night;
-          echo("\n");
-        }
-        $presc_type = $_POST["prescription_type"];
-        $start_date = $_POST["start_date"];
-        $end_date = $_POST["end_date"];
-
-        echo $presc_type;
-        echo("\n");
-        echo $start_date;
-        echo("\n");
-        echo $end_date;
-     
-      ?>
+        <article class="article-main" style="border:none;">
+            <h2 class="article-subtitle">HL7</h2>
+            <p class="article-body">HL7 is a messaging standard that assists clinicians in the exchange of data. To understand how such a standard can achieve this, consider the health information of an individual stored at their GP’s office, local x-ray centre, and MRI information stored in a clinic elsewhere. Now each set of data is often in a format unknown to any single medical centre. Thus, if both the patient and centre would like to communicate the patient’s medical information, a common messaging standard is required - HL7.</p>
+            <p class="article-body">Having its origins in 1987, HL7 was developed by an international community of healthcare experts. Today, HL7 has dedicated developers who are accredited by the American National Standards Institute. These developers provide a set of message formats that describe an ideal presentation of clinical information, thus supporting the communication of medical data between different medical facilities.</p>
+            <p class="article-body">HL7 is not without its problems, however. It is often quoted that it’s biggest strengths is also it’s biggest weakness – HL7’s flexibility. This high level of flexibility can render interfacing unrelated systems very difficult. However, this problem is not without a solution. Many organisations have developed HL7 interface engines. These innovations serve as a hub which routes data between connected devices.</p>
+        </article>
     </div>
 
 

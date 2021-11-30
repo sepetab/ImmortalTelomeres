@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html>
     <head>
         <title>Practioner Directory</title>
@@ -8,13 +9,13 @@
     <body>
         <header>
             <div class="container-header">
-              <a HREF="mainpage.html"><div class="logo-container">
+              <a HREF="mainpage.php"><div class="logo-container">
                   <img src="img/logo2.png" class="logo" alt="Heart with stethoscope"/>
                   <p class="subtitle">HealthPortal</p>
                 </div></a>
                 <nav>
                     <ul class="nav-ul">
-                        <li class="nav-li"><a class="nav-a" href="#">Home</a></li>
+                        <li class="nav-li"><a class="nav-a" href="mainpage.php">Home</a></li>
                         <li class="nav-li"><a class="nav-a" href="#">Information</a>
                             <ul>
                                 <li><a class = "nav-a" href="patients.php">Patient List</a></li>
@@ -41,14 +42,14 @@
             <div class ="filtContainer">
                 <form id="filtForm" class="filtForm" method="post" action="mainpage.php">
                     <ul class="filtFormUl">
-                        <li class="filtFormLi"><input class="formInput" style="border-bottom: 2px solid rgba(109, 93, 93, 0.4)" type="date" id="filtDate" name="FilterDate"></li>
-                        <li class="filtFormLi"><select id="filtTime" name="FilterTime">
+                        <li class="filtFormLi"><input class="formInput" style="border-bottom: 2px solid rgba(109, 93, 93, 0.4)" type="date" id="filtDate" name="FilterDate" required></li>
+                        <li class="filtFormLi"><select id="filtTime" name="FilterTime" required>
                             <option value="M">Morning</option>
                             <option value="A">Afternoon</option>
                             <option value="N">Evening</option>
                         </select>
                         </li>
-                        <li class="filtFormLi"><select id="choiceType" name="FilterType">
+                        <li class="filtFormLi"><select id="choiceType" name="FilterType" required>
                             <option value="Medication">Medication</option>
                             <option value="Dietary">Dietary</option>
                         </select>
@@ -64,14 +65,14 @@
                 </form>
             </div>
         </div>
-        <p class="mainLeg">Key for Times column: M - Morning, A - Afternoon, N - Evening</p>
+        <!-- <p class="mainLeg">Key for Times column: M - Morning, A - Afternoon, N - Evening</p> -->
 
 
         <div class="container">
             <?php 
-            $conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
+            //$conn = odbc_connect('z5208102', '', '', SQL_CUR_USE_ODBC);
             //using my zID instead of Aravinds
-            //$conn = odbc_connect('z5115189', '', '', SQL_CUR_USE_ODBC);
+           $conn = odbc_connect('z5115189', '', '', SQL_CUR_USE_ODBC);
             if(!$conn){exit("Connection Failed:". $conn);}
 
             if(isset($_POST['Filter'])){
@@ -79,9 +80,51 @@
                 $filterDate = $_POST['FilterDate'];
                 $type = $_POST['FilterType'];
 
+            }else if(isset($_POST['updateSubmission'])){
+                
+
+                $filterTime = $_POST['ftime'];
+                $filterDate = $_POST['fdate'];
+                $type = $_POST['ftype'];
+
+                if($type == "Medication"){
+
+                }else{
+                    $did = $_POST['fdrid'];
+                }
+                
+                $performed = 0;
+                $refused = 0;
+                if(isset($_POST['performed'])){
+                    // print("Switching on");
+                    $performed = 1;
+                }
+                if(isset($_POST['refused'])){
+                    // print("Refusal on");
+                    $refused = 1;
+                }
+
+                $pracID = $_SESSION['userID'];
+
+
+                if(isset($_POST['Notes'])){
+                    $notes = $_POST['Notes'];
+                }else{
+                    $notes = " ";
+                }
+
+                
+                if($type == "Medication"){
+
+                }else{
+                    $updateQuery = "UPDATE DRScribe SET PractitionerID = $pracID , DRCheck = $performed, Refused = $refused, Notes = '$notes' WHERE DRID = $did AND DRDate = #$filterDate# AND DRSTime = '$filterTime'";
+                    $update = odbc_exec($conn,$updateQuery);
+                }
             }else{
                 $filterTime = 'M';
                 $filterDate = date("Y-m-d");
+                //changing format of date to match my database.
+                //$filterDate = date("d-m-Y");
                 $type = "Medication";
             }
             /////////////////////////////
@@ -117,9 +160,9 @@
                         <col style="width:11%">
                         <col style="width:8%">
                         <col style="width:7%">
-                        <col style="width:30%">
-                        <col style="width:7%">
-                        <col style="width:7%">
+                        <col style="width:24%">
+                        <col style="width:10%">
+                        <col style="width:10%">
                         <col style="width:10%">
                         <col style="width:7%">
                         <thead>
@@ -140,11 +183,10 @@
                             <?php
                                 //$MQ = "SELECT * FROM MedicationScribe WHERE MedTime = '$filterTime' AND MedDate = #$filterDate#";
                                 //$MQ = "SELECT * FROM MedicationScribe WHERE MedTime = '$filterTime' AND MedDate = '$filterDate'";
-                                $MQ = "SELECT * FROM MedicationScribe WHERE MedicationTime = $filterTime";
+                                $MQ = "SELECT * FROM MedicationScribe WHERE MedTime = '$filterTime' AND MedDate = #$filterDate#";
                                 $ms = odbc_exec($conn,$MQ);
                                 //debug
-                                if(!$ms){exit("Connection Failed:". $ms);}else{echo "nice\n";}
-
+                                if(!$ms){exit("Connection Failed at point b:". $ms);}
                                 while ($row = odbc_fetch_array($ms)) { 
                                     echo "<tr>";
                                     echo "<form id='formMed'>";
@@ -213,7 +255,7 @@
                         </tbody>
                     </table>                
                 </div>
-
+            </main>
 
             <?php else: ?>
             <!-- Dietary section -->
@@ -222,7 +264,6 @@
                 
                 
                 <!-- Set appropriate filters -->        
-                <?php if(isset($_POST['Filter'])): ?>
                 <script>
                     var time = "<?php echo $filterTime; ?>";
                     var date = "<?php echo $filterDate; ?>";
@@ -230,11 +271,11 @@
                     // $filterTime = $_POST['FilterTime'];
                     // $filterDate = $_POST['FilterDate'];
                     // $type = $_POST['FilterType'];
+                    console.log(choice)
                     document.getElementById('filtTime').value = time
                     document.getElementById('filtDate').value = date
                     document.getElementById('choiceType').value = choice
                 </script>
-                <?php endif; ?>  
                 <!-- Diet Regime (hidden) -->
                 <div id = "DRTable">
                     <table style="border: 0" class="table table-sortable">
@@ -242,10 +283,10 @@
                         <col style="width:11%">
                         <col style="width:8%">
                         <col style="width:7%">
-                        <col style="width:30%">
-                        <col style="width:7%">
-                        <col style="width:7%">
-                        <col style="width:10%">
+                        <col style="width:11%">
+                        <col style="width:15%">
+                        <col style="width:15%">
+                        <col style="width:15%">
                         <col style="width:7%">
                         <thead>
                             <tr>
@@ -268,15 +309,15 @@
                             $drs = odbc_exec($conn,$DRQ);
                             while ($row = odbc_fetch_array($drs)) {   
                                 echo "<tr>";
-                                    echo "<form id='formDR'>";
+                                    echo "<form id='formDR' method='post' action = 'mainpage.php'>";
                                         // Get practitioner Info
-                                        if ($row['Practitioner'] == 0){
+                                        if ($row['PractitionerID'] == 0){
                                             echo "<td>N/A</td>";
                                         }else{
-                                            $getPrac = "SELECT * FROM Practitioner WHERE PractitionerID = " . $row['Practitioner'];
+                                            $getPrac = "SELECT * FROM Practitioner WHERE PractitionerID = " . $row['PractitionerID'];
                                             $pracs = odbc_exec($conn,$getPrac);
                                             while ($pracRow = odbc_fetch_array($pracs)) {
-                                                $inputVal = $pracRow['PractitionerID'] . " " . $pracRow['FirstName'] . " " . $pracRow['lastName'];
+                                                $inputVal = $pracRow['PractitionerID'] . " " . $pracRow['FirstName'] . " " . $pracRow['LastName'];
                                                 break;
                                             }
                                             echo "<td> $inputVal </td>";
@@ -294,18 +335,19 @@
 
                                         // Set Checkboxes
                                         if($row['DRCheck'] == 0){
-                                            echo "<td><input name='drCheck' type='checkbox'></td>";
+                                            echo "<td><input name='performed' type='checkbox'></td>";
                                         }else{
-                                            echo "<td><input name='drCheck' type='checkbox' checked></td>";
+                                            echo "<td><input name='performed' type='checkbox' checked value=1></td>";
                                         }
 
                                         if($row['Refused'] == 0){
                                             echo "<td><input name='refused' type='checkbox'></td>";
                                         }else{
-                                            echo "<td><input name='refused' type='checkbox' checked></td>";
+                                            echo "<td><input name='refused' type='checkbox' checked value=1></td>";
                                         }
                                         // Notes
-                                        echo  "<td><textarea class='noteText' name'Notes'>" . $row['Notes'] ."</textarea></td>";
+                                        echo  "<td><textarea class='noteText' name='Notes' >" . $row['Notes'] ." </textarea></td>";
+                                
 
                                         // DR information - Food
                                         $getInfo = "SELECT * FROM DietRegime WHERE DRID = " . $row['DRID'];
@@ -319,13 +361,13 @@
                                         echo "<td> $inputFood </td>";
                                         echo "<td> $inputExercise </td>";
                                         echo "<td> $inputBeauty </td>";
-                                        
 
-                                        // Get some essential information across
-                                        echo "<input type='text' name='fdate' style='display:none;' value='$filterDate'>";
-                                        echo "<input type='text' name='fdrid' style='display:none;' value='$DRID'>";
-                                        echo "<input type='text' name='ftime' style='display:none;' value='$filterTime'>";
-                                        echo "<input type='text' name='ftype' style='display:none;' value='$type'>";
+
+                                        echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='ftime' >" . $filterTime ."</textarea></td>";
+                                        echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='fdrid' >" . $row['DRID'] ."</textarea></td>";
+                                        echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='ftype' >" . $type ."</textarea></td>";
+                                        echo  "<td style='display:none;'><textarea class='noteText' style='display:none;' name='fdate' >" . $filterDate ."</textarea></td>";
+                                        
 
                                         // Submit
                                         echo "<td class='doneCheck'><button class='doneBtn submit' type='submit' name='updateSubmission'>Update</button></td>";
@@ -355,5 +397,6 @@
             </div>
         </footer>
         <script src="script/scriptTableSort.js"></script>
+        <script src="script/scriptUpdate.js"></script>
     </body>
 </html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <!--Referencing style sheet-->
+        <link href="https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body> 
+      <header>
+         <!--inserting logo-->
+          <div class="container-header">
+              <a HREF="index.html"><div class="logo-container">
+                <img src="img/blender_heart_logo.png" class="logo" alt="a deco"/>
+              </div></a>
+              <nav>
+                   <!--Inserting link to take us to home page-->
+                  <ul class="nav-ul">
+                      <li class="nav-li"><a class="nav-a" href="index.html">Home</a></li>
+                      <li class="nav-li"><a class="nav-a current-page" href="#">Schedule</a></li>
+                      
+                  </ul>
+              </nav>
+          </div>
+      </header>
+      <div class="container">
+        <div>
+             <!--specify the column sizes of our table-->
+            <table class="content-table">
+	            <col style="width:10%">
+                <col style="width:20%">
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:50%">
+                <thead>
+                     <!--specify fields of table-->
+                    <tr>
+                        <th>Time</th>
+                        <th>Workshop Name</th>
+                        <th>Speaker</th>
+                        <th>Topic</th>
+                        <th>Information</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                     <!--Inserting information into each table cell-->
+                    <tr style="background-color: hsl(0, 6%, 85%);">
+                        <td>09:00 - 9:30</td>
+                        <th colspan="4">Introduction</th>
+                    </tr>
+                    <tr>
+                        <td>09:30 - 11:30 (Plenary Session)</td>
+                        <th rowspan = "3">Coding & Classification Systems for Medical Data</th>
+                        <td>Dr. A. Swewell</td>
+                        <td>ICD-10-AM</td>
+                        <td>The ICD-10-AM (International Statistical Classification of Diseases and Related Health Problems, Tenth Revision, Australian Modification) is used to classify diseases and other heath issues. For more information regarding this workshop, please read <a class = "underline" href ="icd10am.html">here</a>. </td>
+                    </tr>
+                    <tr class = "required-row">
+                        <td>12:00 - 12:30</td>
+                        <td>Prof. J.J. Samuels</td>
+                        <td>Read</td>
+                        <td>Read codes preceded SNOMED and were ubiquitous throughout the United Kingdom up until 2018. These codes describe a patients situation, including their occupation, social circumstances, and ethnicity.
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>12:30 - 13:00</td>
+                        <td>A.Prof. C. Barkley</td>
+                        <td>SNOMED</td>
+                        <td>SNOMED is a involves a collection of encoded medical terms, synonyms and definitions used for documentation and reporting. The primary purpose of this system is to support the clinical encodings of patient records to improve patient care. To elaborate, by employing the use of a common terminology for medical phenomena, the interpretation of patient information is made more robust. </td>
+                    </tr>
+                    <tr style="background-color: hsl(0, 6%, 85%);">
+                        <td>13:00 - 14:00</td>
+                        <th colspan = "4">Break</th>
+                    </tr>
+                    <tr> 
+                        <td>14:00 - 15:00 (Plenary Session)</td>
+                        <th rowspan = "3">Messaging Standards</th>
+                        <td>Dr. K.L.P Carter</td>
+                        <td>HL7 </td>
+                        <td>Having its origins in 1987, HL7 was developed by an international community of healthcare experts. Today, HL7 has dedicated developers who are accredited by the American National Standards Institute. These developers provide a set of message formats that describe an ideal presentation of clinical information. To learn more, please visit <a class= "underline" href ="hl7.html">here</a>.</td>
+                    </tr>
+                    <tr class = "required-row">
+                        <td>15:00 - 15:30</td>
+                        <td>Dr. M.W. Sam</td>
+                        <td>FHIR</td>
+                        <td>FHIR (Fast Healthcare Interoperability Resources) is a standard which describe data formats and APIs. FHIR was created by HL7 and employs a modern web-based suite of API technologies. The main goal of this messaging standard is to assist the interoperability between legacy health care systems. 
+                        <!-- Link here     -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15:30-16:00</td>
+                        <td>Dr. A. Ally</td>
+                        <td>ISO/IEEE 11073</td>
+                        <td>The ISO/IEEE 11073 is a standard which enables communication between medical and healthcare devices and computers. This standard outlines the method of automatic and detailed electronic data capture of patient medical data.</td>
+                    </tr>
+                    <tr style="background-color: hsl(0, 6%, 85%);">
+                        <td>16:00-17:00</td>
+                        <th colspan = "4">Conclusion and Networking Session</th>
+                    </tr>
+                    <!-- and so on... -->
+                </tbody>
+            </table>                
+        </div>
+    </div>
+        <footer>
+             <!--Inserting contact details and logo again.-->
+            <div class="footer-container">
+                <div>
+                    <img src="img/blender_heart_logo.png" class="logo" alt="a deco"/>
+                </div>
+                <div>
+                    <p class="footer-title">Telemedicine & Disease Categorisation Workshop</p>
+                    <p class="footer-copyright">&copy; 2021 ImmortalTelomeres</p>
+                </div>
+                <div>
+                    <p class="footer-title">CONTACT US</p>
+                    <p class="footer-copyright">+61 123456789</p>
+                    <p class="footer-copyright"><A class="footer-mail" HREF="mailto:enquires@biomedX.com">enquires@biomedX.com</a></p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
+

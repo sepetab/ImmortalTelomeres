@@ -171,7 +171,7 @@ else if(isset($_POST["editMed"])){
             </div></a>
             <nav>
                 <ul class="nav-ul">
-                    <li class="nav-li"><a class="nav-a" href="mainpage.html">Home</a></li>
+                    <li class="nav-li"><a class="nav-a" href="mainpage.php">Home</a></li>
                     <li class="nav-li"><a class="nav-a" href="#">Information</a>
                         <ul>
                             <li><a class = "nav-a" href="patients.php">Patient List</a></li>
@@ -203,7 +203,7 @@ else if(isset($_POST["editMed"])){
             <button class="inputBtn submit" type="submit" name="search"><i class="fa fa-search"></i> Search for Medication</button>
         </form>
     </div>
-        <div>
+        <div class="container">
             <table class="tableAdjust table-sortable" style="max-width:60%">
                 <col style="width:12%">
                 <col style="width:12%">
