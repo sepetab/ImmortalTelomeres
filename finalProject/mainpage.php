@@ -135,7 +135,15 @@
                         $update = odbc_exec($conn,$updateQuery);
                     }
                 }else{
-                    $filterTime = 'M';
+
+                    if(date("H") < 12){
+                        $filterTime = 'M';
+                    }elseif(date("H") > 11 && date("H") < 18){
+                        $filterTime = 'A';
+                    }elseif(date("H") > 17){
+                        $filterTime = 'N';
+                    }
+
                     $filterDate = date("Y-m-d");
                     $type = "Medication";
                 }
