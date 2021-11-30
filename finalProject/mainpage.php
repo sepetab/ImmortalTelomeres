@@ -198,7 +198,7 @@
                         <col style="width:7%">
                         <thead>
                             <tr>
-                                <th>Practioner</th>
+                                <th>Practitioner</th>
                                 <th>Patient</th>
                                 <th>Medication Check</th>
                                 <th>Refused</th>
