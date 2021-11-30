@@ -195,4 +195,9 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
         </footer>
 </body>
 <script src="script/scriptSignin.js"></script>
+<script>
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+</script>
 </html>

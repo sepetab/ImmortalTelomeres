@@ -33,7 +33,7 @@
                                 <li><a class = "nav-a" href="editPrescription.html">Edit Prescription</a></li>
                             </ul>
                         </li>
-                        <li class="nav-li"><a class="nav-a" href="loginFirst.html">Logout</a></li>
+                        <li class="nav-li"><a class="nav-a" href="logout.php">Logout</a></li>
                     </ul>
                 </nav>
             </div>
@@ -60,8 +60,8 @@
             </div>
             <div class="searchContainer">
                 <form id="searchForm" class="searchForm">
-                    <li class = "filtFormLi"><input class="searchInput" type="text" id="searchInput" name="Search input" placeholder="Insert search requirements"></li>
-                    <button class="searchBtn submit" type="submit" name="Search">Search</button>
+                    <li class = "filtFormLi" style="max-width:150px;"><input class="searchInput" type="text" id="searchInput" name="Search input" placeholder="Insert search requirements"></li>
+                    <button class="searchBtn submit" style="max-width:150px;" type="submit" name="Search">Search</button>
                 </form>
             </div>
         </div>
@@ -104,7 +104,14 @@
 
                 $pracID = $_SESSION['userID'];
 
-                $notes = $_POST['Notes'];
+
+                if(isset($_POST['Notes'])){
+                    $notes = $_POST['Notes'];
+                }else{
+                    $notes = " ";
+                }
+
+                
                 if($type == "Medication"){
 
                 }else{
@@ -118,6 +125,14 @@
             }
             ?>
             <!-- Medication -->
+            <script>
+                    var time = "<?php echo $filterTime; ?>";
+                    var date = "<?php echo $filterDate; ?>";
+                    var choice = "<?php echo $type; ?>";
+                    document.getElementById('filtTime').value = time
+                    document.getElementById('filtDate').value = date
+                    document.getElementById('choiceType').value = choice
+            </script>
             <?php if($type == 'Medication'): ?>
                 <div id="MedTable">
                     <table style="border: 0" class="table table-sortable">
@@ -178,23 +193,6 @@
 
             <?php else: ?>
             <!-- Dietary section -->
-                
-                
-                
-                
-                <!-- Set appropriate filters -->        
-                <script>
-                    var time = "<?php echo $filterTime; ?>";
-                    var date = "<?php echo $filterDate; ?>";
-                    var choice = "<?php echo $type; ?>";
-                    // $filterTime = $_POST['FilterTime'];
-                    // $filterDate = $_POST['FilterDate'];
-                    // $type = $_POST['FilterType'];
-                    console.log(choice)
-                    document.getElementById('filtTime').value = time
-                    document.getElementById('filtDate').value = date
-                    document.getElementById('choiceType').value = choice
-                </script>
                 <!-- Diet Regime (hidden) -->
                 <div id = "DRTable">
                     <table style="border: 0" class="table table-sortable">
@@ -236,10 +234,10 @@
                                             $getPrac = "SELECT * FROM Practitioner WHERE PractitionerID = " . $row['PractitionerID'];
                                             $pracs = odbc_exec($conn,$getPrac);
                                             while ($pracRow = odbc_fetch_array($pracs)) {
-                                                $inputVal = $pracRow['PractitionerID'] . " " . $pracRow['FirstName'] . " " . $pracRow['lastName'];
+                                                $inputVal = $pracRow['PractitionerID'] . " " . $pracRow['FirstName'] . " " . $pracRow['LastName'];
                                                 break;
                                             }
-                                            echo "<td> $inputVal </td>";
+                                            echo "<td><a href='profile.php'> $inputVal </a></td>";
                                         }
 
                                         // Get patient Info
@@ -317,5 +315,10 @@
         </footer>
         <script src="script/scriptTableSort.js"></script>
         <script src="script/scriptUpdate.js"></script>
+        <script>
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+        </script>
     </body>
 </html>
