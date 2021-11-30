@@ -106,7 +106,7 @@ if((!isset($_POST["removePatient"])) && isset($_FILES["PatientPicture"]) && $pic
                             <li><a class = "nav-a" href="editPrescription.html">Edit Prescription</a></li>
                         </ul>
                     </li>
-                    <li class="nav-li"><a class="nav-a" href="loginFirst.html">Logout</a></li>
+                    <li class="nav-li"><a class="nav-a" href="logout.php">Logout</a></li>
                 </ul>
             </nav>
         </div>
