@@ -178,7 +178,6 @@
                 </nav>
             </div>
         </header>
-        <!-- normal sign in page  -->
         <div class="formContainer">
             <h1>Diet Regimes</h1>
             <form class="inputForm" method = "post" action="dietRegimes.php" style="margin:auto;max-width:700px">

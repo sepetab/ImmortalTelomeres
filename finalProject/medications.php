@@ -207,6 +207,7 @@
             </form>
         </div>
             <div class="container">
+                <p style="text-align:center;margin:0;">Key for Times column: M - Morning, A - Afternoon, N - Evening</p>
                 <table class="tableAdjust table-sortable" style="max-width:60%">
                     <col style="width:12%">
                     <col style="width:12%">
