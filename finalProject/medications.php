@@ -190,7 +190,7 @@ else if(isset($_POST["editMed"])){
                             <li><a class = "nav-a" href="editPrescription.html">Edit Prescription</a></li>
                         </ul>
                     </li>
-                    <li class="nav-li"><a class="nav-a" href="loginFirst.html">Logout</a></li>
+                    <li class="nav-li"><a class="nav-a" href="logout.php">Logout</a></li>
                 </ul>
             </nav>
         </div>
