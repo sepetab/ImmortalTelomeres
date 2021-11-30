@@ -60,8 +60,8 @@
             </div>
             <div class="searchContainer">
                 <form id="searchForm" class="searchForm">
-                    <li class = "filtFormLi"><input class="searchInput" type="text" id="searchInput" name="Search input" placeholder="Insert search requirements"></li>
-                    <button class="searchBtn submit" type="submit" name="Search">Search</button>
+                    <li class = "filtFormLi" style="max-width:150px;"><input class="searchInput" type="text" id="searchInput" name="Search input" placeholder="Insert search requirements"></li>
+                    <button class="searchBtn submit" style="max-width:150px;" type="submit" name="Search">Search</button>
                 </form>
             </div>
         </div>
@@ -125,6 +125,14 @@
             }
             ?>
             <!-- Medication -->
+            <script>
+                    var time = "<?php echo $filterTime; ?>";
+                    var date = "<?php echo $filterDate; ?>";
+                    var choice = "<?php echo $type; ?>";
+                    document.getElementById('filtTime').value = time
+                    document.getElementById('filtDate').value = date
+                    document.getElementById('choiceType').value = choice
+            </script>
             <?php if($type == 'Medication'): ?>
                 <div id="MedTable">
                     <table style="border: 0" class="table table-sortable">
@@ -185,23 +193,6 @@
 
             <?php else: ?>
             <!-- Dietary section -->
-                
-                
-                
-                
-                <!-- Set appropriate filters -->        
-                <script>
-                    var time = "<?php echo $filterTime; ?>";
-                    var date = "<?php echo $filterDate; ?>";
-                    var choice = "<?php echo $type; ?>";
-                    // $filterTime = $_POST['FilterTime'];
-                    // $filterDate = $_POST['FilterDate'];
-                    // $type = $_POST['FilterType'];
-                    console.log(choice)
-                    document.getElementById('filtTime').value = time
-                    document.getElementById('filtDate').value = date
-                    document.getElementById('choiceType').value = choice
-                </script>
                 <!-- Diet Regime (hidden) -->
                 <div id = "DRTable">
                     <table style="border: 0" class="table table-sortable">
