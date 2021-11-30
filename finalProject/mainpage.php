@@ -104,7 +104,14 @@
 
                 $pracID = $_SESSION['userID'];
 
-                $notes = $_POST['Notes'];
+
+                if(isset($_POST['Notes'])){
+                    $notes = $_POST['Notes'];
+                }else{
+                    $notes = " ";
+                }
+
+                
                 if($type == "Medication"){
 
                 }else{
@@ -236,7 +243,7 @@
                                             $getPrac = "SELECT * FROM Practitioner WHERE PractitionerID = " . $row['PractitionerID'];
                                             $pracs = odbc_exec($conn,$getPrac);
                                             while ($pracRow = odbc_fetch_array($pracs)) {
-                                                $inputVal = $pracRow['PractitionerID'] . " " . $pracRow['FirstName'] . " " . $pracRow['lastName'];
+                                                $inputVal = $pracRow['PractitionerID'] . " " . $pracRow['FirstName'] . " " . $pracRow['LastName'];
                                                 break;
                                             }
                                             echo "<td> $inputVal </td>";
